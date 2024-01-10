@@ -1,0 +1,18 @@
+.navbar-brand:hover{
+  color: aqua;
+}
+
+.nav-link{
+  cursor: pointer;
+}
+
+.card{
+  margin-right: 50px;
+}
+
+.cart:hover{
+  cursor: pointer;
+  color: aqua;
+
+
+}
