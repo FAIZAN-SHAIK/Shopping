@@ -1,0 +1,14 @@
+.home-div{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.inner-div1{
+    margin-top: 150px;
+}
+.inner-div2{
+    margin-top: 50px;
+}
+button{
+    margin-right: 10px;
+}

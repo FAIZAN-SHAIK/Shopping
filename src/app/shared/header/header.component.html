@@ -24,9 +24,26 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>
     </ul>
-    <ul class="navbar-nav ms-auto">
+    <ul class="navbar-nav ms-auto" *ngIf="headerService.isUserLoggedIn">
       <li class="nav-item">
         <a class="nav-link cart" href="#">Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cart"   ><button>User</button></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cart" (click)="onLoggedOut()">Logout</a>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav ms-auto" *ngIf="!headerService.isUserLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link cart" [routerLink]="['/signup']">SignUp</a>
+        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cart" [routerLink]="['/login']">Login</a>
+        
       </li>
     </ul>
   </div>

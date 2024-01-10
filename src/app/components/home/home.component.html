@@ -1,2 +1,30 @@
 <app-header></app-header>
-<h1>hello</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 home-div" style="border: 1px solid black; height: 870px; background-color: rgb(208, 208, 206);">
+            <div class="inner-div1">
+                <h2>Welcome to FashionKido</h2>
+                <h6>Your destination for trendy fashion!</h6>
+                <div class="inner-div2" *ngIf="!homeService.isUserLoggedIn">
+                    <button class="btn btn-dark" (click)="onLoginClicked()">Login</button>
+                    <button class="btn btn-dark">SignUp</button>
+                    
+                </div>
+                <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
+                    <h1>Hello ,{{homeService.userLoggedInName}}</h1>
+                    Start .... <a [routerLink]="['/products']"  >Shopping</a>
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        <div class="col-md-5">
+            <img src="../../../assets/fashion.jfif" height="870px" width="709px" alt="" style="float: right; margin-top: 0;">
+        </div>
+        
+    </div>
+</div>
+
