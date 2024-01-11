@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 
@@ -12,7 +13,10 @@ export class AllProductsComponent implements OnInit {
   allProducts: Products[];
   productSearched : string = ''
 
-  constructor(private productsService: ProductsService) {
+  constructor(
+    private productsService: ProductsService,
+    private router: Router,
+    private route : ActivatedRoute) {
     this.allProducts = productsService.AllProducts
     // console.log(this.allProducts)
   }
@@ -20,7 +24,6 @@ export class AllProductsComponent implements OnInit {
   onAllClicked() {
     this.allProducts = this.productsService.AllProducts
   }
-  
 
   onShirtsClicked() {
 
@@ -33,6 +36,12 @@ export class AllProductsComponent implements OnInit {
   onJeansClicked() {
     this.allProducts = this.productsService.AllProducts.filter((x)=>x.type.toLowerCase() === 'jeans')
   }
+
+
+ productClicked(value:Products){
+   this.router.navigate(['productDetails/'+value.id])
+ }
+
 
   ngOnInit(): void {
   }

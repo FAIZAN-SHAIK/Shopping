@@ -1,35 +1,53 @@
 <app-header></app-header>
 <div class="top-div">
-    <div class="search-box">
-        <input class="search-input" type="text" [(ngModel)]="productSearched">
-        <button class="btn btn-dark btn-sm searchBtn">search</button>
-   </div>
-   
-   <div class="anchors">
-       <a href="/products" (click)="onAllClicked()">All()</a>
-       <a (click)="onShirtsClicked()">Shirts()</a>
-       <a  (click)="onTshirtsClicked()">Tshirts()</a>
-       <a (click)="onJeansClicked()">Jeans()</a>
-   </div>
-   
-   <div class="container">
-       <div class="row" >
-           <!-- <a href=""></a> -->
-           <div class="col-md-3" style="margin-top: 15px; height: 350px;" *ngFor="let item of allProducts | filterProducts : productSearched">
-               <div class="card" style="width: 15rem;  border-radius: 10px; border: 3px solid whitesmoke;" >
-                   <a ><img class="card-img-top" style="height: 200px;" src={{item.imageUrl}} height="250px" alt="Card image cap"></a>
-                   
-                   <div class="card-body">
-                       <a ><h5 class="card-title">{{item.name}}</h5></a>
-                     
-                     <small >special price</small>
-                     <h5>{{item.price | currency: 'INR' : 'symbol':'3.2-2' }}</h5>
-                     <a  class="btn btn-dark btn-sm">Add to Cart</a>
-                   </div>
-                 </div>
-           </div>
-       </div>
-   </div>
+  <div class="search-box">
+    <input class="search-input" type="text" [(ngModel)]="productSearched" />
+    <button class="btn btn-dark btn-sm searchBtn">search</button>
+  </div>
+
+  <div class="anchors">
+    <a routerLink="/products" (click)="onAllClicked()">All()</a>
+    <a (click)="onShirtsClicked()">Shirts()</a>
+    <a (click)="onTshirtsClicked()">Tshirts()</a>
+    <a (click)="onJeansClicked()">Jeans()</a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- <a href=""></a> -->
+      <div
+        class="col-md-3"
+        style="margin-top: 15px; height: 350px"
+        *ngFor="let item of allProducts | filterProducts : productSearched"
+      >
+        <div
+          class="card"
+          style="
+            width: 15rem;
+            border-radius: 10px;
+            border: 3px solid whitesmoke;
+          "
+        >
+          <a (click)="productClicked(item)"
+            ><img
+              class="card-img-top"
+              style="height: 200px"
+              src="{{ item.imageUrl }}"
+              height="250px"
+              alt="Card image cap"
+          /></a>
+
+          <div class="card-body">
+            <a (click)="productClicked(item)"
+              ><h5 class="card-title">{{ item.name }}</h5></a
+            >
+
+            <small>special price</small>
+            <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
+            <a class="btn btn-sm addCartBtn">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-

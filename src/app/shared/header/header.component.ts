@@ -20,5 +20,8 @@ export class HeaderComponent{
     this.router.navigate(['/login'])
 
   }
+  userClicked(){
+    this.router.navigate(['/user'])
+  }
 
 }

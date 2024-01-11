@@ -5,11 +5,11 @@ import { Products } from './products.class';
   providedIn: 'root'
 })
 export class ProductsService {
-  
+
   AllProducts : Products[]=[
     new Products(1,"louis blue tshirt",'tshirt',1859,'male','blue','louis','../../../assets/men/tshirts/t2.webp'),
-    new Products(2,"AllenSolly Black Jeans",'jeans',999,'male','black','allenSolly','../../../assets/men/jeans/black 3 jeans.webp'),
-    new Products(3,"AllenSolly Black Jeans",'jeans',799,'male','black','allenSolly','../../../assets/men/jeans/black 4 jeans.jpg'),
+    new Products(2,"AllenSolly Black Jeans",'jeans',999,'male','black','AllenSolly','../../../assets/men/jeans/black 3 jeans.webp'),
+    new Products(3,"AllenSolly Black Jeans",'jeans',799,'male','black','AllenSolly','../../../assets/men/jeans/black 4 jeans.jpg'),
     new Products(4,"USPA Black Jeans",'jeans',1199,'male','black','uspa','../../../assets/men/jeans/black_1_jeans.png'),
     new Products(5,"louis light Blue Jeans",'jeans',899,'male','blue','louisPhillipe','../../../assets/men/jeans/blue 3 jeans.webp'),
     new Products(6,"Urban light Blue Jeans",'jeans',499,'male','blue','Urban','../../../assets/men/jeans/blue jeans.webp'),
@@ -63,7 +63,7 @@ export class ProductsService {
     new Products(54,"louis blue tshirt",'tshirt',1859,'female','blue','louis','../../../assets/women/tshirts/t8.webp'),
     new Products(55,"AllenSolly white tshirt",'tshirt',899,'female','white','AllenSolly','../../../assets/women/tshirts/t9.webp'),
     new Products(56,"Urban white tshirt",'tshirt',159,'female','white','Urban','../../../assets/women/tshirts/t11.webp'),
-    
+
   ]
 
   constructor() { }

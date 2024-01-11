@@ -1,1 +1,136 @@
-<p>product-details works!</p>
+<app-header></app-header>
+<button (click)="goBack()">Go Back ....</button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <img
+        class="card-img-top"
+        src="{{ prodDetails[0].imageUrl }}"
+        alt="Card image cap"
+      />
+    </div>
+
+    <div class="col-6">
+      <div class="card-body">
+        <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
+          {{ prodDetails[0].brand }}
+        </h4>
+        <h3 class="card-title">{{ prodDetails[0].name }}</h3>
+        &nbsp;
+
+        <small class="text-success">Special price</small>
+        <h2>
+          {{ prodDetails[0].price | currency : "INR" }}
+        </h2>
+        <s style="border: 1px solid red">Rs.1599</s>
+        <p style="border: 1px solid red" class="text-success">35% off</p>
+        <a style="border: 1px solid red" class="btn btn-primary">3.6🌟</a>
+        <p style="border: 1px solid red">1000 ratings and 250 reviews</p>
+        <p>size</p>
+        <div style="border: 1px solid red">
+          <a class="btn">XS</a>
+          <a class="btn">S</a>
+          <a class="btn">M</a>
+          <a class="btn">L</a>
+          <a class="btn">Xl</a>
+        </div>
+
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a class="btn btn-primary">Buy Now</a>
+        <a class="btn btn-primary">Add To Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-6">
+      <h3>Product Details</h3>
+
+      <div>
+        <h6>
+          <pre>Name : {{ prodDetails[0].name }}</pre>
+        </h6>
+        <h6>
+          <pre>Type : {{ prodDetails[0].type }}</pre>
+        </h6>
+        <h6>
+          <pre style="border: 1px solid red">
+fabric : cotton --> should change</pre
+          >
+        </h6>
+        <h6>
+          <pre>Ideal For : {{ prodDetails[0].gender }}</pre>
+        </h6>
+        <h6>
+          <pre>color : {{ prodDetails[0].color }}</pre>
+        </h6>
+        <h6>
+          <pre>Pack of : 1</pre>
+        </h6>
+        <h6>
+          <pre>brand : {{ prodDetails[0].brand }}</pre>
+        </h6>
+        <h6>
+          <pre>id : {{ prodDetails[0].id }}</pre>
+        </h6>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <h3>Address Details</h3>
+      <div>
+        <p style="border: 1px solid red">
+          Deliver to :<b>Address to be filled ....</b>
+        </p>
+        <h6 style="border: 1px solid red">
+          FREE Delivery <s>Rs.40</s> | Delivery by 16 jan,monday
+        </h6>
+        <h6>10 Days Return Policy</h6>
+        <h6>Cash On Delivery Avaliable</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="showSimilarItems()">Show Similar Products</button>
+
+<div class="container">
+  <div class="row">
+    <!-- <a href=""></a> -->
+    <div
+      class="col-md-3"
+      style="margin-top: 15px; height: 350px"
+      *ngFor="let item of similarProducts"
+    >
+      <div
+        class="card"
+        style="width: 15rem; border-radius: 10px; border: 3px solid whitesmoke"
+      >
+        <a (click)="productClicked(item)"
+          ><img
+            class="card-img-top"
+            style="height: 200px"
+            src="{{ item.imageUrl }}"
+            height="250px"
+            alt="Card image cap"
+        /></a>
+
+        <div class="card-body">
+          <a (click)="productClicked(item)"
+            ><h5 class="card-title">{{ item.name }}</h5></a
+          >
+
+          <small>special price</small>
+          <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
+          <a class="btn btn-sm addCartBtn">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

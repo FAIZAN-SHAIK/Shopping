@@ -1,6 +1,6 @@
 
 .top-div{
-    background-color:rgb(208, 208, 206);    
+    background-color:rgb(208, 208, 206);
 }
 .search-box{
     display: flex;
@@ -43,4 +43,13 @@ a{
 }
 div a:hover{
     opacity: 0.7;
+}
+
+.addCartBtn{
+  border: 1px solid grey;
+}
+.addCartBtn:hover{
+
+  background-color: black;
+  color: white;
 }

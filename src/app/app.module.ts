@@ -12,6 +12,7 @@ import { LoginComponent } from './Auth/login/login.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from './shared/shared.service';
+import { UserComponent } from './components/user/user.component';
 
 
 
@@ -20,7 +21,8 @@ import { SharedService } from './shared/shared.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { SharedService } from './shared/shared.service';
     SharedModule,
     FormsModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
