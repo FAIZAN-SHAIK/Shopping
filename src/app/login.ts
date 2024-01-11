@@ -1,13 +1,26 @@
+import { last } from "rxjs";
+
 export class login {
-    constructor(uName: string,password: string,type:string){
+    constructor(firstname:string,lastname:string,gender:string,mobile:number,emailId:string,address:string, uName?: string,password?: string){
+      this.firstname = firstname;
+      this.lastname = lastname;
+      this.gender = gender;
+      this.mobile = mobile;
+      this.emailId = emailId;
+      this.address = address;
       this.uName = uName;
       this.password = password;
-      this.type  = type;
+      
     }
   
-  
+      firstname:string;
+      lastname:string;
+      gender:string;
+      mobile:number;
+      emailId:string;
+      address:string
       uName: string;
       password: string;
-      type:string
+     
       
     }

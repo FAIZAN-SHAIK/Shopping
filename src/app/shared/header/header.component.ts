@@ -21,7 +21,7 @@ export class HeaderComponent{
 
   }
   userClicked(){
-    this.router.navigate(['/user'])
+    this.router.navigate(['/user/profile']) 
   }
 
 }

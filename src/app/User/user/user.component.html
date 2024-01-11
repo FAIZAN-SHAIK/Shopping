@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      welcome , {{ userService.userLoggedInName }}
+      <div class="list-group" id="list-tab" role="tablist">
+        <a
+          class="list-group-item list-group-item-action active"
+          id="list-home-list"
+          data-toggle="list"
+          role="tab"
+          aria-controls="home"
+          (click)="profileClicked()"
+          >profile</a
+        >
+        <a class="list-group-item list-group-item-action" (click)="ordersClicked()">Orders</a>
+        <a class="list-group-item list-group-item-action" (click)="wishlistClicked()">wishlist</a>
+        <a
+          class="list-group-item list-group-item-action"
+          id="list-settings-list"
+          (click)="settingsClicked()"
+          >Settings</a
+        >
+        <a class="list-group-item list-group-item-action" (click)="logoutClicked()">logout</a>
+      </div></div>
+    
+      <div class="col-9">
+        <router-outlet></router-outlet>
+      </div>
+    
+    
+  </div>
+</div>
+
+
+

@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<body>
+    <h3>Create Your Account</h3>
+    <div class="top-div">
+      <div style="width: 500px; border: 1px solid black; padding: 20px;">
+        <form>
+          <div class="form-group">
+            <label id="label" for="firstName" class="text-danger">
+              <h6>First Name : </h6>
+            </label>
+            <input type="text" class="form-control" name="UName" placeholder="Enter FirstName" required [(ngModel)]="firstName">
+
+            <label id="label" for="lastName" class="text-danger">
+              <h6>Last Name : </h6>
+            </label>
+            <input type="text" class="form-control" name="UName" placeholder="Enter lastName" required [(ngModel)]="lastName"><br>
+
+            <label>
+              Gender:  <input type="radio" name="gender" value="male" [(ngModel)]="gender">
+                Male
+              </label>
+              <label>
+                <input type="radio" name="gender" value="female" [(ngModel)]="gender">
+                Female
+              </label><br>
+
+            <label id="label" for="Mobile" class="text-danger">
+              <h6>Mobile : </h6>
+            </label>
+            <input type="number" class="form-control" name="UName" placeholder="Enter Phone number" required [(ngModel)]="Mobile">
+
+            <label id="label" for="userName" class="text-danger">
+              <h6>emailId : </h6>
+            </label>
+            <input type="text" class="form-control" name="UName" placeholder="Enter emailId" required email [(ngModel)]="emailId">
+
+            <label id="label" for="userName" class="text-danger">
+              <h6>Addresss: </h6>
+            </label>
+            <textarea id="message" name="message" rows="4" cols="50" required [(ngModel)]="address"></textarea> <br>
+
+            <button type="submit" class="btn btn-dark my-4 btn-lg" (click)="onSave()">Save</button>
+          </div>
+    
+        </form>
+      </div>
+    </div>
+  </body>
+  

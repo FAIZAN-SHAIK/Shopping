@@ -1,10 +1,13 @@
 <app-header></app-header>
-<button (click)="goBack()">Go Back ....</button>
+<button (click)="goBack()">Go to All Products ....</button>
 
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <img
+        style="border: 1px solid whitesmoke;
+        margin-top: 4%;
+        border-radius: 5px;"
         class="card-img-top"
         src="{{ prodDetails[0].imageUrl }}"
         alt="Card image cap"
@@ -21,12 +24,12 @@
 
         <small class="text-success">Special price</small>
         <h2>
-          {{ prodDetails[0].price | currency : "INR" }}
+          {{ price | currency : "INR" }}
         </h2>
-        <s style="border: 1px solid red">Rs.1599</s>
-        <p style="border: 1px solid red" class="text-success">35% off</p>
-        <a style="border: 1px solid red" class="btn btn-primary">3.6🌟</a>
-        <p style="border: 1px solid red">1000 ratings and 250 reviews</p>
+        <s >Rs.{{prodDetails[0].price}}</s>
+        <p  class="text-success">{{discount}}% off</p>
+        <a  class="btn btn-primary">{{ratingStar}}🌟</a>
+        <p >{{ratings}} ratings and {{reviews}} reviews</p>
         <p>size</p>
         <div style="border: 1px solid red">
           <a class="btn">XS</a>
@@ -88,8 +91,8 @@ fabric : cotton --> should change</pre
         <p style="border: 1px solid red">
           Deliver to :<b>Address to be filled ....</b>
         </p>
-        <h6 style="border: 1px solid red">
-          FREE Delivery <s>Rs.40</s> | Delivery by 16 jan,monday
+        <h6 style="border: 1px solid red" >
+          <span  class="text-success">FREE Delivery </span> <s>Rs.40</s> | Delivery by 16 jan,monday
         </h6>
         <h6>10 Days Return Policy</h6>
         <h6>Cash On Delivery Avaliable</h6>
@@ -98,7 +101,7 @@ fabric : cotton --> should change</pre
   </div>
 </div>
 
-<button (click)="showSimilarItems()">Show Similar Products</button>
+<button class="similarProductsbtn" (click)="showSimilarItems()">Show Similar Products</button>
 
 <div class="container">
   <div class="row">

@@ -4,6 +4,7 @@ import { ProductsRoutngModule } from "../products/products-routing.module";
 import { AppRoutingModule } from "../app-routing.module";
 
 import { CommonModule } from "@angular/common";
+import { UserRoutingModule } from "../User/userRouting.module";
 
 
 @NgModule({
@@ -14,11 +15,15 @@ import { CommonModule } from "@angular/common";
     imports:[
         ProductsRoutngModule,
         AppRoutingModule,
-        CommonModule
+        CommonModule,
+        UserRoutingModule,
+        
+        
     ],
     providers:[],
     exports:[
-        HeaderComponent
+        HeaderComponent,
+
     ]
 })
 export class SharedModule{

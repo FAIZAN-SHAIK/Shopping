@@ -5,3 +5,14 @@
 a{
   cursor: pointer;
 }
+.similarProductsbtn{
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:  0 auto;
+}
+.similarProductsbtn:hover{
+  background-color: black;
+  color: white;
+}
