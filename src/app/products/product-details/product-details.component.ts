@@ -13,19 +13,20 @@ export class ProductDetailsComponent implements OnInit {
   productIdFromProducts: number;
   prodDetails: Products[];
   similarProducts: Products[];
+  wishListBtn = '♡'
 
-  ratings : number = Math.floor(Math.random() * (1000 - 500 + 1)) + 100;
-  reviews : number = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
-  ratingStar : number = +(Math.random() * (5 - 1.5) + 1.5).toFixed(1);
-  discount : number =Math.floor(Math.random() * (60 - 10 + 1)) + 10;
-  price:number;
-  freeDelvery : number = Math.floor(Math.random())
+  ratings: number = Math.floor(Math.random() * (1000 - 500 + 1)) + 100;
+  reviews: number = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
+  ratingStar: number = +(Math.random() * (5 - 1.5) + 1.5).toFixed(1);
+  discount: number = Math.floor(Math.random() * (60 - 10 + 1)) + 10;
+  price: number;
+  freeDelvery: number = Math.floor(Math.random())
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private companyDetailsService: ProductsService
-    
+
   ) { }
 
   goBack() {
@@ -37,8 +38,8 @@ export class ProductDetailsComponent implements OnInit {
       (x) => {
         return (
           x.gender === this.prodDetails[0].gender &&
-          x.type === this.prodDetails[0].type 
-         
+          x.type === this.prodDetails[0].type
+
         );
       }
     );
@@ -61,8 +62,17 @@ export class ProductDetailsComponent implements OnInit {
       this.prodDetails = this.companyDetailsService.AllProducts.filter((x) => {
         return x.id === this.productIdFromProducts;
       });
-      this.price = this.prodDetails[0].price - (this.prodDetails[0].price *(this.discount/100))
+      this.price = this.prodDetails[0].price - (this.prodDetails[0].price * (this.discount / 100))
 
     });
+  }
+
+  wishlistClicked() {
+    this.companyDetailsService.AllProducts.find((x) => {
+      if (x.id === this.prodDetails[0].id) {
+        x.wishlist = !x.wishlist;
+
+      }
+    })
   }
 }

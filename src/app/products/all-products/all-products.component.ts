@@ -11,12 +11,13 @@ import { ProductsService } from 'src/app/products.service';
 export class AllProductsComponent implements OnInit {
 
   allProducts: Products[];
-  productSearched : string = ''
+  productSearched: string = ''
+  wishListBtn = '♡'
 
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private route : ActivatedRoute) {
+    private route: ActivatedRoute) {
     this.allProducts = productsService.AllProducts
     // console.log(this.allProducts)
   }
@@ -31,16 +32,25 @@ export class AllProductsComponent implements OnInit {
   }
 
   onTshirtsClicked() {
-    this.allProducts = this.productsService.AllProducts.filter((x)=>x.type.toLowerCase() === 'tshirt')
+    this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'tshirt')
   }
   onJeansClicked() {
-    this.allProducts = this.productsService.AllProducts.filter((x)=>x.type.toLowerCase() === 'jeans')
+    this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'jeans')
   }
 
 
- productClicked(value:Products){
-   this.router.navigate(['productDetails/'+value.id])
- }
+  productClicked(value: Products) {
+    this.router.navigate(['productDetails/' + value.id])
+  }
+
+  wishlistClicked(value: any) {
+    this.productsService.AllProducts.find((x) => {
+      if (x.id === value.id) {
+        x.wishlist = !x.wishlist;
+      }
+    })
+
+  }
 
 
   ngOnInit(): void {

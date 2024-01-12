@@ -53,3 +53,26 @@ div a:hover{
   background-color: black;
   color: white;
 }
+.lovebtnTrue{
+  font-size: 30px;
+  margin-left: 100px;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color: red;
+}
+.lovebtnFalse{
+  font-size: 30px;
+  margin-left: 100px;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color:grey
+}
+.lovebtn:hover{
+  color:red;
+  transform: scale(1.5, 1.5);
+
+}

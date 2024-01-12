@@ -4,14 +4,30 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <img
-        style="border: 1px solid whitesmoke;
-        margin-top: 4%;
-        border-radius: 5px;"
-        class="card-img-top"
-        src="{{ prodDetails[0].imageUrl }}"
-        alt="Card image cap"
-      />
+      <div class="image-container">
+        <img
+          style="
+            border: 1px solid whitesmoke;
+            margin-top: 4%;
+            border-radius: 5px;
+          "
+          class="card-img-top"
+          src="{{ prodDetails[0].imageUrl }}"
+          alt="Card image cap"
+        />
+        <div class="text-overlay">
+          <button
+            class="lovebtn"
+            [ngClass]="{
+              lovebtnFalse: prodDetails[0].wishlist === false,
+              lovebtnTrue: prodDetails[0].wishlist === true
+            }"
+            (click)="wishlistClicked()"
+          >
+            {{ wishListBtn }}
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="col-6">
@@ -26,10 +42,10 @@
         <h2>
           {{ price | currency : "INR" }}
         </h2>
-        <s >Rs.{{prodDetails[0].price}}</s>
-        <p  class="text-success">{{discount}}% off</p>
-        <a  class="btn btn-primary">{{ratingStar}}🌟</a>
-        <p >{{ratings}} ratings and {{reviews}} reviews</p>
+        <s>Rs.{{ prodDetails[0].price }}</s>
+        <p class="text-success">{{ discount }}% off</p>
+        <a class="btn btn-primary">{{ ratingStar }}🌟</a>
+        <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
         <p>size</p>
         <div style="border: 1px solid red">
           <a class="btn">XS</a>
@@ -91,8 +107,9 @@ fabric : cotton --> should change</pre
         <p style="border: 1px solid red">
           Deliver to :<b>Address to be filled ....</b>
         </p>
-        <h6 style="border: 1px solid red" >
-          <span  class="text-success">FREE Delivery </span> <s>Rs.40</s> | Delivery by 16 jan,monday
+        <h6 style="border: 1px solid red">
+          <span class="text-success">FREE Delivery </span> <s>Rs.40</s> |
+          Delivery by 16 jan,monday
         </h6>
         <h6>10 Days Return Policy</h6>
         <h6>Cash On Delivery Avaliable</h6>
@@ -101,7 +118,9 @@ fabric : cotton --> should change</pre
   </div>
 </div>
 
-<button class="similarProductsbtn" (click)="showSimilarItems()">Show Similar Products</button>
+<button class="similarProductsbtn" (click)="showSimilarItems()">
+  Show Similar Products
+</button>
 
 <div class="container">
   <div class="row">

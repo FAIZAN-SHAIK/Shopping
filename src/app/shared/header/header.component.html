@@ -17,16 +17,37 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="">Home</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/products">Products</a>
       </li>
+
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenu2"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          products
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">Action</button>
+          <button class="dropdown-item" type="button">Another action</button>
+          <button class="dropdown-item" type="button">
+            Something else here
+          </button>
+        </div>
+      </div>
+
       <li class="nav-item">
-        <a class="nav-link" >AboutUs</a>
+        <a class="nav-link">AboutUs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" >Contact</a>
+        <a class="nav-link">Contact</a>
       </li>
-      
     </ul>
     <ul class="navbar-nav ms-auto" *ngIf="headerService.isUserLoggedIn">
       <li class="nav-item">
@@ -39,6 +60,24 @@
         <a class="nav-link cart" (click)="onLoggedOut()">Logout</a>
       </li>
     </ul>
+
+    <div class="dropdown" *ngIf="headerService.isUserLoggedIn">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenu2"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>
 
     <ul class="navbar-nav ms-auto" *ngIf="!headerService.isUserLoggedIn">
       <li class="nav-item">

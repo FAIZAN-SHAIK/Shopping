@@ -4,24 +4,24 @@ import { AllProductsComponent } from "./all-products/all-products.component";
 import { ProductDetailsComponent } from "./product-details/product-details.component";
 import { HomeComponent } from "../components/home/home.component";
 
-const routes : Routes = [
+const routes: Routes = [
 
-  {path:'products',component:AllProductsComponent},
-  {path:'productDetails/:id',component:ProductDetailsComponent},
-  {path:'**',component:HomeComponent}
+  { path: 'products', component: AllProductsComponent },
+  { path: 'productDetails/:id', component: ProductDetailsComponent },
+  // {path:'**',component:HomeComponent}
 ]
 
 @NgModule({
 
-  imports:[
+  imports: [
     RouterModule.forChild(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 
 })
 
-export class ProductsRoutngModule{
+export class ProductsRoutngModule {
 
 }

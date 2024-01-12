@@ -17,7 +17,7 @@
       <!-- <a href=""></a> -->
       <div
         class="col-md-3"
-        style="margin-top: 15px; height: 350px"
+        style="margin-top: 40px; height: 350px"
         *ngFor="let item of allProducts | filterProducts : productSearched"
       >
         <div
@@ -25,7 +25,7 @@
           style="
             width: 15rem;
             border-radius: 10px;
-            border: 3px solid whitesmoke;
+            border: 2px solid whitesmoke;
           "
         >
           <a (click)="productClicked(item)"
@@ -43,8 +43,18 @@
             >
 
             <small>special price</small>
+            <button
+              class="lovebtn"
+              [ngClass]="{
+                lovebtnFalse: item.wishlist === false,
+                lovebtnTrue: item.wishlist === true
+              }"
+              (click)="wishlistClicked(item)"
+            >
+              {{ wishListBtn }}
+            </button>
             <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
-            <a class="btn btn-sm addCartBtn">Add to Cart</a>
+            <a class="btn btn-sm addCartBtn">View Details..</a>
           </div>
         </div>
       </div>

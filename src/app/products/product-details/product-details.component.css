@@ -16,3 +16,41 @@ a{
   background-color: black;
   color: white;
 }
+
+.image-container {
+  position: relative;
+  display: inline-block; /* or block, depending on your layout preferences */
+}
+
+.text-overlay {
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  color: black; /* Adjust text color */
+  font-size: 18px; /* Adjust font size */
+  font-weight: bold; /* Adjust font weight */
+  /* Add other styling properties as needed */
+}
+.lovebtnTrue{
+  font-size: 30px;
+  margin-left: 100px;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color: red;
+}
+.lovebtnFalse{
+  font-size: 30px;
+  margin-left: 100px;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color:black
+}
+.lovebtn:hover{
+  color:red;
+  transform: scale(1.5, 1.5);
+}

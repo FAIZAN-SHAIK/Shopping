@@ -7,22 +7,24 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
 import { UserRoutingModule } from "./userRouting.module";
 import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 
 @NgModule({
-    declarations:[
-        UserComponent,
-        OrderComponent,
-        ProfileComponent,
-        SettingsComponent,
-        WishlistComponent
-    ],
-    imports:[
-        UserRoutingModule,
-        SharedModule,
-        RouterModule
-    ]
+  declarations: [
+    UserComponent,
+    OrderComponent,
+    ProfileComponent,
+    SettingsComponent,
+    WishlistComponent
+  ],
+  imports: [
+    UserRoutingModule,
+    SharedModule,
+    RouterModule,
+    CommonModule
+  ]
 })
-export class userModule{
+export class userModule {
 
 }
