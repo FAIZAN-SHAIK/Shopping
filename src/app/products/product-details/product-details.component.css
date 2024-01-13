@@ -5,6 +5,32 @@
 a{
   cursor: pointer;
 }
+
+.buyAddCartGotoBtn{
+  margin-right: 20px;
+  border: 1px solid black;
+}
+.buyAddCartGotoBtn:hover{
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: white;
+}
+
+.ratingBtn{
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: white;
+}
+
+.sizesBtn{
+  border: 1px solid black;
+  margin-left: 10px;
+}
+.sizesBtn:hover{
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: white;
+}
 .similarProductsbtn{
   border: 1px solid grey;
   display: flex;

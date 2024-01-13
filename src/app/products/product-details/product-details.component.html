@@ -1,5 +1,7 @@
 <app-header></app-header>
-<button (click)="goBack()">Go to All Products ....</button>
+<button class="buyAddCartGotoBtn" (click)="goBack()">
+  Go to All Products ....
+</button>
 
 <div class="container">
   <div class="row">
@@ -44,23 +46,23 @@
         </h2>
         <s>Rs.{{ prodDetails[0].price }}</s>
         <p class="text-success">{{ discount }}% off</p>
-        <a class="btn btn-primary">{{ ratingStar }}🌟</a>
+        <a class="btn ratingBtn">{{ ratingStar }}🌟</a>
         <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
         <p>size</p>
-        <div style="border: 1px solid red">
-          <a class="btn">XS</a>
-          <a class="btn">S</a>
-          <a class="btn">M</a>
-          <a class="btn">L</a>
-          <a class="btn">Xl</a>
+        <div>
+          <a class="btn sizesBtn">XS</a>
+          <a class="btn sizesBtn">S</a>
+          <a class="btn sizesBtn">M</a>
+          <a class="btn sizesBtn">L</a>
+          <a class="btn sizesBtn">Xl</a>
         </div>
 
         <p class="card-text">
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </p>
-        <a class="btn btn-primary">Buy Now</a>
-        <a class="btn btn-primary">Add To Cart</a>
+        <a class="btn buyAddCartGotoBtn">Buy Now</a>
+        <a class="btn buyAddCartGotoBtn">Add To Cart</a>
       </div>
     </div>
   </div>

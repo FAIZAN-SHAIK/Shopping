@@ -1,0 +1,37 @@
+table tr td{
+  border: 1px solid black;
+
+}
+table{
+
+  margin:60px;
+
+}
+/* tr{
+  border: 1px solid black;
+} */
+td{
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.tdh{
+  background-color: black;
+  color: white;
+}
+
+button{
+  border: 1px solid black;
+  padding: 0 15px;
+  margin-top: 15px;
+  margin-left: 190px;
+}
+button:hover{
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: white;
+}
+.top-div{
+  background-color: rgb(208, 208, 206);
+}

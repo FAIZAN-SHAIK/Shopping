@@ -1,48 +1,56 @@
 <!-- <h1>Your WishList</h1> -->
+<div class="top-div">
+  <div class="wishlistEmpty" *ngIf="wishlistOfUser.length === 0">
+    <h1 class="text-dark">Your Wishlist Seems To Be Empty</h1>
+    <button class="add-wishlistBtn" (click)="onAddToWishlist()">
+      + Add Items To Wishlist
+    </button>
+  </div>
 
-<div *ngIf="wishlistOfUser.length === 0">
-  <h1 class="text-danger">your wishlist seems to be empty</h1>
-</div>
-
-<div class="container">
-  <div class="row">
-    <!-- <a href=""></a> -->
-    <div
-      class="col-md-4"
-      style="margin-top: 40px; height: 350px"
-      *ngFor="let item of wishlistOfUser"
-    >
+  <div class="container">
+    <div class="row">
+      <!-- <a href=""></a> -->
       <div
-        class="card"
-        style="width: 15rem; border-radius: 10px; border: 2px solid whitesmoke"
+        class="col-md-4"
+        style="margin-top: 40px; height: 350px"
+        *ngFor="let item of wishlistOfUser"
       >
-        <a (click)="productClicked(item)"
-          ><img
-            class="card-img-top"
-            style="height: 200px"
-            src="{{ item.imageUrl }}"
-            height="250px"
-            alt="Card image cap"
-        /></a>
-
-        <div class="card-body">
+        <div
+          class="card"
+          style="
+            width: 15rem;
+            border-radius: 10px;
+            border: 2px solid whitesmoke;
+          "
+        >
           <a (click)="productClicked(item)"
-            ><h5 class="card-title">{{ item.name }}</h5></a
-          >
+            ><img
+              class="card-img-top"
+              style="height: 200px"
+              src="{{ item.imageUrl }}"
+              height="250px"
+              alt="Card image cap"
+          /></a>
 
-          <small>special price</small>
-          <button
-            class="lovebtn"
-            [ngClass]="{
-              lovebtnFalse: item.wishlist === false,
-              lovebtnTrue: item.wishlist === true
-            }"
-            (click)="wishlistClicked(item)"
-          >
-            {{ wishListBtn }}
-          </button>
-          <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
-          <a class="btn btn-sm addCartBtn">View Details..</a>
+          <div class="card-body">
+            <a (click)="productClicked(item)"
+              ><h5 class="card-title">{{ item.name }}</h5></a
+            >
+
+            <small>special price</small>
+            <button
+              class="lovebtn"
+              [ngClass]="{
+                lovebtnFalse: item.wishlist === false,
+                lovebtnTrue: item.wishlist === true
+              }"
+              (click)="wishlistClicked(item)"
+            >
+              {{ wishListBtn }}
+            </button>
+            <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
+            <a class="btn btn-sm addCartBtn">View Details..</a>
+          </div>
         </div>
       </div>
     </div>

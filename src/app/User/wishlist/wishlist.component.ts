@@ -41,4 +41,8 @@ export class WishlistComponent {
     this.wishlistOfUser.splice(itemToBeRemoved, 1)
   }
 
+  onAddToWishlist() {
+    this.router.navigate(['/products'])
+  }
+
 }
