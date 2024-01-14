@@ -32,7 +32,13 @@ export class ProductDetailsComponent implements OnInit {
     private companyDetailsService: ProductsService
 
   ) {
-
+    console.log(companyDetailsService.didItemAddedToCart)
+    if (this.companyDetailsService.didItemAddedToCart) {
+      this.addtoCartNotClicked = false
+    }
+    else {
+      this.addtoCartNotClicked = true
+    }
   }
 
   goBack() {
@@ -59,6 +65,18 @@ export class ProductDetailsComponent implements OnInit {
 
   productClicked(item: Products) {
     this.router.navigate(['productDetails/' + item.id]);
+
+    const isProductInArray = this.companyDetailsService.cartProducts.some((product) => {
+      return product.id === item.id;
+    });
+
+    if (isProductInArray) {
+      this.addtoCartNotClicked = false
+
+    } else {
+      this.addtoCartNotClicked = true
+
+    }
   }
 
   ngOnInit(): void {
@@ -87,10 +105,27 @@ export class ProductDetailsComponent implements OnInit {
     this.showNotification = true;
     this.addtoCartNotClicked = false;
 
+    let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
+      return x.id === this.productIdFromProducts;
+    });
+
+
+
+    if (addedProductToCart) {
+      // Check if cartProducts is undefined and initialize it as an empty array if needed
+      if (!this.companyDetailsService.cartProducts) {
+        this.companyDetailsService.cartProducts = [];
+      }
+
+      this.companyDetailsService.cartProducts.push(addedProductToCart);
+    }
+
 
     setTimeout(() => {
       this.showNotification = false;
     }, 2000)
+
+
 
   }
 

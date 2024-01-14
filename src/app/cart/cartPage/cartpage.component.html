@@ -1,1 +1,8 @@
-cart page works
+<app-header></app-header>
+<div class="productDiv" *ngFor="let product of cartItems">
+  <img src="{{ product.imageUrl }}" height="100px" width="100px" alt="" />
+  <h5>{{ product.name }}</h5>
+  <h5>Size:</h5>
+  <h5><button>+</button> Quantity <button>-</button></h5>
+  <h5>{{ product.price | currency : "INR" }}</h5>
+</div>

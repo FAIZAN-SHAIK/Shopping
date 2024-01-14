@@ -6,6 +6,8 @@ import { Products } from './products.class';
 })
 export class ProductsService {
 
+  didItemAddedToCart: boolean;
+
   AllProducts: Products[] = [
     new Products(1, "louis blue tshirt", 'tshirt', 1859, 'male', 'blue', 'louis', '../../../assets/men/tshirts/t2.webp', false),
     new Products(2, "AllenSolly Black Jeans", 'jeans', 999, 'male', 'black', 'AllenSolly', '../../../assets/men/jeans/black 3 jeans.webp', false),
@@ -65,6 +67,8 @@ export class ProductsService {
     new Products(56, "Urban white tshirt", 'tshirt', 159, 'female', 'white', 'Urban', '../../../assets/women/tshirts/t11.webp', false),
 
   ]
+
+  cartProducts: Products[] = [];
 
   constructor() { }
 

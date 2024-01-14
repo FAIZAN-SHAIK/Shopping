@@ -41,6 +41,18 @@ export class AllProductsComponent implements OnInit {
 
   productClicked(value: Products) {
     this.router.navigate(['productDetails/' + value.id])
+
+    const isProductInArray = this.productsService.cartProducts.some((product) => {
+      return product.id === value.id;
+    });
+
+    if (isProductInArray) {
+      this.productsService.didItemAddedToCart = true
+
+    } else {
+      this.productsService.didItemAddedToCart = false
+
+    }
   }
 
   wishlistClicked(value: any) {
