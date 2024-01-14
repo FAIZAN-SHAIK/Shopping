@@ -1,0 +1,10 @@
+.notification {
+  position:fixed;
+  top: 60px;
+  right: 10px;
+  background-color: #05f50d;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  animation: slideIn 0.5s, fadeOut 0.5s 1.5s forwards;
+}

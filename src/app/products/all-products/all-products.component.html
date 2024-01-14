@@ -6,10 +6,10 @@
   </div>
 
   <div class="anchors">
-    <a routerLink="/products" (click)="onAllClicked()">All()</a>
-    <a (click)="onShirtsClicked()">Shirts()</a>
-    <a (click)="onTshirtsClicked()">Tshirts()</a>
-    <a (click)="onJeansClicked()">Jeans()</a>
+    <a routerLink="/products" (click)="onAllClicked()">All(56)</a>
+    <a (click)="onShirtsClicked()">Shirts(16)</a>
+    <a (click)="onTshirtsClicked()">Tshirts(18)</a>
+    <a (click)="onJeansClicked()">Jeans(22)</a>
   </div>
 
   <div class="container">
@@ -17,15 +17,17 @@
       <!-- <a href=""></a> -->
       <div
         class="col-md-3"
-        style="margin-top: 40px; height: 350px"
+        style="margin-top: 40px; height: 350px; margin-left: 0px"
         *ngFor="let item of allProducts | filterProducts : productSearched"
       >
         <div
           class="card"
           style="
-            width: 15rem;
+            width: 14rem;
             border-radius: 10px;
             border: 2px solid whitesmoke;
+            margin-left: 0px;
+            box-sizing: border-box;
           "
         >
           <a (click)="productClicked(item)"
@@ -39,7 +41,7 @@
 
           <div class="card-body">
             <a (click)="productClicked(item)"
-              ><h5 class="card-title">{{ item.name }}</h5></a
+              ><h6 class="card-title">{{ item.name }}</h6></a
             >
 
             <small>special price</small>

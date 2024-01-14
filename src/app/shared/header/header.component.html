@@ -51,10 +51,19 @@
     </ul>
     <ul class="navbar-nav ms-auto" *ngIf="headerService.isUserLoggedIn">
       <li class="nav-item">
-        <a class="nav-link cart" href="#">Cart</a>
+        <a class="nav-link cart" (click)="cartClicked()"
+          ><img
+            src="../../../assets/shopping-cart.png"
+            height="20px"
+            alt="cart-img"
+          />
+          <sup>1</sup></a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link cart" (click)="userClicked()">User</a>
+        <a class="nav-link cart" (click)="userClicked()"
+          ><img src="../../../assets/user.png" height="20px" alt=""
+        /></a>
       </li>
       <li class="nav-item">
         <a class="nav-link cart" (click)="onLoggedOut()">Logout</a>

@@ -5,27 +5,34 @@ import { AppRoutingModule } from "../app-routing.module";
 
 import { CommonModule } from "@angular/common";
 import { UserRoutingModule } from "../User/userRouting.module";
+import { CartRoutingModule } from "../cart/cart-routing.module";
+import { NotificationComponent } from "./notification/notification.component";
 
 
 @NgModule({
-    declarations:[
-        HeaderComponent,
-        
-    ],
-    imports:[
-        ProductsRoutngModule,
-        AppRoutingModule,
-        CommonModule,
-        UserRoutingModule,
-        
-        
-    ],
-    providers:[],
-    exports:[
-        HeaderComponent,
+  declarations: [
+    HeaderComponent,
+    NotificationComponent
 
-    ]
+  ],
+  imports: [
+    ProductsRoutngModule,
+    AppRoutingModule,
+    CommonModule,
+    UserRoutingModule,
+    CartRoutingModule,
+
+
+
+
+  ],
+  providers: [],
+  exports: [
+    HeaderComponent,
+    NotificationComponent
+
+  ]
 })
-export class SharedModule{
+export class SharedModule {
 
 }

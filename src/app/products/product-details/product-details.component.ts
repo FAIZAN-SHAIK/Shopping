@@ -22,12 +22,18 @@ export class ProductDetailsComponent implements OnInit {
   price: number;
   freeDelvery: number = Math.floor(Math.random())
 
+  showNotification: boolean = false;
+  addtoCartNotClicked: boolean = true;
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private companyDetailsService: ProductsService
 
-  ) { }
+  ) {
+
+  }
 
   goBack() {
     this.router.navigate(['/products']);
@@ -75,4 +81,24 @@ export class ProductDetailsComponent implements OnInit {
       }
     })
   }
+
+  addToCartClicked() {
+
+    this.showNotification = true;
+    this.addtoCartNotClicked = false;
+
+
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 2000)
+
+  }
+
+
+  gotoCartClicked() {
+    this.router.navigate(['/cartpage'])
+  }
+
+
+
 }

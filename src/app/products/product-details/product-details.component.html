@@ -3,6 +3,8 @@
   Go to All Products ....
 </button>
 
+<app-notification *ngIf="showNotification"></app-notification>
+
 <div class="container">
   <div class="row">
     <div class="col-4">
@@ -62,7 +64,18 @@
           bulk of the card's content.
         </p>
         <a class="btn buyAddCartGotoBtn">Buy Now</a>
-        <a class="btn buyAddCartGotoBtn">Add To Cart</a>
+        <a
+          class="btn buyAddCartGotoBtn"
+          (click)="addToCartClicked()"
+          *ngIf="addtoCartNotClicked"
+          >Add To Cart</a
+        >
+        <a
+          class="btn buyAddCartGotoBtn"
+          (click)="gotoCartClicked()"
+          *ngIf="!addtoCartNotClicked"
+          >Goto Cart</a
+        >
       </div>
     </div>
   </div>

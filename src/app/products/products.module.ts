@@ -14,7 +14,7 @@ import { FilterProductsPipe } from './filter-products.pipe';
     AllProductsComponent,
     ProductDetailsComponent,
     FilterProductsPipe
-   
+
 
   ],
   imports: [

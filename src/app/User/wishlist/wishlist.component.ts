@@ -22,7 +22,7 @@ export class WishlistComponent {
     this.wishlistOfUser = this.wishlistProductsService.AllProducts.filter((x) => {
       return x.wishlist === true
     })
-    console.log(this.wishlistOfUser)
+
   }
 
   productClicked(item: any) {

@@ -1,6 +1,14 @@
 
 .top-div{
     background-color:rgb(208, 208, 206);
+    margin: 0px;
+}
+
+input{
+  border-radius: 5%;
+}
+h6{
+  font-size: 17px;
 }
 .search-box{
     display: flex;
