@@ -1,3 +1,8 @@
+.top-div{
+  background-color: rgb(203 213 225);
+  min-height: 94vh;
+}
+
 .s{
   text-decoration: line-through;
 }
@@ -79,4 +84,14 @@ a{
 .lovebtn:hover{
   color:red;
   transform: scale(1.5, 1.5);
+}
+
+.selectSize{
+  color: red;
+}
+
+.selectedSize{
+  background-color: black;
+  color: white;
+  border: 1px solid whitesmoke;
 }

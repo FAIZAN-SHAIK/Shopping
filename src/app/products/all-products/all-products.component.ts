@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
+import { SharedService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-all-products',
@@ -17,7 +18,8 @@ export class AllProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private ss:SharedService) {
     this.allProducts = productsService.AllProducts
     // console.log(this.allProducts)
   }
@@ -34,6 +36,7 @@ export class AllProductsComponent implements OnInit {
   onTshirtsClicked() {
     this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'tshirt')
   }
+
   onJeansClicked() {
     this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'jeans')
   }
@@ -56,11 +59,18 @@ export class AllProductsComponent implements OnInit {
   }
 
   wishlistClicked(value: any) {
-    this.productsService.AllProducts.find((x) => {
-      if (x.id === value.id) {
-        x.wishlist = !x.wishlist;
-      }
-    })
+
+    if(!this.ss.isUserLoggedIn){
+      this.router.navigate(['/login'])
+    }
+    else{
+      this.productsService.AllProducts.find((x) => {
+        if (x.id === value.id) {
+          x.wishlist = !x.wishlist;
+        }
+      })
+    }
+    
 
   }
 

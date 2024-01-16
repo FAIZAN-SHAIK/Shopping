@@ -1,7 +1,7 @@
 import { Component, NgModule, OnInit } from "@angular/core";
 import { AppService } from "src/app/app.service";
 import { login } from "src/app/login";
-import { SharedService } from "src/app/shared/shared.service";
+import { SharedService } from "src/app/shared/auth.service";
 
 @Component({
     selector:'app-profile',

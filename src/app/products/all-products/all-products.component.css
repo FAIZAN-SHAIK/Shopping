@@ -1,6 +1,6 @@
 
 .top-div{
-    background-color:rgb(208, 208, 206);
+    background-color:rgb(203 213 225);
     margin: 0px;
 }
 
@@ -26,7 +26,7 @@ h6{
     margin-left: 5px;
 }
 .btn:hover{
-   color: aqua;
+   color: #9b2226;
 }
 
 .anchors{
@@ -40,7 +40,7 @@ h6{
     color: black;
 }
 .anchors a:hover{
-   color: aqua;
+   color: #9b2226;
 }
 small{
     font-size: 12px;

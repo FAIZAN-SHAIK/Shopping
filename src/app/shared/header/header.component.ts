@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { SharedService } from "../shared.service";
-import { Router } from "@angular/router";
+import { SharedService } from "../auth.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,11 +12,12 @@ export class HeaderComponent {
 
   constructor(
     public headerService: SharedService,
-    public router: Router) {
+    public router: Router,
+    private route: ActivatedRoute) {
 
   }
   onLoggedOut() {
-    this.headerService.isUserLoggedIn = false;
+    this.headerService.isLogout()
     this.router.navigate(['/login'])
 
   }
@@ -25,7 +26,7 @@ export class HeaderComponent {
   }
 
   cartClicked() {
-    this.router.navigate(['./cartpage'])
+    this.router.navigate(['/cartpage'])
   }
 
 }

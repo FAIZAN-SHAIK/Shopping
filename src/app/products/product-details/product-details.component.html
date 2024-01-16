@@ -1,173 +1,176 @@
 <app-header></app-header>
-<button class="buyAddCartGotoBtn" (click)="goBack()">
-  Go to All Products ....
-</button>
 
-<app-notification *ngIf="showNotification"></app-notification>
-
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <div class="image-container">
-        <img
-          style="
-            border: 1px solid whitesmoke;
-            margin-top: 4%;
-            border-radius: 5px;
-          "
-          class="card-img-top"
-          src="{{ prodDetails[0].imageUrl }}"
-          alt="Card image cap"
-        />
-        <div class="text-overlay">
-          <button
-            class="lovebtn"
-            [ngClass]="{
-              lovebtnFalse: prodDetails[0].wishlist === false,
-              lovebtnTrue: prodDetails[0].wishlist === true
-            }"
-            (click)="wishlistClicked()"
-          >
-            {{ wishListBtn }}
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card-body">
-        <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
-          {{ prodDetails[0].brand }}
-        </h4>
-        <h3 class="card-title">{{ prodDetails[0].name }}</h3>
-        &nbsp;
-
-        <small class="text-success">Special price</small>
-        <h2>
-          {{ price | currency : "INR" }}
-        </h2>
-        <s>Rs.{{ prodDetails[0].price }}</s>
-        <p class="text-success">{{ discount }}% off</p>
-        <a class="btn ratingBtn">{{ ratingStar }}🌟</a>
-        <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
-        <p>size</p>
-        <div>
-          <a class="btn sizesBtn">XS</a>
-          <a class="btn sizesBtn">S</a>
-          <a class="btn sizesBtn">M</a>
-          <a class="btn sizesBtn">L</a>
-          <a class="btn sizesBtn">Xl</a>
-        </div>
-
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a class="btn buyAddCartGotoBtn">Buy Now</a>
-        <a
-          class="btn buyAddCartGotoBtn"
-          (click)="addToCartClicked()"
-          *ngIf="addtoCartNotClicked"
-          >Add To Cart</a
-        >
-        <a
-          class="btn buyAddCartGotoBtn"
-          (click)="gotoCartClicked()"
-          *ngIf="!addtoCartNotClicked"
-          >Goto Cart</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row pt-5">
-    <div class="col-6">
-      <h3>Product Details</h3>
-
-      <div>
-        <h6>
-          <pre>Name : {{ prodDetails[0].name }}</pre>
-        </h6>
-        <h6>
-          <pre>Type : {{ prodDetails[0].type }}</pre>
-        </h6>
-        <h6>
-          <pre style="border: 1px solid red">
-fabric : cotton --> should change</pre
-          >
-        </h6>
-        <h6>
-          <pre>Ideal For : {{ prodDetails[0].gender }}</pre>
-        </h6>
-        <h6>
-          <pre>color : {{ prodDetails[0].color }}</pre>
-        </h6>
-        <h6>
-          <pre>Pack of : 1</pre>
-        </h6>
-        <h6>
-          <pre>brand : {{ prodDetails[0].brand }}</pre>
-        </h6>
-        <h6>
-          <pre>id : {{ prodDetails[0].id }}</pre>
-        </h6>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <h3>Address Details</h3>
-      <div>
-        <p style="border: 1px solid red">
-          Deliver to :<b>Address to be filled ....</b>
-        </p>
-        <h6 style="border: 1px solid red">
-          <span class="text-success">FREE Delivery </span> <s>Rs.40</s> |
-          Delivery by 16 jan,monday
-        </h6>
-        <h6>10 Days Return Policy</h6>
-        <h6>Cash On Delivery Avaliable</h6>
-      </div>
-    </div>
-  </div>
-</div>
-
-<button class="similarProductsbtn" (click)="showSimilarItems()">
-  Show Similar Products
-</button>
-
-<div class="container">
-  <div class="row">
-    <!-- <a href=""></a> -->
-    <div
-      class="col-md-3"
-      style="margin-top: 15px; height: 350px"
-      *ngFor="let item of similarProducts"
-    >
-      <div
-        class="card"
-        style="width: 15rem; border-radius: 10px; border: 3px solid whitesmoke"
-      >
-        <a (click)="productClicked(item)"
-          ><img
+<div class="top-div">
+  <button class="buyAddCartGotoBtn" (click)="goBack()">
+    Go to All Products ....
+  </button>
+  
+  <app-notification *ngIf="showNotification"></app-notification>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="image-container">
+          <img
+            style="
+              border: 1px solid whitesmoke;
+              margin-top: 4%;
+              border-radius: 20px;
+            "
             class="card-img-top"
-            style="height: 200px"
-            src="{{ item.imageUrl }}"
-            height="250px"
+            src="{{ prodDetails[0].imageUrl }}"
             alt="Card image cap"
-        /></a>
-
+          />
+          <div class="text-overlay">
+            <button
+              class="lovebtn"
+              [ngClass]="{
+                lovebtnFalse: prodDetails[0].wishlist === false,
+                lovebtnTrue: prodDetails[0].wishlist === true
+              }"
+              (click)="wishlistClicked()"
+            >
+              {{ wishListBtn }}
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-6">
         <div class="card-body">
-          <a (click)="productClicked(item)"
-            ><h5 class="card-title">{{ item.name }}</h5></a
+          <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
+            {{ prodDetails[0].brand }}
+          </h4>
+          <h3 class="card-title">{{ prodDetails[0].name }}</h3>
+          &nbsp;
+  
+          <small class="specialPrice">Special price</small>
+          <h2>
+            {{ price | currency : "INR" }}
+          </h2>
+          <s>Rs.{{ prodDetails[0].price }}</s>
+          <p class="text-success">{{ discount }}% off</p>
+          <a class="btn ratingBtn">{{ ratingStar }}🌟</a>
+          <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
+          <p>size</p>
+          <div>
+            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'XS'"  (click)="sizeClicked('XS')">XS</a>
+            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'S'" (click)="sizeClicked('S')">S</a>
+            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'M'" (click)="sizeClicked('M')">M</a>
+            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'L'" (click)="sizeClicked('L')">L</a>
+            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'XL'" (click)="sizeClicked('XL')">XL</a>
+          </div>
+          
+          <p class="card-text">
+            <small class="selectSize" *ngIf="sizeSelected">*select a size</small>
+  
+          </p>
+          <a class="btn buyAddCartGotoBtn" (click)="buyNow()">Buy Now</a>
+          <a
+            class="btn buyAddCartGotoBtn"
+            (click)="addToCartClicked()"
+            *ngIf="addtoCartNotClicked"
+            >Add To Cart</a
           >
-
-          <small>special price</small>
-          <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
-          <a class="btn btn-sm addCartBtn">Add to Cart</a>
+          <a
+            class="btn buyAddCartGotoBtn"
+            (click)="gotoCartClicked()"
+            *ngIf="!addtoCartNotClicked"
+            >Goto Cart</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-6">
+        <h3>Product Details</h3>
+  
+        <div>
+          <h6>
+            <pre>Name : {{ prodDetails[0].name }}</pre>
+          </h6>
+          <h6>
+            <pre>Type : {{ prodDetails[0].type }}</pre>
+          </h6>
+          <h6>
+            <pre style="border: 1px solid red">fabric : cotton </pre
+            >
+          </h6>
+          <h6>
+            <pre>Ideal For : {{ prodDetails[0].gender }}</pre>
+          </h6>
+          <h6>
+            <pre>color : {{ prodDetails[0].color }}</pre>
+          </h6>
+          <h6>
+            <pre>Pack of : 1</pre>
+          </h6>
+          <h6>
+            <pre>brand : {{ prodDetails[0].brand }}</pre>
+          </h6>
+          <h6>
+            <pre>id : {{ prodDetails[0].id }}</pre>
+          </h6>
+        </div>
+      </div>
+  
+      <div class="col-6">
+        <h3>Address Details</h3>
+        <div>
+          <p style="border: 1px solid red">
+            Deliver to :<b>Address to be filled ....</b>
+          </p>
+          <h6 style="border: 1px solid red">
+            <span class="text-success">FREE Delivery </span> <s>Rs.40</s> |
+            Delivery by 16 jan,monday
+          </h6>
+          <h6>10 Days Return Policy</h6>
+          <h6>Cash On Delivery Avaliable</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <button class="similarProductsbtn" (click)="showSimilarItems()">
+    Show Similar Products
+  </button>
+  
+  <div class="container">
+    <div class="row">
+      <!-- <a href=""></a> -->
+      <div
+        class="col-md-3"
+        style="margin-top: 15px; height: 350px; "
+        *ngFor="let item of similarProducts"
+      >
+        <div
+          class="card"
+          style="width: 15rem; border-radius: 10px; border: 3px solid whitesmoke ; background-color: rgb(226 232 240);"
+        >
+          <a (click)="productClicked(item)"
+            ><img
+              class="card-img-top"
+              style="height: 200px"
+              src="{{ item.imageUrl }}"
+              height="250px"
+              alt="Card image cap"
+          /></a>
+  
+          <div class="card-body">
+            <a (click)="productClicked(item)"
+              ><h5 class="card-title">{{ item.name }}</h5></a
+            >
+  
+            <small>special price</small>
+            <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
+            <a class="btn btn-sm addCartBtn">Add to Cart</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

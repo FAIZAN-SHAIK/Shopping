@@ -8,7 +8,10 @@ export class Products {
   color: string;
   brand: string;
   imageUrl: string;
-  wishlist: boolean
+  wishlist: boolean;
+
+  selectedSize:string;
+  quantity : number = 0;
 
   constructor(id: number, name: string, type: string, price: number, gender: string, color: string, brand: string, imageUrl: string, wishlist: boolean) {
 

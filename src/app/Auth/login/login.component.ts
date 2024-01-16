@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppService } from "src/app/app.service";
-import { SharedService } from "src/app/shared/shared.service";
+import { SharedService } from "src/app/shared/auth.service";
 
 @Component({
   selector: "app-login",
@@ -36,8 +36,8 @@ export class LoginComponent
       this.loginDetailDataService.predefinedLoginDetails.find((i)=>{
         if (i.uName === this.userNameLoginPage && i.password === this.passwordLoginPage) 
           {
-            // this.loginDetailDataService.userLogined = this.userNameLoginPage
-            this.sharedService.isUserLoggedIn = true;
+            
+            this.sharedService.isLogin();
             this.sharedService.userLoggedInName =  this.userNameLoginPage
             this.userFound = true;
             this.router.navigate(['']);

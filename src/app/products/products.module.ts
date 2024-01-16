@@ -6,6 +6,7 @@ import { ProductsRoutngModule } from './products-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './filter-products.pipe';
+import { BuyNowComponent } from './buy-now/buynow.component';
 
 
 
@@ -13,7 +14,8 @@ import { FilterProductsPipe } from './filter-products.pipe';
   declarations: [
     AllProductsComponent,
     ProductDetailsComponent,
-    FilterProductsPipe
+    FilterProductsPipe,
+    BuyNowComponent
 
 
   ],
