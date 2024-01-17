@@ -4,9 +4,12 @@ import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsRoutngModule } from './products-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './filter-products.pipe';
 import { BuyNowComponent } from './buy-now/buynow.component';
+import { ChangeAddress } from './buy-now/change address/changeAddress.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UserRoutingModule } from '../User/userRouting.module';
 
 
 
@@ -15,7 +18,10 @@ import { BuyNowComponent } from './buy-now/buynow.component';
     AllProductsComponent,
     ProductDetailsComponent,
     FilterProductsPipe,
-    BuyNowComponent
+    BuyNowComponent,
+    ChangeAddress,
+    CheckoutComponent
+   
 
 
   ],
@@ -23,7 +29,9 @@ import { BuyNowComponent } from './buy-now/buynow.component';
     CommonModule,
     SharedModule,
     ProductsRoutngModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    UserRoutingModule
 
 
   ]

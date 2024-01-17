@@ -53,3 +53,13 @@ a{
   background-color: black;
   color: white;
 }
+
+.viewDetailsBtn{
+  border: 1px solid black; ;
+}
+
+.viewDetailsBtn:hover{
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: white;
+}

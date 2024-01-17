@@ -1,0 +1,92 @@
+.top-div{
+    background-color:rgb(203 213 225) ;
+    min-height: 94vh;
+    height: 95%;
+    width: 80vw;
+  }
+
+  .bottom-div{
+    background-color:rgb(203 213 225) ;
+    min-height: 94vh;
+    height: 95%;
+   
+  }
+  .cartEmpty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    font-size: 20px;
+  }
+  
+  .productDiv {
+    border: 3px solid whitesmoke;
+    width: 800px;
+    box-shadow: 2px 2px 5px 5px grey;
+  }
+  
+  
+  .buttton {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  
+  .buttton:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid whitesmoke;
+  }
+  
+  .placeOrderBtn {
+    background-color: #FF9F00;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: darkgray;
+  }
+  
+  .placeOrderBtn:hover {
+    transition: all 300ms ease-in;
+    background-color: black;
+    color: white;
+  }
+  a{
+    cursor: pointer;
+  }
+
+  .changeAddressBtn{
+    margin-top: 80px;
+    border: 1px solid black;
+    border-radius: 15px;
+
+  }
+  .changeAddressBtn:hover{
+    border: 1px solid whitesmoke;
+    color: white;
+    background-color: black;
+  }
+  .checkoutBtn{
+    margin-top: 80px;
+    background-color: #FF9F00;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 15px;
+  
+    box-shadow: darkgray;
+    
+  }
+  .checkoutBtn:hover{
+    background-color: black;
+    color: white;
+    
+  }
+
+  .shd-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

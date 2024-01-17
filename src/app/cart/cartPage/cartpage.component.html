@@ -34,7 +34,7 @@
           <h5>{{ calculateTotalPrice() | currency: 'INR' }}</h5>
         </div>
         <div class="col-6">
-          <button class="placeOrderBtn">Place Order</button>
+          <button class="placeOrderBtn" (click)="placeOrder()">Place Order</button>
         </div>
       </div>
       

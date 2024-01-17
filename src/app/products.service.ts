@@ -6,7 +6,7 @@ import { Products } from './products.class';
 })
 export class ProductsService {
 
-  didItemAddedToCart: boolean;
+  didItemAddedToCart!: boolean;
 
   AllProducts: Products[] = [
     new Products(1, "louis blue tshirt", 'tshirt', 1859, 'male', 'blue', 'louis', '../../../assets/men/tshirts/t2.webp', false),
@@ -69,6 +69,15 @@ export class ProductsService {
   ]
 
   cartProducts: Products[] = [];
+
+  clearBuyProducts() {
+    this.buyProducts = [];
+  }
+
+  buyProducts: Products[] = [];
+
+  orders:Products[] = []
+  
 
   constructor() { }
 

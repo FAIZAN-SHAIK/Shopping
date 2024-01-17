@@ -57,4 +57,19 @@ export class CartPageComponent {
     }
   }
 
+  placeOrder(){
+    let productsFromCart = this.ps.cartProducts
+
+    let pushToBuyProducts : Products[] = [...productsFromCart]
+
+    this.ps.clearBuyProducts()
+    
+    pushToBuyProducts.forEach(product => {
+      this.ps.buyProducts.push(product);
+    });
+
+    this.router.navigate(['buynow'])
+
+  }
+
 }

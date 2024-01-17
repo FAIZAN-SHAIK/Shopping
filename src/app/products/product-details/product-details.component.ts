@@ -21,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
   ratings: number = Math.floor(Math.random() * (1000 - 500 + 1)) + 100;
   reviews: number = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
   ratingStar: number = +(Math.random() * (5 - 1.5) + 1.5).toFixed(1);
-  discount: number = Math.floor(Math.random() * (60 - 10 + 1)) + 10;
+  discount: number = Math.floor(Math.random() * (15 - 10 + 1)) + 10;
   price: number;
   freeDelvery: number = Math.floor(Math.random())
 
@@ -153,30 +153,30 @@ export class ProductDetailsComponent implements OnInit {
         }
 
     }
-
-
     
-
-      
-
-      
-
-    
-
-
     setTimeout(() => {
       this.showNotification = false;
     }, 2000)
     }
-
-    
-
-
-
-  }
+}
 
   buyNow(){
-    this.router.navigate(['buynow/'+this.prodDetails[0].id])
+    if(this.selectedSize){
+
+      let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
+        return x.id === this.productIdFromProducts;
+      });
+      
+        let addItemToCart = {...addedProductToCart}
+        addItemToCart.selectedSize = this.selectedSize;
+        addItemToCart.quantity++;
+        this.companyDetailsService.clearBuyProducts();
+        this.companyDetailsService.buyProducts.push(addItemToCart);
+        this.router.navigate(['buynow'])
+    }
+    else{
+      this.sizeSelected = true;
+    }
   }
 
 

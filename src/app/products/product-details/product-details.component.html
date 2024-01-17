@@ -44,11 +44,11 @@
           <h3 class="card-title">{{ prodDetails[0].name }}</h3>
           &nbsp;
   
-          <small class="specialPrice">Special price</small>
+          <small class="text-success">Special price</small>
           <h2>
-            {{ price | currency : "INR" }}
+            {{ prodDetails[0].price | currency : "INR" }}
           </h2>
-          <s>Rs.{{ prodDetails[0].price }}</s>
+          <s>Rs.{{ prodDetails[0].price + 200 }}</s>
           <p class="text-success">{{ discount }}% off</p>
           <a class="btn ratingBtn">{{ ratingStar }}🌟</a>
           <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
