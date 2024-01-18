@@ -175,7 +175,7 @@ export class ProductDetailsComponent implements OnInit {
         this.router.navigate(['buynow'])
     }
     else{
-      this.sizeSelected = true;
+      this.sizeSelected =true;
     }
   }
 
