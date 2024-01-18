@@ -8,6 +8,9 @@ export class SharedService {
   isUserLoggedIn :boolean = false;
   userLoggedInName : string = ''
 
+
+  changeAddressClicked = false;
+
   isLogin(){
     this.isUserLoggedIn = true
   }

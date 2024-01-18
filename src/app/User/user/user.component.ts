@@ -15,11 +15,16 @@ export class UserComponent implements OnInit {
     private route : ActivatedRoute
   ) { }
 
+  isRouteActive(path: string): boolean {
+    return this.router.isActive(path,true);
+  }
+
   
   profileClicked(){
     this.router.navigate(['profile'],{relativeTo:this.route})
   }
   ordersClicked(){
+    
     this.router.navigate(['order'],{relativeTo:this.route})
   }
   wishlistClicked(){

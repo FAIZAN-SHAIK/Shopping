@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ProductsService } from "src/app/products.service";
 
 @Component({
     selector:'app-checkout',
@@ -15,7 +16,8 @@ export class CheckoutComponent implements OnInit{
 
     constructor(
         private activated : ActivatedRoute,
-        private router : Router
+        private router : Router,
+        private ps : ProductsService
     ){
 
     }
@@ -32,7 +34,8 @@ export class CheckoutComponent implements OnInit{
     }
     
 
-      gotoOrders(){
+    gotoOrders(){
+        this.ps.moveToOrders(this.randomOrderId)
         this.router.navigate(['user/order'])
       }
 

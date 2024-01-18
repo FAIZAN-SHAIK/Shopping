@@ -93,9 +93,7 @@ export class BuyNowComponent implements OnInit {
 
   checkout(){
 
-    const productsToaddToOrders = this.buyProducts
-
-    this.ps.orders = {...productsToaddToOrders}
+    
 
     this.router.navigate(['checkout/'+this.totalPrice])
   }

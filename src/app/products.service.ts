@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Products } from './products.class';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,20 @@ export class ProductsService {
   buyProducts: Products[] = [];
 
   orders:Products[] = []
+  
+
+  moveToOrders(randomOrderId) {
+
+    this.buyProducts.forEach((x)=>{
+      let product = _.cloneDeep(x)
+      product.OrderId = randomOrderId
+      this.orders.push(product)
+    })
+    
+    this.buyProducts = []
+
+    
+  }
   
 
   constructor() { }
