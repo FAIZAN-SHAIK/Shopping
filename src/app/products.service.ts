@@ -70,29 +70,24 @@ export class ProductsService {
   ]
 
   cartProducts: Products[] = [];
+  buyProducts: Products[] = [];
+  orders: Products[] = [];
+  savelater: Products[] = [];
 
   clearBuyProducts() {
     this.buyProducts = [];
   }
 
-  buyProducts: Products[] = [];
-
-  orders:Products[] = []
-  
-
   moveToOrders(randomOrderId) {
 
-    this.buyProducts.forEach((x)=>{
+    this.buyProducts.forEach((x) => {
       let product = _.cloneDeep(x)
       product.OrderId = randomOrderId
       this.orders.push(product)
     })
-    
-    this.buyProducts = []
-
-    
+    this.clearBuyProducts()
   }
-  
+
 
   constructor() { }
 

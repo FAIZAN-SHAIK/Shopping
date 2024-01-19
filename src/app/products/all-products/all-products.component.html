@@ -1,63 +1,87 @@
 <app-header></app-header>
 <div class="top-div">
-  <div class="search-box">
-    <input class="search-input" type="text" [(ngModel)]="productSearched" />
-    <button class="btn btn-dark btn-sm searchBtn">search</button>
-  </div>
-
-  <div class="anchors">
-    <a routerLink="/products" (click)="onAllClicked()">All(56)</a>
-    <a (click)="onShirtsClicked()">Shirts(16)</a>
-    <a (click)="onTshirtsClicked()">Tshirts(18)</a>
-    <a (click)="onJeansClicked()">Jeans(22)</a>
-  </div>
-
   <div class="container">
     <div class="row">
-      <!-- <a href=""></a> -->
-      <div
-        class="col-md-3"
-        style="margin-top: 40px; height: 350px; margin-left: 0px"
-        *ngFor="let item of allProducts | filterProducts : productSearched"
-      >
+      <div class="col-8">
+        <div class="search-box">
+          <input
+            class="search-input"
+            type="text"
+            [(ngModel)]="productSearched"
+          />
+          <button class="btn btn-dark btn-sm searchBtn">search</button>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="dropdown">
+          <button class="dropdown-button">Filter</button>
+          <div class="dropdown-content">
+            <a href="#" class="dropdown-item">Price High to Low</a>
+            <a href="#" class="dropdown-item">Price Low to High</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">Men</a>
+            <a href="#" class="dropdown-item">Women</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="anchors">
+      <a routerLink="/products" (click)="onAllClicked()">All(56)</a>
+      <a (click)="onShirtsClicked()">Shirts(16)</a>
+      <a (click)="onTshirtsClicked()">Tshirts(18)</a>
+      <a (click)="onJeansClicked()">Jeans(22)</a>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <!-- <a href=""></a> -->
         <div
-          class="card"
-          style="
-            width: 14rem;
-            border-radius: 10px;
-            border: 2px solid whitesmoke;
-            margin-left: 0px;
-            box-sizing: border-box;
-            background-color: rgb(226 232 240);
-          "
+          class="col-md-3"
+          style="margin-top: 40px; height: 350px; margin-left: 0px"
+          *ngFor="let item of allProducts | filterProducts : productSearched"
         >
-          <a (click)="productClicked(item)"
-            ><img
-              class="card-img-top"
-              style="height: 200px"
-              src="{{ item.imageUrl }}"
-              height="250px"
-              alt="Card image cap"
-          /></a>
-
-          <div class="card-body">
+          <div
+            class="card"
+            style="
+              width: 14rem;
+              border-radius: 10px;
+              border: 2px solid whitesmoke;
+              margin-left: 0px;
+              box-sizing: border-box;
+              background-color: rgb(226 232 240);
+            "
+          >
             <a (click)="productClicked(item)"
-              ><h6 class="card-title">{{ item.name }}</h6></a
-            >
+              ><img
+                class="card-img-top"
+                style="height: 200px"
+                src="{{ item.imageUrl }}"
+                height="250px"
+                alt="Card image cap"
+            /></a>
 
-            <small>special price</small>
-            <button
-              class="lovebtn"
-              [ngClass]="{
-                lovebtnFalse: item.wishlist === false,
-                lovebtnTrue: item.wishlist === true
-              }"
-              (click)="wishlistClicked(item)"
-            >
-              {{ wishListBtn }}
-            </button>
-            <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
-            <a class="btn btn-sm addCartBtn" (click)="productClicked(item)">View Details..</a>
+            <div class="card-body">
+              <a (click)="productClicked(item)"
+                ><h6 class="card-title">{{ item.name }}</h6></a
+              >
+
+              <small>special price</small>
+              <button
+                class="lovebtn"
+                [ngClass]="{
+                  lovebtnFalse: item.wishlist === false,
+                  lovebtnTrue: item.wishlist === true
+                }"
+                (click)="wishlistClicked(item)"
+              >
+                {{ wishListBtn }}
+              </button>
+              <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
+              <a class="btn btn-sm addCartBtn" (click)="productClicked(item)"
+                >View Details..</a
+              >
+            </div>
           </div>
         </div>
       </div>

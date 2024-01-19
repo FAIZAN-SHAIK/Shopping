@@ -19,9 +19,13 @@ export class AllProductsComponent implements OnInit {
     private productsService: ProductsService,
     private router: Router,
     private route: ActivatedRoute,
-    private ss:SharedService) {
+    private ss: SharedService) {
     this.allProducts = productsService.AllProducts
     // console.log(this.allProducts)
+  }
+
+  filterBy(filterby: string) {
+
   }
 
   onAllClicked() {
@@ -60,17 +64,17 @@ export class AllProductsComponent implements OnInit {
 
   wishlistClicked(value: any) {
 
-    if(!this.ss.isUserLoggedIn){
+    if (!this.ss.isUserLoggedIn) {
       this.router.navigate(['/login'])
     }
-    else{
+    else {
       this.productsService.AllProducts.find((x) => {
         if (x.id === value.id) {
           x.wishlist = !x.wishlist;
         }
       })
     }
-    
+
 
   }
 

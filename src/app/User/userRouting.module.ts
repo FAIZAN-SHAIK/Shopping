@@ -6,25 +6,27 @@ import { ProfileComponent } from "./profile/profile.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { WishlistComponent } from "./wishlist/wishlist.component";
 
-const routes:Routes=[
-    {path:'user',component:UserComponent,children:[
-        {path:'order',component:OrderComponent},
-        {path:'profile',component:ProfileComponent},
-        {path:'settings',component:SettingsComponent},
-        {path:'wishlist',component:WishlistComponent}
-    ]}
+const routes: Routes = [
+  {
+    path: 'user', component: UserComponent, children: [
+      { path: 'order', component: OrderComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: 'wishlist', component: WishlistComponent }
+    ]
+  }
 ]
 
 
 @NgModule({
-    declarations:[],
-    imports:[
-        RouterModule.forChild(routes)
-    ],
-    exports:[RouterModule]
+  declarations: [],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 
 })
 
-export class UserRoutingModule{
+export class UserRoutingModule {
 
 }

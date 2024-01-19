@@ -4,10 +4,11 @@ import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { CartRoutingModule } from "./cart-routing.module";
 import { CommonModule } from "@angular/common";
+import { SaveLaterComponent } from "./saveLater/savelater.component";
 
 
 @NgModule({
-  declarations: [CartPageComponent
+  declarations: [CartPageComponent, SaveLaterComponent
 
 
   ],

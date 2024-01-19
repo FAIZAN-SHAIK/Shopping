@@ -12,33 +12,33 @@ import { ProductsService } from "src/app/products.service";
 
 export class CartPageComponent {
   cartItems: Products[] = [];
-  productValue : number = 0;
+  productValue: number = 0;
   totalPrice: number = 0;
 
   constructor(
     private ps: ProductsService,
-    private router:Router
+    private router: Router
   ) {
     this.cartItems = this.ps.cartProducts
-   
+
   }
 
-  calculateTotalPrice(){
-    return this.cartItems.reduce((total,product)=> total + (product.price * product.quantity),0)
+  calculateTotalPrice() {
+    return this.cartItems.reduce((total, product) => total + (product.price * product.quantity), 0)
   }
 
-  increaseQuantity(product : any){
+  increaseQuantity(product: any) {
     product.quantity++;
     this.calculateTotalPrice()
 
   }
-  decreaseQuantity(product : any){
+  decreaseQuantity(product: any) {
     if (product.quantity > 1) {
       product.quantity--;
       this.calculateTotalPrice();
     }
-    if(product.quantity === 0){
-        const index = this.cartItems.indexOf(product);
+    if (product.quantity === 0) {
+      const index = this.cartItems.indexOf(product);
       if (index !== -1) {
         this.cartItems.splice(index, 1);
       }
@@ -46,30 +46,38 @@ export class CartPageComponent {
 
   }
 
-  productClicked(product : any){
-    this.router.navigate(['/productDetails/'+product.id])
+  productClicked(product: any) {
+    this.router.navigate(['/productDetails/' + product.id])
   }
 
-  deleteProduct(product : any){
+  deleteProduct(product: any) {
     const index = this.cartItems.indexOf(product);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
     }
   }
 
-  placeOrder(){
+  placeOrder() {
     let productsFromCart = this.ps.cartProducts
 
-    let pushToBuyProducts : Products[] = [...productsFromCart]
+    let pushToBuyProducts: Products[] = [...productsFromCart]
 
     this.ps.clearBuyProducts()
-    
+
     pushToBuyProducts.forEach(product => {
       this.ps.buyProducts.push(product);
     });
 
     this.router.navigate(['buynow'])
 
+  }
+
+  saveForLater(product) {
+    const productToaddToSaveLater: Products = { ...product }
+    this.ps.savelater.push(productToaddToSaveLater)
+
+    const index = this.cartItems.indexOf(product)
+    this.ps.cartProducts.splice(index, 1)
   }
 
 }

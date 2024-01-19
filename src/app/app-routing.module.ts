@@ -8,18 +8,19 @@ import { UserComponent } from "./User/user/user.component";
 import { SignUpUserdetailsComponent } from "./Auth/signupUserDetails/signupUserDetails.component";
 
 
-const routes:Routes =[
-  {path:'',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignUpComponent},
-  {path:'signupUserDetails',component:SignUpUserdetailsComponent},
-  
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signupUserDetails', component: SignUpUserdetailsComponent },
+
+
 
 ]
 
 @NgModule({
-  declarations:[],
-  imports:[
+  declarations: [],
+  imports: [
     RouterModule.forRoot(routes)
   ],
   exports: [
@@ -27,6 +28,6 @@ const routes:Routes =[
   ]
 })
 
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }
