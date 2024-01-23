@@ -10,7 +10,7 @@
         <button class="btn btn-dark" routerLink="/signup">SignUp</button>
       </div>
       <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
-        <h1>Hello, {{ homeService.userLoggedInName | titlecase}} 👋</h1>
+        <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
         Start .... <a [routerLink]="['/products']">Shopping</a>
       </div>
     </div>

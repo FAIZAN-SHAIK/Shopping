@@ -1,0 +1,17 @@
+.top-footer{
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+a{
+  text-decoration: none;
+  font-size: larger;
+  margin-left: 20px;
+  color: white;
+}
+.contactMeBtn{
+  background-color: #fff;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px white;
+}

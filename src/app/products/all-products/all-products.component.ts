@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { filter } from 'lodash';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 import { SharedService } from 'src/app/shared/auth.service';
@@ -24,25 +25,32 @@ export class AllProductsComponent implements OnInit {
     // console.log(this.allProducts)
   }
 
-  filterBy(filterby: string) {
+  filterBy(criteria: string): void {
+    switch (criteria) {
+      case 'priceHtoL':
+        this.allProducts = [...this.productsService.AllProducts].sort((a, b) => b.price - a.price);
+        break;
+      case 'priceLtoH':
+        this.allProducts = [...this.productsService.AllProducts].sort((a, b) => a.price - b.price);
+        break;
+        break;
+      case 'men':
+        this.allProducts = this.productsService.AllProducts.filter(product => product.gender === 'male');
+        break;
+      case 'women':
+        this.allProducts = this.productsService.AllProducts.filter(product => product.gender === 'female');
+        break;
 
+    }
   }
 
-  onAllClicked() {
-    this.allProducts = this.productsService.AllProducts
-  }
-
-  onShirtsClicked() {
-
-    this.allProducts = this.productsService.AllProducts.filter(x => x.type.toLowerCase() === "shirt");
-  }
-
-  onTshirtsClicked() {
-    this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'tshirt')
-  }
-
-  onJeansClicked() {
-    this.allProducts = this.productsService.AllProducts.filter((x) => x.type.toLowerCase() === 'jeans')
+  onTagClicked(tag: string) {
+    if (tag === 'all') {
+      this.allProducts = this.productsService.AllProducts
+    }
+    else {
+      this.allProducts = this.productsService.AllProducts.filter(x => x.type.toLowerCase() === tag);
+    }
   }
 
 

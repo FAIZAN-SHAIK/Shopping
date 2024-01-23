@@ -1,40 +1,38 @@
-table tr td{
-  border: 1px solid black;
-  font-size: 1.3rem;
 
-}
-table{
 
-  margin:60px;
-
-}
-/* tr{
-  border: 1px solid black;
-} */
-td{
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.tdh{
-  background-color: black;
-  color: white;
-}
-
-button{
+.editBtn{
   border: 1px solid black;
   padding: 0 15px;
   margin-top: 15px;
-  margin-left: 190px;
+  margin-left: 490px;
+  background-color: grey;
+  color: white;
 }
 button:hover{
   border: 1px solid whitesmoke;
   background-color: black;
   color: white;
 }
+
+.saveBtn{
+
+  margin:10px 0 0 200px;
+  padding: 2px 10px;
+}
+
 .top-div{
   background-color: rgb(203 213 225);
   height: 94.3vh;
   width: 82.7vw;
+}
+
+.formTopdiv{
+  width: 500px;
+  margin-top: 30px;
+  margin-left: 100px;
+
+}
+
+input{
+  cursor: pointer;
 }

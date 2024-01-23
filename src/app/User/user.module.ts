@@ -8,6 +8,7 @@ import { UserRoutingModule } from "./userRouting.module";
 import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -16,13 +17,15 @@ import { CommonModule } from "@angular/common";
     OrderComponent,
     ProfileComponent,
     SettingsComponent,
-    WishlistComponent
+    WishlistComponent,
+
   ],
   imports: [
     UserRoutingModule,
     SharedModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class userModule {

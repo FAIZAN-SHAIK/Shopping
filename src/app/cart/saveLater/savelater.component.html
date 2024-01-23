@@ -1,5 +1,8 @@
 <div class="top-div">
   <div class="container">
+    <h3 *ngIf="saveLaterProducts.length !== 0">
+      Products Saved For Later .....
+    </h3>
     <div class="productDiv" *ngFor="let product of saveLaterProducts">
       <div class="container-fluid">
         <div class="row" style="margin-top: 30px">
@@ -33,12 +36,6 @@
             </button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container-fluid" *ngIf="saveLaterProducts.length !== 0">
-      <div class="row" style="margin-top: 20px">
-        <div class="col-6"></div>
-        <div class="col-6"></div>
       </div>
     </div>
   </div>
