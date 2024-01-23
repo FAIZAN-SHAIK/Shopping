@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { userModule } from './User/user.module';
 import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserDetails.component';
 import { CartModule } from './cart/cart.module';
+import { AppService } from './app.service';
 
 
 @NgModule({
