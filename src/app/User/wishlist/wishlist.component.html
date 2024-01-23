@@ -14,14 +14,14 @@
       <div
         class="col-md-3"
        
-        *ngFor="let item of wishlistOfUser"
-      >
+        *ngFor="let item of wishlistOfUser">
         <div
           class="card"
           style="
             width: 15rem;
             border-radius: 10px;
             border: 2px solid whitesmoke;
+            margin-bottom: 10px;
           "
         >
           <a (click)="productClicked(item)"
