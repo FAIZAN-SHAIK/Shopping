@@ -7,12 +7,15 @@ import { CommonModule } from "@angular/common";
 import { UserRoutingModule } from "../User/userRouting.module";
 import { CartRoutingModule } from "../cart/cart-routing.module";
 import { NotificationComponent } from "./notification/notification.component";
+import { FooterComponent } from "./footer/footer.component";
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    NotificationComponent
+    NotificationComponent,
+    FooterComponent
+
 
   ],
   imports: [
@@ -29,7 +32,8 @@ import { NotificationComponent } from "./notification/notification.component";
   providers: [],
   exports: [
     HeaderComponent,
-    NotificationComponent
+    NotificationComponent,
+    FooterComponent
 
   ]
 })

@@ -20,8 +20,9 @@ import { UserRoutingModule } from '../User/userRouting.module';
     FilterProductsPipe,
     BuyNowComponent,
     ChangeAddress,
-    CheckoutComponent
-   
+    CheckoutComponent,
+
+
 
 
   ],

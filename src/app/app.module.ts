@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { userModule } from './User/user.module';
 import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserDetails.component';
 import { CartModule } from './cart/cart.module';
+import { ContactMeComponent } from './components/contactme/contactme.component';
+import { AbousUsComponent } from './components/aboutUs/aboutus.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { CartModule } from './cart/cart.module';
       LoginComponent,
       SignUpComponent,
       SignUpUserdetailsComponent,
+      ContactMeComponent,
+      AbousUsComponent
     ],
   imports: [
     BrowserModule,

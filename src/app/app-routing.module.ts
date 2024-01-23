@@ -6,6 +6,8 @@ import { LoginComponent } from "./Auth/login/login.component";
 import { SignUpComponent } from "./Auth/signup/signup.component";
 import { UserComponent } from "./User/user/user.component";
 import { SignUpUserdetailsComponent } from "./Auth/signupUserDetails/signupUserDetails.component";
+import { AbousUsComponent } from "./components/aboutUs/aboutus.component";
+import { ContactMeComponent } from "./components/contactme/contactme.component";
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signupUserDetails', component: SignUpUserdetailsComponent },
+  { path: 'aboutus', component: AbousUsComponent },
+  { path: 'contactme', component: ContactMeComponent },
 
 
 

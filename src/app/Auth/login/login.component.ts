@@ -10,56 +10,48 @@ import { SharedService } from "src/app/shared/auth.service";
 })
 
 
-export class LoginComponent 
-{
+export class LoginComponent {
   userNameLoginPage = "";
   passwordLoginPage = "";
-  userFound = false;  
+  userFound = false;
 
   constructor(
     private loginDetailDataService: AppService,
-    private router:Router,
-    private activeRoute : ActivatedRoute,
-    private sharedService : SharedService)
-     {}
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private sharedService: SharedService) { }
 
 
-  loginButtonClicked() 
-  {
-    if (this.userNameLoginPage === '' || this.passwordLoginPage === '') 
-    {
+  loginButtonClicked() {
+    if (this.userNameLoginPage === '' || this.passwordLoginPage === '') {
       alert("details are mandatory")
     }
-    else 
-    {
+    else {
 
-      this.loginDetailDataService.predefinedLoginDetails.find((i)=>{
-        if (i.uName === this.userNameLoginPage && i.password === this.passwordLoginPage) 
-          {
-            
-            this.sharedService.isLogin();
-            this.sharedService.userLoggedInName =  this.userNameLoginPage
-            this.userFound = true;
-            this.router.navigate(['']);
-            // console.log(this.sharedService.userLoggedInName)
-          }
-      })
-        
+      this.loginDetailDataService.predefinedLoginDetails.find((i) => {
+        if (i.username === this.userNameLoginPage && i.password === this.passwordLoginPage) {
 
-        if(this.userNameLoginPage !=='' && this.passwordLoginPage!== '' && !this.userFound ) 
-        {
-          alert("You Dont have account , Create One!!");
-          this.userNameLoginPage = "";
-          this.passwordLoginPage = "";
+          this.sharedService.isLogin();
+          this.sharedService.userLoggedInName = this.userNameLoginPage
+          this.userFound = true;
+          this.router.navigate(['']);
+          // console.log(this.sharedService.userLoggedInName)
         }
+      })
+
+
+      if (this.userNameLoginPage !== '' && this.passwordLoginPage !== '' && !this.userFound) {
+        alert("You Dont have account , Create One!!");
+        this.userNameLoginPage = "";
+        this.passwordLoginPage = "";
+      }
     }
   }
 
-  signUpButtonClicked() 
-  {
+  signUpButtonClicked() {
     this.router.navigate(['/signup'])
   }
 
 
-  
+
 }

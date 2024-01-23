@@ -4,9 +4,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-2 sidebarDiv">
-        <h4>Welcome , <span>{{ userService.userLoggedInName | titlecase }}</span></h4>
-        
-        <div class=" listGroup" id="list-tab" role="tablist">
+        <h4>
+          Hey! , <span>{{ userService.userLoggedInName | titlecase }}</span>
+        </h4>
+
+        <div class="listGroup" id="list-tab" role="tablist">
           <a
             class="listItem"
             id="list-home-list"
@@ -17,8 +19,18 @@
             [class.active]="isRouteActive('/user/profile')"
             >profile</a
           >
-          <a class="listItem" (click)="ordersClicked()" [class.active]="isRouteActive('/user/order')">Orders</a>
-          <a class="listItem" (click)="wishlistClicked()" [class.active]="isRouteActive('/user/wishlist')">wishlist</a>
+          <a
+            class="listItem"
+            (click)="ordersClicked()"
+            [class.active]="isRouteActive('/user/order')"
+            >Orders</a
+          >
+          <a
+            class="listItem"
+            (click)="wishlistClicked()"
+            [class.active]="isRouteActive('/user/wishlist')"
+            >wishlist</a
+          >
           <a
             class="listItem"
             id="list-settings-list"
@@ -26,21 +38,18 @@
             [class.active]="isRouteActive('/user/settings')"
             >Settings</a
           >
-          <a class="listItem" (click)="logoutClicked()" [class.active]="isRouteActive('/user/logout')">logout</a>
+          <a
+            class="listItem"
+            (click)="logoutClicked()"
+            [class.active]="isRouteActive('/user/logout')"
+            >logout</a
+          >
         </div>
       </div>
-      
-        <div class="col-9">
-          <router-outlet></router-outlet>
-        </div>
-      
-      
+
+      <div class="col-9">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
-  
-
 </div>
-
-
-
-
