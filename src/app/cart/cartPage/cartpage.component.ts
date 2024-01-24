@@ -59,14 +59,18 @@ export class CartPageComponent {
 
   placeOrder() {
     let productsFromCart = this.ps.cartProducts
+    console.log(productsFromCart)
 
     let pushToBuyProducts: Products[] = [...productsFromCart]
+    console.log(pushToBuyProducts)
 
     this.ps.clearBuyProducts()
+    console.log(this.ps.buyProducts)
 
     pushToBuyProducts.forEach(product => {
       this.ps.buyProducts.push(product);
     });
+    console.log(pushToBuyProducts)
 
     this.router.navigate(['buynow'])
 

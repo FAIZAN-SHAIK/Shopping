@@ -163,15 +163,15 @@ export class ProductDetailsComponent implements OnInit {
   buyNow(){
     if(this.selectedSize){
 
-      let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
+      let addProductToBuy = this.companyDetailsService.AllProducts.find((x) => {
         return x.id === this.productIdFromProducts;
       });
       
-        let addItemToCart = {...addedProductToCart}
-        addItemToCart.selectedSize = this.selectedSize;
-        addItemToCart.quantity++;
+        let addItemToBuy = {...addProductToBuy}
+        addItemToBuy.selectedSize = this.selectedSize;
+        addItemToBuy.quantity = 1;
         this.companyDetailsService.clearBuyProducts();
-        this.companyDetailsService.buyProducts.push(addItemToCart);
+        this.companyDetailsService.buyProducts.push(addItemToBuy);
         this.router.navigate(['buynow'])
     }
     else{

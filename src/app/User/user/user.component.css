@@ -39,6 +39,7 @@ span{
 
 .active{
     background-color: rgb(203 213 225);
-    color: black;
-    border:white  ;
+    color: rgb(224, 24, 24);
+    border:rgb(168, 38, 38)  ;
+    font-weight: bold;
 }

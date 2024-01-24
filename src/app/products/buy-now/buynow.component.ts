@@ -93,7 +93,7 @@ export class BuyNowComponent implements OnInit {
 
   checkout(){
 
-    
+    this.ps.clearCartProducts();
 
     this.router.navigate(['checkout/'+this.totalPrice])
   }

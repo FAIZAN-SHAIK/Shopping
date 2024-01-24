@@ -12,7 +12,8 @@ export class UserComponent implements OnInit {
   constructor(
     public userService: SharedService,
     private router :Router,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private ss : SharedService
   ) { }
 
   isRouteActive(path: string): boolean {
@@ -34,7 +35,10 @@ export class UserComponent implements OnInit {
     this.router.navigate(['settings'],{relativeTo:this.route})
   }
   logoutClicked(){
+    this.ss.isLogout()
+    this.ss.userLoggedInName = ''
     this.router.navigate(['/login'])
+
   }
 
   ngOnInit(): void {

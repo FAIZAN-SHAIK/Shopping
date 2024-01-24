@@ -18,7 +18,7 @@ export class SaveLaterComponent {
     private router: Router
   ) {
     this.saveLaterProducts = ps.savelater
-    console.log(this.saveLaterProducts)
+    
 
   }
 

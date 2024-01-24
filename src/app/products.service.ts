@@ -77,6 +77,9 @@ export class ProductsService {
   clearBuyProducts() {
     this.buyProducts = [];
   }
+  clearCartProducts() {
+    this.cartProducts = [];
+  }
 
   moveToOrders(randomOrderId) {
 
