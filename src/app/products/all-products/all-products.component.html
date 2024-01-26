@@ -43,7 +43,7 @@
         <div
           class="col-md-3"
           style="margin-top: 40px; height: 350px; margin-left: 0px"
-          *ngFor="let item of allProducts | filterProducts : productSearched"
+          *ngFor="let item of allProducts | filterProducts : productSearched | slice: lowValue: highValue"
         >
           <div
             class="card"
@@ -88,6 +88,15 @@
             </div>
           </div>
         </div>
+        <mat-paginator
+          [length]="allProducts.length"
+          [pageSize]="10"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+          (page)="onPageChanged($event)"
+          aria-label="Select page"
+        >
+        </mat-paginator>
       </div>
     </div>
   </div>

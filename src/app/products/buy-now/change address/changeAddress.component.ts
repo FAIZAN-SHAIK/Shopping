@@ -10,9 +10,9 @@ import { SharedService } from "src/app/shared/auth.service";
 })
 
 export class ChangeAddress implements OnInit{
-    addressChangeForm : FormGroup ;
-    userAddress : string[];
-    userMobileName : number;
+    addressChangeForm : FormGroup = new FormGroup({}) ;
+    userAddress : string[]=[];
+    userMobileName : number=0;
 
     
     @Output() updatedDataFromChangeData = new EventEmitter<any>();
@@ -41,7 +41,7 @@ export class ChangeAddress implements OnInit{
         })
 
         if(this.addressChangeForm){
-            this.addressChangeForm.setValue({
+            this.addressChangeForm.patchValue({
                 'houseNumber' : this.userAddress[0],
                 'mobileNumber' : this.userMobileName,
                 'locality' : this.userAddress[1],

@@ -16,10 +16,12 @@
               border: 1px solid whitesmoke;
               margin-top: 4%;
               border-radius: 20px;
+              
             "
             class="card-img-top"
             src="{{ prodDetails[0].imageUrl }}"
             alt="Card image cap"
+            height="450px"
           />
           <div class="text-overlay">
             <button
@@ -39,9 +41,9 @@
       <div class="col-6">
         <div class="card-body">
           <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
-            {{ prodDetails[0].brand }}
+            {{ prodDetails[0].brand | titlecase}}
           </h4>
-          <h3 class="card-title">{{ prodDetails[0].name }}</h3>
+          <h3 class="card-title">{{ prodDetails[0].name | titlecase }}</h3>
           &nbsp;
   
           <small class="text-success">Special price</small>

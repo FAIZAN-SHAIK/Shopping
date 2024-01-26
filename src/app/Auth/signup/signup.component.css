@@ -1,25 +1,54 @@
-body{
+.topLoginDiv{
     background-color: rgb(203 213 225);
-    min-height: 100vh;
+    min-height: 79.6vh;
 }
+
 .top-div{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
+    height: 60vh;
+    /* margin-top: 90px; */
 }
-
-#label{
-    padding-top: 15px;
-}
-
-#select{
-   margin: 7px;
-}
-
 h3{
-    color:chocolate;
+    color:rgb(132,135,246);
     text-align: center;
     padding-top: 40px  ;
     padding-bottom: 20px;
+}
+
+.top-row{
+    border: 2px solid whitesmoke;
+    width: 70rem;
+    
+    border-radius: 50px;
+    box-shadow: 2px 3px 10px;
+    background-color: #ffffffc7;
+}
+
+.form-div{
+    width: 400px;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.img-div  img{
+    margin-left: 50px;
+}
+
+.top-heading{
+    text-shadow: 2px 2px 2px #0f0f0f
+}
+
+.registBtn{
+    background-color: rgb(132,135,246);
+    box-shadow: 2px 2px 5px black;
+    
+}
+
+.registBtn:hover{
+    transform: scale(1.1);
+}
+span{
+    background-color:rgb(222,254,72)
 }

@@ -1,27 +1,41 @@
 
+<app-spinner *ngIf="spinnerOn"></app-spinner>
+
 <div class="topLoginDiv">
-  <h3>Sign-in with Your Details ....</h3>
-<div class="top-div">
-  <div   style="width: 500px; border: 1px solid black; padding: 20px;">
-    <form>
-      <div class="form-group">
-        <label for="userName" class="text-danger"><h6>User Name : </h6></label>
-        <input type="text" class="form-control" name="uName"  placeholder="Enter UserName" [(ngModel)]="userNameLoginPage">
-        
-        
+  <h3 class="top-heading" *ngIf="!spinnerOn">Sign-in with Your Details ....</h3>
+  
+<div>
+  <div class="container top-div" *ngIf="!spinnerOn">
+    <div class="row top-row">
+      <div class="col-6">
+        <div class="form-div">
+          <form>
+            <div class="form-group">
+              <label for="userName" class="text-danger"><h6>User Name : </h6></label>
+              <input type="text" class="form-control" name="uName"  placeholder="Enter UserName"  [(ngModel)]="userNameLoginPage">
+              
+              
+            </div>
+            <div class="form-group">
+              <label for="password" class="text-danger"><h6>Password:</h6> </label>
+              <input type="password" class="form-control" name="pWord" placeholder="Password" [(ngModel)]="passwordLoginPage">
+            </div>
+            <div class="d-flex justify-content-center btn-group">
+              
+              <button type="button" class="btn btn-dark my-3" (click)="loginButtonClicked()">Login</button>
+              <button type="button" class="btn signupBtn my-3" (click)="signUpButtonClicked()">SignUp</button>
+            </div>
+            
+          </form> 
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password" class="text-danger"><h6>Password:</h6> </label>
-        <input type="password" class="form-control" name="pWord" placeholder="Password" [(ngModel)]="passwordLoginPage">
+      <div class="col-6 img-div">
+        <img  src="./../../../assets/loginPageVector.gif" alt="login">
       </div>
-      <div class="d-flex justify-content-center btn-group">
-        
-        <button type="submit" class="btn btn-dark my-3" (click)="loginButtonClicked()">Login</button>
-        <button type="submit" class="btn btn-primary my-3" (click)="signUpButtonClicked()">SignUp</button>
-      </div>
-      
-    </form> 
+    </div>
   </div>
+  
+  
 </div>
 </div>
 

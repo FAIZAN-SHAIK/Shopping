@@ -10,8 +10,8 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  userProfileDetails: login;
-  userDetailsForm: FormGroup;
+  userProfileDetails: login | undefined ;
+  userDetailsForm: FormGroup = new FormGroup({});
 
   constructor(
     private profileAppService: AppService,
@@ -33,11 +33,14 @@ export class ProfileComponent implements OnInit {
 
     this.userDetailsForm.disable();
 
-    this.userProfileDetails= this.profileAppService.predefinedLoginDetails.find((x)=>{
-      return x.username === this.profileSharedService.userLoggedInName
-    })
+    
+      this.userProfileDetails= this.profileAppService.predefinedLoginDetails.find((x)=>{
+        return x.username === this.profileSharedService.userLoggedInName
+      })
+  
+    
 
-    this.userDetailsForm.patchValue(this.userProfileDetails);
+    this.userDetailsForm.patchValue(this.userProfileDetails as Object);
   }
 
  
@@ -63,15 +66,15 @@ export class ProfileComponent implements OnInit {
   }
 
   onEditClicked() {
-    this.userDetailsForm.get('password').enable();
-    this.userDetailsForm.get('firstname').enable();
-    this.userDetailsForm.get('lastname').enable();
-    this.userDetailsForm.get('gender').enable();
-    this.userDetailsForm.get('mobile').enable();
-    this.userDetailsForm.get('emailid').enable();
-    this.userDetailsForm.get('address').enable();
+    this.userDetailsForm.get('password')?.enable();
+    this.userDetailsForm.get('firstname')?.enable();
+    this.userDetailsForm.get('lastname')?.enable();
+    this.userDetailsForm.get('gender')?.enable();
+    this.userDetailsForm.get('mobile')?.enable();
+    this.userDetailsForm.get('emailid')?.enable();
+    this.userDetailsForm.get('address')?.enable();
 
     // Disable the username field
-    this.userDetailsForm.get('username').disable();
+    this.userDetailsForm.get('username')?.disable();
   }
 }

@@ -1,5 +1,16 @@
 .navbar-brand:hover{
   color: aqua;
+  
+}
+
+.top-header{
+  padding: 10px 20px;
+}
+
+.navbar-brand{
+  
+  font-size: 30px;
+  margin-left: 10px;
 }
 
 
@@ -20,4 +31,29 @@
 sup{
   color: red;
   font-size: 15px;
+}
+
+.cartBtn{
+  color: rgb(254,181,68);
+  font-size: 25px;
+}
+
+.profileBtn{
+  color: rgb(0, 217, 255);
+  font-size: 25px;
+}
+
+.logoutBtn{
+  color: rgb(0, 217, 255);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+ul li a{
+  font-size: 20px;
+  color: rgb(203,213,225);
+}
+ul li a:hover{
+  font-size: 20px;
+  color:rgb(254,182,69);
 }

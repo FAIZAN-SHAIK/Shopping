@@ -74,7 +74,7 @@ a{
 }
 .lovebtnFalse{
   font-size: 30px;
-  margin-left: 100px;
+  margin-left: 80px;
   border: none;
   outline: none;
   padding: 0;
@@ -94,4 +94,10 @@ a{
   background-color: black;
   color: white;
   border: 1px solid whitesmoke;
+}
+.card-img-top{
+  box-shadow: 2px 2px 5px black;
+}
+.card-title{
+  text-shadow: 1px 1px 1px #757272
 }

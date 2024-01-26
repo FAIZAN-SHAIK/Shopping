@@ -11,7 +11,7 @@ import { ProductsService } from "src/app/products.service";
 
 export class CheckoutComponent implements OnInit{
 
-    totalPrice : number;
+    totalPrice : number=0;
     randomOrderId = this.generateRandomOrderId();
 
     constructor(
@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit{
     
 
     gotoOrders(){
-        this.ps.moveToOrders(this.randomOrderId)
+        this.ps.moveToOrders(Number(this.randomOrderId))
         this.router.navigate(['user/order'])
       }
 

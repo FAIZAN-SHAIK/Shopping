@@ -77,11 +77,12 @@ export class ProductsService {
   clearBuyProducts() {
     this.buyProducts = [];
   }
+
   clearCartProducts() {
     this.cartProducts = [];
   }
 
-  moveToOrders(randomOrderId) {
+  moveToOrders(randomOrderId : number) {
 
     this.buyProducts.forEach((x) => {
       let product = _.cloneDeep(x)

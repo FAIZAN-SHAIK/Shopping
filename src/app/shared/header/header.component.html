@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <!-- Use 'ms-auto' to make the items on the right -->
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" routerLink="">Home</a>
       </li>
 
@@ -32,40 +32,34 @@
     <ul class="navbar-nav ms-auto" *ngIf="headerService.isUserLoggedIn">
       <li class="nav-item">
         <a class="nav-link cart" (click)="cartClicked()"
-          ><img
-            src="../../../assets/shopping-cart.png"
-            height="20px"
-            alt="cart-img" />
+          ><i class="bi bi-cart3 cartBtn position-relative">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
+              1
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </i>
           <sup></sup
         ></a>
       </li>
       <li class="nav-item">
         <a class="nav-link cart" (click)="userClicked()"
-          ><img src="../../../assets/user.png" height="20px" alt=""
-        /></a>
+          ><i class="bi bi-person-bounding-box profileBtn mx-3"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link cart" (click)="onLoggedOut()">Logout</a>
+        <a class="nav-link logoutBtn" (click)="onLoggedOut()">Logout</a>
       </li>
     </ul>
 
-    <div class="dropdown" *ngIf="headerService.isUserLoggedIn">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenu2"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        ☰
+    <!-- <div class="dropdown" *ngIf="headerService.isUserLoggedIn">
+      <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-list"></i>
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">Action</button>
-        <button class="dropdown-item" type="button">Another action</button>
-        <button class="dropdown-item" type="button">Something else here</button>
-      </div>
-    </div>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div> -->
 
     <ul class="navbar-nav ms-auto" *ngIf="!headerService.isUserLoggedIn">
       <li class="nav-item">

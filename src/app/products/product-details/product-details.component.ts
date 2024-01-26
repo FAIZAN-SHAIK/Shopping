@@ -12,9 +12,9 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  productIdFromProducts: number;
-  prodDetails: Products[];
-  similarProducts: Products[];
+  productIdFromProducts: number=0;
+  prodDetails: Products[]=[];
+  similarProducts: Products[]=[];
   wishListBtn = '♡'
   selectedSize : string | null = null
 
@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   reviews: number = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
   ratingStar: number = +(Math.random() * (5 - 1.5) + 1.5).toFixed(1);
   discount: number = Math.floor(Math.random() * (15 - 10 + 1)) + 10;
-  price: number;
+  price: number=0;
   freeDelvery: number = Math.floor(Math.random())
 
   showNotification: boolean = false;
@@ -88,7 +88,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((data) => {
-      this.productIdFromProducts = +data.get('id');
+      this.productIdFromProducts = Number(data.get('id'));
 
       this.prodDetails = this.companyDetailsService.AllProducts.filter((x) => {
         return x.id === this.productIdFromProducts;
@@ -137,19 +137,22 @@ export class ProductDetailsComponent implements OnInit {
       let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
         return x.id === this.productIdFromProducts;
       });
-        addedProductToCart.selectedSize = this.selectedSize;
+        addedProductToCart!.selectedSize = this.selectedSize;
   
         this.companyDetailsService.cartProducts.find((x)=>{
-          if(addedProductToCart.id === x.id && addedProductToCart.selectedSize === x.selectedSize){
-            x.quantity++;
+          if(addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize){
+            if(x.quantity){
+              x.quantity++;   //quantity may be zero
+            }
+            
             this.productWithSameDetailsFound = true;
           }
         })
   
         if(!this.productWithSameDetailsFound){
-          addedProductToCart.quantity = 1
+          addedProductToCart!.quantity = 1
           let addItemToCart = {...addedProductToCart}
-          this.companyDetailsService.cartProducts.push(addItemToCart);
+          this.companyDetailsService.cartProducts.push(addItemToCart as Products);
         }
 
     }
@@ -171,7 +174,7 @@ export class ProductDetailsComponent implements OnInit {
         addItemToBuy.selectedSize = this.selectedSize;
         addItemToBuy.quantity = 1;
         this.companyDetailsService.clearBuyProducts();
-        this.companyDetailsService.buyProducts.push(addItemToBuy);
+        this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
         this.router.navigate(['buynow'])
     }
     else{

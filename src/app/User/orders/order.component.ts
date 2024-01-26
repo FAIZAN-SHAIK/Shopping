@@ -8,8 +8,8 @@ import { ProductsService } from "src/app/products.service";
     styleUrls:['./order.component.css']
 })
 export class OrderComponent implements OnInit{
-    userorders : Products[]
-    totalPrice: number ;
+    userorders : Products[]=[];
+    totalPrice: number =0;
 
     constructor(
         private ps : ProductsService
@@ -20,11 +20,13 @@ export class OrderComponent implements OnInit{
     ngOnInit(): void {
         this.totalPrice = this.calculateTotal();
     }
-    productClicked(product){
-        
-    }
 
-    cancelOrder(product){
+    productClicked(product: Products){
+
+    }
+   
+
+    cancelOrder(product: Products){
         const cancleProductIndex = this.userorders.indexOf(product)
         this.userorders.splice(cancleProductIndex,1)
 

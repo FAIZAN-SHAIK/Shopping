@@ -10,12 +10,12 @@ import { AppService } from "src/app/app.service";
 })
 export class SignUpUserdetailsComponent{
 
-    firstName:string;
-    lastName:string;
-    Mobile:number;
-    gender:string
-    emailId:string;
-    address:string;
+    firstName:string='';
+    lastName:string='';
+    Mobile:number=0;
+    gender:string=''
+    emailId:string='';
+    address:string='';
     
     constructor(
         private signupDetailsService : AppService,

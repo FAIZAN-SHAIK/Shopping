@@ -10,10 +10,10 @@ export class Products {
   imageUrl: string;
   wishlist: boolean;
 
-  selectedSize:string;
-  quantity : number = 0;
+  selectedSize?:string;
+  quantity : number=0;
 
-  OrderId: number;
+  OrderId?: number;
   
 
   constructor(id: number, name: string, type: string, price: number, gender: string, color: string, brand: string, imageUrl: string, wishlist: boolean) {

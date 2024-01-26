@@ -10,6 +10,8 @@ import { BuyNowComponent } from './buy-now/buynow.component';
 import { ChangeAddress } from './buy-now/change address/changeAddress.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserRoutingModule } from '../User/userRouting.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 
@@ -32,8 +34,9 @@ import { UserRoutingModule } from '../User/userRouting.module';
     ProductsRoutngModule,
     FormsModule,
     ReactiveFormsModule,
-    UserRoutingModule
-
+    UserRoutingModule,
+    MatPaginatorModule
+    
 
   ]
 })

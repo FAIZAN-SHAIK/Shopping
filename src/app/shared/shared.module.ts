@@ -8,13 +8,15 @@ import { UserRoutingModule } from "../User/userRouting.module";
 import { CartRoutingModule } from "../cart/cart-routing.module";
 import { NotificationComponent } from "./notification/notification.component";
 import { FooterComponent } from "./footer/footer.component";
+import { SpinnerComponent } from "./spinner/spinner.component";
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NotificationComponent,
-    FooterComponent
+    FooterComponent,
+    SpinnerComponent
 
 
   ],
@@ -33,7 +35,8 @@ import { FooterComponent } from "./footer/footer.component";
   exports: [
     HeaderComponent,
     NotificationComponent,
-    FooterComponent
+    FooterComponent,
+    SpinnerComponent
 
   ]
 })

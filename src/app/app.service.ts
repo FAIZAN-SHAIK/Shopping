@@ -9,9 +9,12 @@ export class AppService {
 
   userLogined: string = ""
   newUser: string = ""
-  newSignupUserName : string;
-  newSignupUserPassword : string;
+  newSignupUserName : string = '';
+  newSignupUserPassword : string = '';
+
+  value : boolean = false;
   
+
 
   predefinedLoginDetails: login[] = 
   [

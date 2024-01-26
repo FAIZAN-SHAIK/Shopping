@@ -2,20 +2,32 @@
 
 <div class="home-div">
   <div class="inner-div1">
-    <div>
-      <h2>Welcome to FashionKido</h2>
-      <h6>Your destination for trendy fashion!</h6>
-      <div class="inner-div2" *ngIf="!homeService.isUserLoggedIn">
-        <button class="btn btn-dark" (click)="onLoginClicked()">Login</button>
-        <button class="btn btn-dark" routerLink="/signup">SignUp</button>
+   
+      <div class="top-heading">
+        <h1>
+          <div class="welcome">Welcome,</div>
+          <div class="welcome">
+            <span>FashionKido</span>
+          </div>
+        </h1>
       </div>
-      <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
-        <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
-        Start .... <a [routerLink]="['/products']">Shopping</a>
+      <div class="bottom-text">
+        <h3>Your destination for trendy fashion!</h3>
+        <div class="inner-div2 mt-4" *ngIf="!homeService.isUserLoggedIn">
+          <button class="btn btn-dark btn-lg" (click)="onLoginClicked()">Login</button>
+          <button class="btn btn-dark btn-lg mx-3" routerLink="/signup">SignUp</button>
+        </div>
+        <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
+          <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
+          Start ....
+          <a [routerLink]="['/products']" class="shopping-btn">Shopping</a>
+        </div>
       </div>
-    </div>
+      
+    
   </div>
+  
   <div class="imgHome">
-    <img src="../../../assets/fashion.jfif" height="100%" width="100%" alt="" />
+    <img src="../../../assets/homePage.png" height="100%" width="100%" alt="" />
   </div>
 </div>

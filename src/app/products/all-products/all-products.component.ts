@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'lodash';
 import { Products } from 'src/app/products.class';
@@ -14,7 +15,10 @@ export class AllProductsComponent implements OnInit {
 
   allProducts: Products[];
   productSearched: string = ''
-  wishListBtn = '♡'
+  wishListBtn = '♡';
+  lowValue: number = 0;
+  highValue: number = 10;
+  pageIndex: number = 0;
 
   constructor(
     private productsService: ProductsService,
@@ -42,6 +46,12 @@ export class AllProductsComponent implements OnInit {
         break;
 
     }
+  }
+
+  onPageChanged(event: PageEvent){
+    this.lowValue = event.pageIndex * event.pageSize;
+    this.highValue = this.lowValue + event.pageSize;
+    return event;
   }
 
   onTagClicked(tag: string) {

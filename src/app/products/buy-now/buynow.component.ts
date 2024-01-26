@@ -13,13 +13,14 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class BuyNowComponent implements OnInit {
   buyProducts: Products[];
-  totalPrice: number;
-  userAddress : string[];
-  mobileNumber : number;
+  totalPrice: number=0;
+  userAddress : string[]=[];
+  mobileNumber : number=0;
 
 
   proceedClicked = false;
   changeAddressClicked = false
+  spinnerOn: boolean = false;
 
 
   constructor(
@@ -94,8 +95,13 @@ export class BuyNowComponent implements OnInit {
   checkout(){
 
     this.ps.clearCartProducts();
+    this.spinnerOn = true;
 
-    this.router.navigate(['checkout/'+this.totalPrice])
+    setTimeout(()=>{
+
+      this.router.navigate(['checkout/'+this.totalPrice])
+    },1000)
+
   }
 
   changeAddress(){

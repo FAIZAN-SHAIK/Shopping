@@ -14,12 +14,15 @@ export class LoginComponent {
   userNameLoginPage = "";
   passwordLoginPage = "";
   userFound = false;
+  spinnerOn : boolean = false;
 
   constructor(
     private loginDetailDataService: AppService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService) {
+      
+     }
 
 
   loginButtonClicked() {
@@ -34,8 +37,12 @@ export class LoginComponent {
           this.sharedService.isLogin();
           this.sharedService.userLoggedInName = this.userNameLoginPage
           this.userFound = true;
-          this.router.navigate(['']);
-          // console.log(this.sharedService.userLoggedInName)
+          this.spinnerOn = true
+
+          setTimeout(()=>{
+            
+            this.router.navigate(['']);
+          },1500)
         }
       })
 

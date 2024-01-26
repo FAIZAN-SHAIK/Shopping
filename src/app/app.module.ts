@@ -17,6 +17,7 @@ import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserD
 import { CartModule } from './cart/cart.module';
 import { AbousUsComponent } from './components/aboutUs/aboutus.component';
 import { ContactMeComponent } from './components/contactme/contactme.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ContactMeComponent } from './components/contactme/contactme.component';
     ProductsModule,
     SharedModule,
     FormsModule,
-    CartModule
+    CartModule,
+    BrowserAnimationsModule
   ],
 
   providers: [],
