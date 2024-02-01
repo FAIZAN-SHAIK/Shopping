@@ -58,7 +58,7 @@
         class="form-control"
         formControlName="address"
       />
-      <button class="btn btn-success saveBtn" (click)="onSave()">Save</button>
+      <button class="btn btn-success saveBtn" (click)="onSave()" [disabled]='saveDisabled'>Save</button>
     </div>
   </form>
 </div>

@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'user', component: UserComponent, children: [
       { path: 'order', component: OrderComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent,canDeactivate :[(comp : ProfileComponent)=>{return comp.canExit()}] },
       { path: 'settings', component: SettingsComponent },
       { path: 'wishlist', component: WishlistComponent }
     ]

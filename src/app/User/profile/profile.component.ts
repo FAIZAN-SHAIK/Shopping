@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { login } from 'src/app/login';
 import { SharedService } from 'src/app/shared/auth.service';
@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class ProfileComponent implements OnInit {
   userProfileDetails: login | undefined ;
+  saveDisabled : boolean = true;
   userDetailsForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -22,13 +23,13 @@ export class ProfileComponent implements OnInit {
 
   this.userDetailsForm = new FormGroup({
       username: new FormControl(''),
-      password: new FormControl(''),
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      gender: new FormControl(''),
-      mobile: new FormControl(''),
-      emailid: new FormControl(''),
-      address: new FormControl(''),
+      password: new FormControl('',Validators.required),
+      firstname: new FormControl('',Validators.required),
+      lastname: new FormControl('',Validators.required),
+      gender: new FormControl('',Validators.required),
+      mobile: new FormControl('',[Validators.minLength(10),Validators.maxLength(10)]),
+      emailid: new FormControl('',Validators.email),
+      address: new FormControl('',Validators.required),
     });
 
     this.userDetailsForm.disable();
@@ -47,6 +48,7 @@ export class ProfileComponent implements OnInit {
 
   onSave() {
     const savedValue = this.userDetailsForm.value
+    console.log(this.userDetailsForm.valid);
 
     this.profileAppService.predefinedLoginDetails.find((x)=>{
       if(x.username === this.profileSharedService.userLoggedInName){
@@ -63,9 +65,13 @@ export class ProfileComponent implements OnInit {
    
    
     this.userDetailsForm.disable();
+    this.saveDisabled = true;
   }
 
   onEditClicked() {
+
+    this.saveDisabled = false;
+
     this.userDetailsForm.get('password')?.enable();
     this.userDetailsForm.get('firstname')?.enable();
     this.userDetailsForm.get('lastname')?.enable();
@@ -76,5 +82,14 @@ export class ProfileComponent implements OnInit {
 
     // Disable the username field
     this.userDetailsForm.get('username')?.disable();
+  }
+
+  canExit(){
+    if(this.userDetailsForm.dirty && !this.userDetailsForm.disabled ){
+      return confirm("Do You Really Want To go back... You have Unsaved Changes..");
+    }
+    else{
+      return true;
+    }
   }
 }
