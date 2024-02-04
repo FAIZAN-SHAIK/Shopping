@@ -13,9 +13,9 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class BuyNowComponent implements OnInit {
   buyProducts: Products[];
-  totalPrice: number=0;
-  userAddress : string[]=[];
-  mobileNumber : number=0;
+  totalPrice: number = 0;
+  userAddress: string[] = [];
+  mobileNumber: number = 0;
 
 
   proceedClicked = false;
@@ -30,24 +30,24 @@ export class BuyNowComponent implements OnInit {
     private router: Router
   ) {
     this.buyProducts = ps.buyProducts;
-     
-    
-  }
-    ngOnInit(): void {
-        
-        // console.log(this.userAddress)
-        this.addressData()
-    }
 
-    addressData(){
-        this.as.predefinedLoginDetails.find((x)=>{
-            if(x.firstname.toLowerCase() === this.ss.userLoggedInName.toLowerCase()){
-                this.userAddress =  x.address.split(',')
-                this.mobileNumber =  x.mobile
-            }
-        })
-    }
-        
+
+  }
+  ngOnInit(): void {
+
+    // console.log(this.userAddress)
+    this.addressData()
+  }
+
+  addressData() {
+    this.as.predefinedLoginDetails.find((x) => {
+      if (x.firstname.toLowerCase() === this.ss.userLoggedInName.toLowerCase()) {
+        this.userAddress = x.address.split(',')
+        this.mobileNumber = x.mobile
+      }
+    })
+  }
+
 
 
 
@@ -89,27 +89,27 @@ export class BuyNowComponent implements OnInit {
 
   proceed() {
     this.proceedClicked = true;
-    
+
   }
 
-  checkout(){
+  checkout() {
 
     this.ps.clearCartProducts();
     this.spinnerOn = true;
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
-      this.router.navigate(['checkout/'+this.totalPrice])
-    },1000)
+      this.router.navigate(['checkout/' + this.totalPrice])
+    }, 1000)
 
   }
 
-  changeAddress(){
-    this.changeAddressClicked = true; 
+  changeAddress() {
+    this.changeAddressClicked = true;
   }
-  receiveMessage(value : any){
-    if(value){
-        this.addressData()
+  receiveMessage(value: any) {
+    if (value) {
+      this.addressData()
     }
     this.changeAddressClicked = false
   }

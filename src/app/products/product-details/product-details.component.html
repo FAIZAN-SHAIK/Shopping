@@ -4,9 +4,9 @@
   <button class="buyAddCartGotoBtn" (click)="goBack()">
     Go to All Products ....
   </button>
-  
+
   <app-notification *ngIf="showNotification"></app-notification>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-4">
@@ -16,7 +16,6 @@
               border: 1px solid whitesmoke;
               margin-top: 4%;
               border-radius: 20px;
-              
             "
             class="card-img-top"
             src="{{ prodDetails[0].imageUrl }}"
@@ -37,15 +36,15 @@
           </div>
         </div>
       </div>
-  
+
       <div class="col-6">
         <div class="card-body">
           <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
-            {{ prodDetails[0].brand | titlecase}}
+            {{ prodDetails[0].brand | titlecase }}
           </h4>
           <h3 class="card-title">{{ prodDetails[0].name | titlecase }}</h3>
           &nbsp;
-  
+
           <small class="text-success">Special price</small>
           <h2>
             {{ prodDetails[0].price | currency : "INR" }}
@@ -56,16 +55,42 @@
           <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
           <p>size</p>
           <div>
-            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'XS'"  (click)="sizeClicked('XS')">XS</a>
-            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'S'" (click)="sizeClicked('S')">S</a>
-            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'M'" (click)="sizeClicked('M')">M</a>
-            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'L'" (click)="sizeClicked('L')">L</a>
-            <a class="btn sizesBtn" [class.selectedSize]="selectedSize === 'XL'" (click)="sizeClicked('XL')">XL</a>
+            <a
+              class="btn sizesBtn"
+              [class.selectedSize]="selectedSize === 'XS'"
+              (click)="sizeClicked('XS')"
+              >XS</a
+            >
+            <a
+              class="btn sizesBtn"
+              [class.selectedSize]="selectedSize === 'S'"
+              (click)="sizeClicked('S')"
+              >S</a
+            >
+            <a
+              class="btn sizesBtn"
+              [class.selectedSize]="selectedSize === 'M'"
+              (click)="sizeClicked('M')"
+              >M</a
+            >
+            <a
+              class="btn sizesBtn"
+              [class.selectedSize]="selectedSize === 'L'"
+              (click)="sizeClicked('L')"
+              >L</a
+            >
+            <a
+              class="btn sizesBtn"
+              [class.selectedSize]="selectedSize === 'XL'"
+              (click)="sizeClicked('XL')"
+              >XL</a
+            >
           </div>
-          
+
           <p class="card-text">
-            <small class="selectSize" *ngIf="sizeSelected">*select a size</small>
-  
+            <small class="selectSize" *ngIf="sizeSelected"
+              >*select a size</small
+            >
           </p>
           <a class="btn buyAddCartGotoBtn" (click)="buyNow()">Buy Now</a>
           <a
@@ -84,12 +109,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row pt-5">
       <div class="col-6">
         <h3>Product Details</h3>
-  
+
         <div>
           <h6>
             <pre>Name : {{ prodDetails[0].name }}</pre>
@@ -98,8 +123,7 @@
             <pre>Type : {{ prodDetails[0].type }}</pre>
           </h6>
           <h6>
-            <pre style="border: 1px solid red">fabric : cotton </pre
-            >
+            <pre style="border: 1px solid red">fabric : cotton </pre>
           </h6>
           <h6>
             <pre>Ideal For : {{ prodDetails[0].gender }}</pre>
@@ -118,7 +142,7 @@
           </h6>
         </div>
       </div>
-  
+
       <div class="col-6">
         <h3>Address Details</h3>
         <div>
@@ -135,24 +159,29 @@
       </div>
     </div>
   </div>
-  
+
   <button class="similarProductsbtn" (click)="showSimilarItems()">
     Show Similar Products
   </button>
-  
-  <div class="container">
+
+  <div class="container similarProductsContainer">
     <div class="row">
       <!-- <a href=""></a> -->
       <div
         class="col-md-3"
-        style="margin-top: 15px; height: 350px; "
+        style="margin-top: 15px; height: 350px"
         *ngFor="let item of similarProducts"
       >
         <div
           class="card"
-          style="width: 15rem; border-radius: 10px; border: 3px solid whitesmoke ; background-color: rgb(226 232 240);"
+          style="
+            width: 15rem;
+            border-radius: 10px;
+            border: 3px solid whitesmoke;
+            background-color: rgb(226 232 240);
+          "
         >
-          <a (click)="productClicked(item)"
+          <a (click)="productClicked(item)" (click)="scrollToTop()"
             ><img
               class="card-img-top"
               style="height: 200px"
@@ -160,12 +189,12 @@
               height="250px"
               alt="Card image cap"
           /></a>
-  
+
           <div class="card-body">
-            <a (click)="productClicked(item)"
+            <a (click)="productClicked(item)" (click)="scrollToTop()"
               ><h5 class="card-title">{{ item.name }}</h5></a
             >
-  
+
             <small>special price</small>
             <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
             <a class="btn btn-sm addCartBtn">Add to Cart</a>
@@ -175,4 +204,3 @@
     </div>
   </div>
 </div>
-

@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <!-- Use 'ms-auto' to make the items on the right -->
-      <li class="nav-item ">
+      <li class="nav-item">
         <a class="nav-link" routerLink="">Home</a>
       </li>
 
@@ -33,8 +33,11 @@
       <li class="nav-item">
         <a class="nav-link cart" (click)="cartClicked()"
           ><i class="bi bi-cart3 cartBtn position-relative">
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
-              1
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size: 10px"
+            >
+              {{ cartSize }}
               <span class="visually-hidden">unread messages</span>
             </span>
           </i>
@@ -43,7 +46,8 @@
       </li>
       <li class="nav-item">
         <a class="nav-link cart" (click)="userClicked()"
-          ><i class="bi bi-person-bounding-box profileBtn mx-3"></i></a>
+          ><i class="bi bi-person-bounding-box profileBtn mx-3"></i
+        ></a>
       </li>
       <li class="nav-item">
         <a class="nav-link logoutBtn" (click)="onLoggedOut()">Logout</a>

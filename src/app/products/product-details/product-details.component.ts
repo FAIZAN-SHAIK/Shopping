@@ -12,34 +12,34 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  productIdFromProducts: number=0;
-  prodDetails: Products[]=[];
-  similarProducts: Products[]=[];
+  productIdFromProducts: number = 0;
+  prodDetails: Products[] = [];
+  similarProducts: Products[] = [];
   wishListBtn = '♡'
-  selectedSize : string | null = null
+  selectedSize: string | null = null
 
   ratings: number = Math.floor(Math.random() * (1000 - 500 + 1)) + 100;
   reviews: number = Math.floor(Math.random() * (200 - 100 + 1)) + 100;
   ratingStar: number = +(Math.random() * (5 - 1.5) + 1.5).toFixed(1);
   discount: number = Math.floor(Math.random() * (15 - 10 + 1)) + 10;
-  price: number=0;
+  price: number = 0;
   freeDelvery: number = Math.floor(Math.random())
 
   showNotification: boolean = false;
   addtoCartNotClicked: boolean = true;
-  sizeSelected : boolean = false;
-  productWithSameDetailsFound : boolean = false;
+  sizeSelected: boolean = false;
+  productWithSameDetailsFound: boolean = false;
 
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private companyDetailsService: ProductsService,
-    private aS:AppService,
-    private ss:SharedService
+    private aS: AppService,
+    private ss: SharedService
 
   ) {
-    
+
     if (this.companyDetailsService.didItemAddedToCart) {
       this.addtoCartNotClicked = false
     }
@@ -100,91 +100,97 @@ export class ProductDetailsComponent implements OnInit {
 
   wishlistClicked() {
 
-    if(!this.ss.isUserLoggedIn){
+    if (!this.ss.isUserLoggedIn) {
       this.router.navigate(['/login'])
     }
-    else{
+    else {
       this.companyDetailsService.AllProducts.find((x) => {
         if (x.id === this.prodDetails[0].id) {
           x.wishlist = !x.wishlist;
-  
+
         }
       })
     }
-    
+
   }
 
-  sizeClicked( size : string){
+  sizeClicked(size: string) {
     this.selectedSize = size;
     this.addtoCartNotClicked = true;
   }
 
   addToCartClicked() {
 
-    if(!this.ss.isUserLoggedIn){
+    if (!this.ss.isUserLoggedIn) {
       this.router.navigate(['/login'])
     }
-    else{
+    else {
 
-      if(this.selectedSize === null){
+      if (this.selectedSize === null) {
         this.sizeSelected = true;
       }
-      else{
-      this.showNotification = true;
-      this.addtoCartNotClicked = false;
-      this.sizeSelected = false;
-  
-      let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
-        return x.id === this.productIdFromProducts;
-      });
+      else {
+        this.showNotification = true;
+        this.addtoCartNotClicked = false;
+        this.sizeSelected = false;
+
+        let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
+          return x.id === this.productIdFromProducts;
+        });
         addedProductToCart!.selectedSize = this.selectedSize;
-  
-        this.companyDetailsService.cartProducts.find((x)=>{
-          if(addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize){
-            if(x.quantity){
+
+        this.companyDetailsService.cartProducts.find((x) => {
+          if (addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize) {
+            if (x.quantity) {
               x.quantity++;   //quantity may be zero
             }
-            
+
             this.productWithSameDetailsFound = true;
           }
         })
-  
-        if(!this.productWithSameDetailsFound){
+
+        if (!this.productWithSameDetailsFound) {
           addedProductToCart!.quantity = 1
-          let addItemToCart = {...addedProductToCart}
-          this.companyDetailsService.cartProducts.push(addItemToCart as Products);
+          let addItemToCart = { ...addedProductToCart }
+
+          this.companyDetailsService.addProductToCart(addItemToCart as Products);
         }
 
-    }
-    
-    setTimeout(() => {
-      this.showNotification = false;
-    }, 2000)
-    }
-}
+      }
 
-  buyNow(){
-    if(this.selectedSize){
+      setTimeout(() => {
+        this.showNotification = false;
+      }, 2000)
+    }
+  }
+
+  buyNow() {
+    if (this.selectedSize) {
 
       let addProductToBuy = this.companyDetailsService.AllProducts.find((x) => {
         return x.id === this.productIdFromProducts;
       });
-      
-        let addItemToBuy = {...addProductToBuy}
-        addItemToBuy.selectedSize = this.selectedSize;
-        addItemToBuy.quantity = 1;
-        this.companyDetailsService.clearBuyProducts();
-        this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
-        this.router.navigate(['buynow'])
+
+      let addItemToBuy = { ...addProductToBuy }
+      addItemToBuy.selectedSize = this.selectedSize;
+      addItemToBuy.quantity = 1;
+      this.companyDetailsService.clearBuyProducts();
+      this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
+      this.router.navigate(['buynow'])
     }
-    else{
-      this.sizeSelected =true;
+    else {
+      this.sizeSelected = true;
     }
   }
 
 
   gotoCartClicked() {
     this.router.navigate(['/cartpage'])
+  }
+
+  scrollToTop() {
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0 });
   }
 
 

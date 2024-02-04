@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/auth.service';
+// import { ButtonModule } from 'primeng/button';
 
 
 @Component({
@@ -11,10 +12,10 @@ import { SharedService } from 'src/app/shared/auth.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private router : Router,
-    public homeService : SharedService) { }
+    private router: Router,
+    public homeService: SharedService) { }
 
-  onLoginClicked(){
+  onLoginClicked() {
     this.router.navigate(['/login'])
   }
 

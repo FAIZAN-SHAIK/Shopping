@@ -1,5 +1,12 @@
 <app-header></app-header>
 <div class="top-div">
+  <div class="discount-banner">
+    <div class="scrolling-text-container">
+      <span class="discount-text"
+        >Hurry! Limited Time Offers - Up to 30 - 50% OFF on Selected Items</span
+      >
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-8">
@@ -43,7 +50,11 @@
         <div
           class="col-md-3"
           style="margin-top: 40px; height: 350px; margin-left: 0px"
-          *ngFor="let item of allProducts | filterProducts : productSearched | slice: lowValue: highValue"
+          *ngFor="
+            let item of allProducts
+              | filterProducts : productSearched
+              | slice : lowValue : highValue
+          "
         >
           <div
             class="card"
@@ -88,7 +99,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row paginator">
         <mat-paginator
+          class="paginatorStyle"
           [length]="allProducts.length"
           [pageSize]="10"
           [pageIndex]="pageIndex"

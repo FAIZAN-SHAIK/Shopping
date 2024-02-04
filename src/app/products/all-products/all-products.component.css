@@ -126,3 +126,41 @@ h1, ul {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.paginator{
+  margin-top: 5rem;
+
+}
+.paginatorStyle{
+  color: rgb(16,15,15);
+  border: 1px solid whitesmoke;
+  background-color: rgb(226,232,240);
+}
+
+/* top scrooling text */
+
+.discount-banner {
+  background-color: rgb(254,182,69);
+  color: #333;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.scrolling-text-container {
+
+  animation: scrollText 15s linear infinite; /* Adjust duration as needed */
+}
+
+.discount-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

@@ -29,49 +29,29 @@ export class AllProductsComponent implements OnInit {
     // console.log(this.allProducts)
   }
 
-  filterBy(criteria: string): void {
-    switch (criteria) {
-      case 'priceHtoL':
-        this.allProducts = [...this.productsService.AllProducts].sort((a, b) => b.price - a.price);
-        break;
-      case 'priceLtoH':
-        this.allProducts = [...this.productsService.AllProducts].sort((a, b) => a.price - b.price);
-        break;
-        break;
-      case 'men':
-        this.allProducts = this.productsService.AllProducts.filter(product => product.gender === 'male');
-        break;
-      case 'women':
-        this.allProducts = this.productsService.AllProducts.filter(product => product.gender === 'female');
-        break;
-
-    }
+  filterBy(criteria: string) {
+    this.allProducts = this.productsService.filterProducts(criteria)
   }
 
-  onPageChanged(event: PageEvent){
+  onPageChanged(event: PageEvent) {
     this.lowValue = event.pageIndex * event.pageSize;
     this.highValue = this.lowValue + event.pageSize;
     return event;
   }
 
   onTagClicked(tag: string) {
-    if (tag === 'all') {
-      this.allProducts = this.productsService.AllProducts
-    }
-    else {
-      this.allProducts = this.productsService.AllProducts.filter(x => x.type.toLowerCase() === tag);
-    }
+    this.allProducts = this.productsService.filterProducts(tag)
   }
 
 
   productClicked(value: Products) {
     this.router.navigate(['productDetails/' + value.id])
 
-    const isProductInArray = this.productsService.cartProducts.some((product) => {
+    const isProductInCartArray = this.productsService.cartProducts.some((product) => {
       return product.id === value.id;
     });
 
-    if (isProductInArray) {
+    if (isProductInCartArray) {
       this.productsService.didItemAddedToCart = true
 
     } else {
@@ -95,6 +75,8 @@ export class AllProductsComponent implements OnInit {
 
 
   }
+
+
 
 
   ngOnInit(): void {

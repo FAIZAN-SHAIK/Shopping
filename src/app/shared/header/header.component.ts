@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { SharedService } from "../auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ProductsService } from "src/app/products.service";
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,20 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./header.component.css']
 
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  cartSize: number = 0;
 
   constructor(
     public headerService: SharedService,
+    public ps: ProductsService,
     public router: Router,
     private route: ActivatedRoute) {
 
+  }
+  ngOnInit(): void {
+    this.ps.cartLength$.subscribe((length) => {
+      this.cartSize = length;
+    })
   }
   onLoggedOut() {
     this.headerService.isLogout()

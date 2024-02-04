@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Products } from './products.class';
 import * as _ from 'lodash';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -74,15 +75,56 @@ export class ProductsService {
   orders: Products[] = [];
   savelater: Products[] = [];
 
+  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  cartLength$: Observable<number> = this.cartLengthSubject.asObservable();
+
+  //AddToCart
+
+  // Function to add a product to the cart
+  addProductToCart(product: Products) {
+    this.cartProducts.push(product);
+
+    this.updateCartLength()
+  }
+  // Function to delete a product from the cart
+  deleteProduct(product: Products) {
+    const index = this.cartProducts.indexOf(product);
+    if (index !== -1) {
+      this.cartProducts.splice(index, 1);
+      this.updateCartLength();
+    }
+  }
+
+  //saveLater
+
+  // Function to add a product to the saveLater
+  addProductToSaveToCart(product: Products) {
+    this.savelater.push(product);
+  }
+  // Function to delete a product from the save later
+  deleteProductFromSaveLater(product: Products) {
+    const index = this.savelater.indexOf(product);
+    if (index !== -1) {
+      this.savelater.splice(index, 1);
+      this.updateCartLength();
+    }
+  }
+
+  // Private method to update the cart length and notify subscribers
+  private updateCartLength() {
+    this.cartLengthSubject.next(this.cartProducts.length);
+  }
+
+  constructor() { }
+
+
   clearBuyProducts() {
     this.buyProducts = [];
   }
-
   clearCartProducts() {
     this.cartProducts = [];
   }
-
-  moveToOrders(randomOrderId : number) {
+  moveToOrders(randomOrderId: number) {
 
     this.buyProducts.forEach((x) => {
       let product = _.cloneDeep(x)
@@ -92,8 +134,34 @@ export class ProductsService {
     this.clearBuyProducts()
   }
 
+  filterProducts(criteria: string): Products[] {
 
-  constructor() { }
+    switch (criteria) {
+      case 'priceHtoL':
+        return [...this.AllProducts].sort((a, b) => b.price - a.price);
+        break;
+      case 'priceLtoH':
+        return [...this.AllProducts].sort((a, b) => a.price - b.price);
+        break;
+        break;
+      case 'men':
+        return this.AllProducts.filter(product => product.gender === 'male');
+        break;
+      case 'women':
+        return this.AllProducts.filter(product => product.gender === 'female');
+        break;
+      case 'all':
+        return this.AllProducts;
+        break;
+      default:
+        return this.AllProducts.filter(x => x.type.toLowerCase() === criteria)
+
+
+    }
+
+  }
+
+
 
 
 }

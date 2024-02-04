@@ -47,11 +47,8 @@ export class CartPageComponent {
     this.router.navigate(['/productDetails/' + product.id]);
   }
 
-  deleteProduct(product: any) {
-    const index = this.cartItems.indexOf(product);
-    if (index !== -1) {
-      this.cartItems.splice(index, 1);
-    }
+  deleteProduct(product: Products) {
+    this.ps.deleteProduct(product);
   }
 
   placeOrder() {
@@ -62,10 +59,9 @@ export class CartPageComponent {
     this.router.navigate(['buynow']);
   }
 
-  saveForLater(product : Products) {
-    const productToaddToSaveLater: Products = _.cloneDeep(product);
-    this.ps.savelater.push(productToaddToSaveLater);
-    const index = this.cartItems.indexOf(product);
-    this.ps.cartProducts.splice(index, 1);
+  saveForLater(product: Products) {
+    this.ps.addProductToSaveToCart(product);
+    this.ps.deleteProduct(product);
+
   }
 }

@@ -14,27 +14,24 @@ export class SaveLaterComponent {
   saveLaterProducts: Products[] = []
 
   constructor
-  (
-    private ps: ProductsService,
-    private router: Router
-  ) {
+    (
+      private ps: ProductsService,
+      private router: Router
+    ) {
     this.saveLaterProducts = ps.savelater
   }
 
-  productClicked(product : Products) {
+  productClicked(product: Products) {
     this.router.navigate(['/products'])
   }
 
   addToCart(product: any) {
-    const productToAddToCartFromSaveLater = _.cloneDeep(product)
-    this.ps.cartProducts.push(productToAddToCartFromSaveLater)
-    const index = this.saveLaterProducts.indexOf(product)
-    this.ps.savelater.splice(index, 1)
+    this.ps.addProductToCart(product as Products);
+    this.ps.deleteProductFromSaveLater(product);
   }
 
-  deleteProduct(product : Products) {
-    const index = this.saveLaterProducts.indexOf(product)
-    this.ps.savelater.splice(index, 1)
+  deleteProduct(product: Products) {
+    this.ps.deleteProductFromSaveLater(product);
   }
 
 }

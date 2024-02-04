@@ -74,9 +74,9 @@ body {
   white-space:nowrap;
 }
 
-.welcome:first-of-type {    /* For increasing performance 
-                       ID/Class should've been used. 
-                       For a small demo 
+.welcome:first-of-type {    /* For increasing performance
+                       ID/Class should've been used.
+                       For a small demo
                        it's okaish for now */
   animation: showup 7s infinite;
 }
