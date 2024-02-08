@@ -183,7 +183,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-
   gotoCartClicked() {
     this.router.navigate(['/cartpage'])
   }

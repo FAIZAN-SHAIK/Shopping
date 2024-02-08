@@ -8,13 +8,14 @@
     <img src="../../../assets/empty-cart.png" height="250px" alt="" />
   </div>
 
-  <div class="container">
+  <div class="container" *ngIf="wishlistOfUser.length !== 0">
     <div class="row">
       <!-- <a href=""></a> -->
+      <h1>Your WishList...</h1>
       <div
-        class="col-md-3"
-       
-        *ngFor="let item of wishlistOfUser">
+        class="col-md-4 col-lg-3 col-sm-6 mt-3"
+        *ngFor="let item of wishlistOfUser"
+      >
         <div
           class="card"
           style="
@@ -50,7 +51,9 @@
               {{ wishListBtn }}
             </button>
             <h5>{{ item.price | currency : "INR" : "symbol" : "3.2-2" }}</h5>
-            <a class="btn btn-sm viewDetailsBtn" (click)="productClicked(item)" >View Details..</a>
+            <a class="btn btn-sm viewDetailsBtn" (click)="productClicked(item)"
+              >View Details..</a
+            >
           </div>
         </div>
       </div>
