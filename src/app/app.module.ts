@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 import { userModule } from './User/user.module';
 import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserDetails.component';
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     FormsModule,
     CartModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IvyCarouselModule
   ],
 
   providers: [],

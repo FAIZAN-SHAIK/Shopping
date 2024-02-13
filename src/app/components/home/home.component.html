@@ -24,16 +24,122 @@
         <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
 
         <a [routerLink]="['/products']" class="shopping-btn"
-          ><button class="btn btn-warning btn-lg">Shop Now</button></a
+          ><button class="btn btn-warning btn-lg">Shop For Men</button></a
         >
-        <!-- <div class="card flex justify-content-center">
-          <p-button label="Submit"></p-button>
-        </div> -->
+        <a [routerLink]="['/products']" class="shopping-btn"
+          ><button class="btn btn-warning btn-lg">Shop For Women</button></a
+        >
+
+        <div class="container1">
+          <div class="product">
+            <div class="circle">
+              <span class="product-name">Jeans</span>
+              <img
+                src="../../../assets/men/jeans/black 4 jeans.jpg"
+                alt="jeans"
+              />
+            </div>
+          </div>
+          <div class="product">
+            <div class="circle">
+              <span class="product-name">Shirts</span>
+              <img src="../../../assets/women/shirts/s2.webp" alt="shirt" />
+            </div>
+          </div>
+          <div class="product">
+            <div class="circle">
+              <span class="product-name">T-Shirts</span>
+              <img src="../../../assets/men/tshirts/t2.webp" alt="tshirt" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="imgHome">
     <img src="../../../assets/homePage.png" height="100%" width="100%" alt="" />
+  </div>
+</div>
+<h3>New Arrivals</h3>
+
+<div class="container">
+  <div class="row">
+    <carousel [cellWidth]="200" [cellsToShow]="3" [cellsToScroll]="3">
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+    </carousel>
+  </div>
+</div>
+
+<h3>Trending Products</h3>
+<div class="container">
+  <div class="row">
+    <carousel>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+      <div class="carousel-cell">
+        <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
+      </div>
+    </carousel>
   </div>
 </div>
