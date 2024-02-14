@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/signup/signup.component';
 import { FormsModule } from '@angular/forms';
-import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 
 import { userModule } from './User/user.module';
 import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserDetails.component';
@@ -19,6 +19,8 @@ import { CartModule } from './cart/cart.module';
 import { AbousUsComponent } from './components/aboutUs/aboutus.component';
 import { ContactMeComponent } from './components/contactme/contactme.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartModule,
     BrowserAnimationsModule,
     IvyCarouselModule
+    
+  
   ],
 
   providers: [],

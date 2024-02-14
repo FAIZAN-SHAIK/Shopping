@@ -94,13 +94,14 @@ export class BuyNowComponent implements OnInit {
 
   checkout() {
 
-    this.ps.clearCartProducts();
     this.spinnerOn = true;
-
+    
     setTimeout(() => {
-
+      
       this.router.navigate(['checkout/' + this.totalPrice])
+      this.ps.clearCartProducts();
     }, 1000)
+    
 
   }
 

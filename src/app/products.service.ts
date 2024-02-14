@@ -123,6 +123,7 @@ export class ProductsService {
   }
   clearCartProducts() {
     this.cartProducts = [];
+    this.updateCartLength();
   }
   moveToOrders(randomOrderId: number) {
 

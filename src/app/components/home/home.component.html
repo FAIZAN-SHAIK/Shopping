@@ -1,71 +1,83 @@
 <app-header></app-header>
-
-<div class="home-div">
-  <div class="inner-div1">
-    <div class="top-heading">
-      <h1>
-        <div class="welcome">Welcome,</div>
-        <div class="welcome">
-          <span>FashionKido</span>
-        </div>
-      </h1>
-    </div>
-    <div class="bottom-text">
-      <h3>Your destination for trendy fashion!</h3>
-      <div class="inner-div2 mt-4" *ngIf="!homeService.isUserLoggedIn">
-        <button class="btn btn-dark btn-lg" (click)="onLoginClicked()">
-          Login
-        </button>
-        <button class="btn btn-dark btn-lg mx-3" routerLink="/signup">
-          SignUp
-        </button>
+<div class="container-fluid" style="height: 100vh;">
+  <div class="row">
+    <div class="col-md-7" style="margin: 10rem 0rem 10rem 0; text-align: center;">
+      <div class="top-heading">
+        <h1>
+          <div class="welcome">Welcome,</div>
+          <div class="welcome">
+            <span>FashionKido</span>
+          </div>
+        </h1>
       </div>
-      <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
-        <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
+      <div class="bottom-text">
+        <h3>Your destination for trendy fashion!</h3>
+        <div class="inner-div2 mt-4" *ngIf="!homeService.isUserLoggedIn">
+          <button class="btn btn-dark btn-lg" (click)="onLoginClicked()">
+            Login
+          </button>
+          <button class="btn btn-dark btn-lg mx-3" routerLink="/signup">
+            SignUp
+          </button>
+        </div>
+        <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
+          <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
 
-        <a [routerLink]="['/products']" class="shopping-btn"
-          ><button class="btn btn-warning btn-lg">Shop For Men</button></a
-        >
-        <a [routerLink]="['/products']" class="shopping-btn"
-          ><button class="btn btn-warning btn-lg">Shop For Women</button></a
-        >
+          <div class="shop-btn">
+          <a [routerLink]="['/products']" class="shopping-btn"
+            ><button class="btn shop-gender btn-warning btn-lg">Shop For Men</button></a
+          >
+          <a [routerLink]="['/products']" class="shopping-btn"
+            ><button class="btn shop-gender btn-warning btn-lg">Shop For Women</button></a
+          >
+        </div>
 
-        <div class="container1">
-          <div class="product">
-            <div class="circle">
-              <span class="product-name">Jeans</span>
-              <img
-                src="../../../assets/men/jeans/black 4 jeans.jpg"
-                alt="jeans"
-              />
+          <div class="container1">
+            <div class="product">
+              <div class="circle">
+                <span class="product-name">Jeans</span>
+                <img
+                  src="../../../assets/men/jeans/black 4 jeans.jpg"
+                  alt="jeans"
+                />
+              </div>
             </div>
-          </div>
-          <div class="product">
-            <div class="circle">
-              <span class="product-name">Shirts</span>
-              <img src="../../../assets/women/shirts/s2.webp" alt="shirt" />
+            <div class="product">
+              <div class="circle">
+                <span class="product-name">Shirts</span>
+                <img src="../../../assets/women/shirts/s2.webp" alt="shirt" />
+              </div>
             </div>
-          </div>
-          <div class="product">
-            <div class="circle">
-              <span class="product-name">T-Shirts</span>
-              <img src="../../../assets/men/tshirts/t2.webp" alt="tshirt" />
+            <div class="product">
+              <div class="circle">
+                <span class="product-name">T-Shirts</span>
+                <img src="../../../assets/men/tshirts/t2.webp" alt="tshirt" />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="imgHome">
-    <img src="../../../assets/homePage.png" height="100%" width="100%" alt="" />
+  
+  <div class="col-md-5">
+    <div class="imgHome">
+      <img
+        src="../../../assets/homePage.png"
+      
+        alt=""
+      />
+    </div>
+      
+    
   </div>
 </div>
+</div>
+
 <h3>New Arrivals</h3>
 
 <div class="container">
   <div class="row">
-    <carousel [cellWidth]="200" [cellsToShow]="3" [cellsToScroll]="3">
+    <carousel [cellWidth]="200" [height]="300" [cellsToShow]="3" [cellsToScroll]="3">
       <div class="carousel-cell">
         <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
       </div>
@@ -106,7 +118,7 @@
 <h3>Trending Products</h3>
 <div class="container">
   <div class="row">
-    <carousel>
+    <carousel [cellWidth]="200" [height]="300" [cellsToShow]="3" [cellsToScroll]="3">
       <div class="carousel-cell">
         <img src="../../../assets/men/shirts/w2.webp" alt="whiteShirt" />
       </div>
