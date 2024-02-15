@@ -13,10 +13,15 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public homeService: SharedService) { }
+    public homeService: SharedService,
+  ) { }
 
   onLoginClicked() {
     this.router.navigate(['/login'])
+  }
+
+  onCategoryImgClick(category: string) {
+    this.router.navigate(['/products'], { queryParams: { category } })
   }
 
   ngOnInit(): void {

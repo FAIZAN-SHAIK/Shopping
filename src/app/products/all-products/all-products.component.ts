@@ -14,6 +14,7 @@ import { SharedService } from 'src/app/shared/auth.service';
 export class AllProductsComponent implements OnInit {
 
   allProducts: Products[];
+  showByUserCategory: string = '';
   productSearched: string = ''
   wishListBtn = '♡';
   lowValue: number = 0;
@@ -23,10 +24,20 @@ export class AllProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    // private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private ss: SharedService) {
-    this.allProducts = productsService.AllProducts
-    // console.log(this.allProducts)
+
+    this.route.queryParams.subscribe(params => {
+      this.showByUserCategory = params['category'];
+
+    });
+    if (this.showByUserCategory) {
+      this.allProducts = productsService.filterProducts(this.showByUserCategory)
+    }
+    else {
+      this.allProducts = productsService.filterProducts('all')
+    }
+
   }
 
   filterBy(criteria: string) {

@@ -151,6 +151,15 @@ export class ProductsService {
       case 'women':
         return this.AllProducts.filter(product => product.gender === 'female');
         break;
+      // case 'jeans':
+      //   return this.AllProducts.filter(product => product.type === 'jeans');
+      //   break;
+      // case 'shirts':
+      //   return this.AllProducts.filter(product => product.type === 'shirt');
+      //   break;
+      // case 'tshirts':
+      //   return this.AllProducts.filter(product => product.type === 'tshirt');
+      //   break;
       case 'all':
         return this.AllProducts;
         break;

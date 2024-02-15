@@ -135,6 +135,11 @@ span {
   max-width: 100%;
   max-height: 100%;
   display: block;
+
+}
+.circle img:hover{
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .product-name {
