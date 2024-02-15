@@ -1,7 +1,8 @@
 .top-div{
   background-color:rgb(203 213 225) ;
-  min-height: 10vh;
-  height: 50%;
+  min-height:70vh ;
+
+  
 }
 .cartEmpty{
   display: flex;
@@ -47,4 +48,11 @@
 }
 a{
   cursor: pointer;
+}
+
+.wrapper-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10rem;
 }

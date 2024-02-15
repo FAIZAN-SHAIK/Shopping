@@ -52,23 +52,23 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['/products']);
   }
 
-  showSimilarItems() {
-    this.similarProducts = this.companyDetailsService.AllProducts.filter(
-      (x) => {
-        return (
-          x.gender === this.prodDetails[0].gender &&
-          x.type === this.prodDetails[0].type
+  // showSimilarItems() {
+  //   this.similarProducts = this.companyDetailsService.AllProducts.filter(
+  //     (x) => {
+  //       return (
+  //         x.gender === this.prodDetails[0].gender &&
+  //         x.type === this.prodDetails[0].type
 
-        );
-      }
-    );
+  //       );
+  //     }
+  //   );
 
-    const itemToRemove = this.similarProducts.findIndex(item => item.id === this.productIdFromProducts);
+  //   const itemToRemove = this.similarProducts.findIndex(item => item.id === this.productIdFromProducts);
 
-    if (itemToRemove !== -1) {
-      this.similarProducts.splice(itemToRemove, 1);
-    }
-  }
+  //   if (itemToRemove !== -1) {
+  //     this.similarProducts.splice(itemToRemove, 1);
+  //   }
+  // }
 
   productClicked(item: Products) {
     this.router.navigate(['productDetails/' + item.id]);
@@ -87,101 +87,101 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((data) => {
-      this.productIdFromProducts = Number(data.get('id'));
+    // this.route.paramMap.subscribe((data) => {
+    //   this.productIdFromProducts = Number(data.get('id'));
 
-      this.prodDetails = this.companyDetailsService.AllProducts.filter((x) => {
-        return x.id === this.productIdFromProducts;
-      });
-      this.price = this.prodDetails[0].price - (this.prodDetails[0].price * (this.discount / 100))
+    //   this.prodDetails = this.companyDetailsService.AllProducts.filter((x) => {
+    //     return x.id === this.productIdFromProducts;
+    //   });
+    //   this.price = this.prodDetails[0].price - (this.prodDetails[0].price * (this.discount / 100))
 
-    });
+    // });
   }
 
-  wishlistClicked() {
+  // wishlistClicked() {
 
-    if (!this.ss.isUserLoggedIn) {
-      this.router.navigate(['/login'])
-    }
-    else {
-      this.companyDetailsService.AllProducts.find((x) => {
-        if (x.id === this.prodDetails[0].id) {
-          x.wishlist = !x.wishlist;
+  //   if (!this.ss.isUserLoggedIn) {
+  //     this.router.navigate(['/login'])
+  //   }
+  //   else {
+  //     this.companyDetailsService.AllProducts.find((x) => {
+  //       if (x.id === this.prodDetails[0].id) {
+  //         x.wishlist = !x.wishlist;
 
-        }
-      })
-    }
+  //       }
+  //     })
+  //   }
 
-  }
+  // }
 
   sizeClicked(size: string) {
     this.selectedSize = size;
     this.addtoCartNotClicked = true;
   }
 
-  addToCartClicked() {
+  // addToCartClicked() {
 
-    if (!this.ss.isUserLoggedIn) {
-      this.router.navigate(['/login'])
-    }
-    else {
+  //   if (!this.ss.isUserLoggedIn) {
+  //     this.router.navigate(['/login'])
+  //   }
+  //   else {
 
-      if (this.selectedSize === null) {
-        this.sizeSelected = true;
-      }
-      else {
-        this.showNotification = true;
-        this.addtoCartNotClicked = false;
-        this.sizeSelected = false;
+  //     if (this.selectedSize === null) {
+  //       this.sizeSelected = true;
+  //     }
+  //     else {
+  //       this.showNotification = true;
+  //       this.addtoCartNotClicked = false;
+  //       this.sizeSelected = false;
 
-        let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
-          return x.id === this.productIdFromProducts;
-        });
-        addedProductToCart!.selectedSize = this.selectedSize;
+  //       let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
+  //         return x.id === this.productIdFromProducts;
+  //       });
+  //       addedProductToCart!.selectedSize = this.selectedSize;
 
-        this.companyDetailsService.cartProducts.find((x) => {
-          if (addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize) {
-            if (x.quantity) {
-              x.quantity++;   //quantity may be zero
-            }
+  //       this.companyDetailsService.cartProducts.find((x) => {
+  //         if (addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize) {
+  //           if (x.quantity) {
+  //             x.quantity++;   //quantity may be zero
+  //           }
 
-            this.productWithSameDetailsFound = true;
-          }
-        })
+  //           this.productWithSameDetailsFound = true;
+  //         }
+  //       })
 
-        if (!this.productWithSameDetailsFound) {
-          addedProductToCart!.quantity = 1
-          let addItemToCart = { ...addedProductToCart }
+  //       if (!this.productWithSameDetailsFound) {
+  //         addedProductToCart!.quantity = 1
+  //         let addItemToCart = { ...addedProductToCart }
 
-          this.companyDetailsService.addProductToCart(addItemToCart as Products);
-        }
+  //         this.companyDetailsService.addProductToCart(addItemToCart as Products);
+  //       }
 
-      }
+  //     }
 
-      setTimeout(() => {
-        this.showNotification = false;
-      }, 2000)
-    }
-  }
+  //     setTimeout(() => {
+  //       this.showNotification = false;
+  //     }, 2000)
+  //   }
+  // }
 
-  buyNow() {
-    if (this.selectedSize) {
+  // buyNow() {
+  //   if (this.selectedSize) {
 
-      let addProductToBuy = this.companyDetailsService.AllProducts.find((x) => {
-        return x.id === this.productIdFromProducts;
-      });
+  //     let addProductToBuy = this.companyDetailsService.AllProducts.find((x) => {
+  //       return x.id === this.productIdFromProducts;
+  //     });
 
-      let addItemToBuy = { ...addProductToBuy }
-      addItemToBuy.selectedSize = this.selectedSize;
-      addItemToBuy.quantity = 1;
-      this.companyDetailsService.clearBuyProducts();
-      this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
-      this.router.navigate(['buynow'])
-    }
-    else {
-      this.sizeSelected = true;
-    }
-  }
+  //     let addItemToBuy = { ...addProductToBuy }
+  //     addItemToBuy.selectedSize = this.selectedSize;
+  //     addItemToBuy.quantity = 1;
+  //     this.companyDetailsService.clearBuyProducts();
+  //     this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
+  //     this.router.navigate(['buynow'])
+  //   }
+  //   else {
+  //     this.sizeSelected = true;
+  //   }
+  // }
 
   gotoCartClicked() {
     this.router.navigate(['/cartpage'])

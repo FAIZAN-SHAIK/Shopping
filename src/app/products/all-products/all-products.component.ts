@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter } from 'lodash';
+import * as _  from 'lodash';
+import { HttpService } from 'src/app/http.service';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 import { SharedService } from 'src/app/shared/auth.service';
@@ -13,7 +14,8 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class AllProductsComponent implements OnInit {
 
-  allProducts: Products[];
+  allProducts!: Products[];
+  mainProducts!: Products[];
   showByUserCategory: string = '';
   productSearched: string = ''
   wishListBtn = '♡';
@@ -25,23 +27,30 @@ export class AllProductsComponent implements OnInit {
     private productsService: ProductsService,
     private router: Router,
     private route: ActivatedRoute,
-    private ss: SharedService) {
+    private ss: SharedService,
+    private httpService: HttpService
+    ) {
+
+      this.httpService.getProducts().subscribe((x : Products[])=>{
+        this.mainProducts = x
+        this.allProducts = _.cloneDeep(this.mainProducts)
+      })  
 
     this.route.queryParams.subscribe(params => {
       this.showByUserCategory = params['category'];
 
     });
     if (this.showByUserCategory) {
-      this.allProducts = productsService.filterProducts(this.showByUserCategory)
+      this.allProducts = productsService.filterProducts(this.showByUserCategory,this.mainProducts)
     }
     else {
-      this.allProducts = productsService.filterProducts('all')
+      this.allProducts = productsService.filterProducts('all',this.mainProducts)
     }
 
   }
 
   filterBy(criteria: string) {
-    this.allProducts = this.productsService.filterProducts(criteria)
+    this.allProducts = this.productsService.filterProducts(criteria,this.mainProducts)
   }
 
   onPageChanged(event: PageEvent) {
@@ -51,7 +60,7 @@ export class AllProductsComponent implements OnInit {
   }
 
   onTagClicked(tag: string) {
-    this.allProducts = this.productsService.filterProducts(tag)
+    this.allProducts = this.productsService.filterProducts(tag,this.mainProducts)
   }
 
 
@@ -77,7 +86,7 @@ export class AllProductsComponent implements OnInit {
       this.router.navigate(['/login'])
     }
     else {
-      this.productsService.AllProducts.find((x) => {
+      this.allProducts.find((x) => {
         if (x.id === value.id) {
           x.wishlist = !x.wishlist;
         }

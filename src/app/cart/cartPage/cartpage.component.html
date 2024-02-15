@@ -1,5 +1,67 @@
 <app-header></app-header>
-<div class="top-div">
+
+<p-table [value]="cartItems" [tableStyle]="{'min-width': '60rem'}">
+  <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+          Products
+          <p-button icon="pi pi-refresh"></p-button>
+      </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Reviews</th>
+          <th>Status</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr>
+          <td>{{product.name}}</td>
+          <td><img [src]="product.imageUrl" [alt]="product.name" width="100" class="shadow-4" /></td>
+          <td>{{product.price | currency:'INR'}}</td>
+          <td>{{product.selectedSize}}</td>
+          
+          <td><h5>
+            <button class="buttton" (click)="increaseQuantity(product)">
+              +
+            </button>
+            {{ product.quantity }}
+            <button class="buttton" (click)="decreaseQuantity(product)">
+              -
+            </button>
+          </h5></td>
+          <td><button class="buttton" (click)="saveForLater(product)">
+            Save For Later
+          </button>
+          <br />
+          <button class="buttton" (click)="deleteProduct(product)">
+            Delete
+          </button></td>
+       
+          
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+      <div class="wrapper-box">
+        <div >
+          <h5>Total :</h5>
+          <h5>{{ calculateTotalPrice() | currency : "INR" }}</h5>
+        </div>
+        <div >
+          <button class="placeOrderBtn" (click)="placeOrder()">
+            Place Order
+          </button>
+        </div>
+      </div>
+  </ng-template>
+</p-table>
+<app-savelater></app-savelater>
+
+
+<!-- <div class="top-div">
   <div class="container">
     <div class="productDiv" *ngFor="let product of cartItems">
       <div class="container-fluid">
@@ -63,6 +125,16 @@
     <h5>Cart is Empty</h5>
     <button routerLink="/products">+ Add Items To Cart</button>
   </div>
-</div>
+  <app-savelater></app-savelater>
+</div> -->
 
-<app-savelater></app-savelater>
+
+
+
+
+
+
+
+
+
+

@@ -12,7 +12,6 @@ import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 
-
 import { userModule } from './User/user.module';
 import { SignUpUserdetailsComponent } from './Auth/signupUserDetails/signupUserDetails.component';
 import { CartModule } from './cart/cart.module';
@@ -20,20 +19,18 @@ import { AbousUsComponent } from './components/aboutUs/aboutus.component';
 import { ContactMeComponent } from './components/contactme/contactme.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
-
-
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
-  declarations:
-    [
-      AppComponent,
-      HomeComponent,
-      LoginComponent,
-      SignUpComponent,
-      SignUpUserdetailsComponent,
-      ContactMeComponent,
-      AbousUsComponent
-    ],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    SignUpComponent,
+    SignUpUserdetailsComponent,
+    ContactMeComponent,
+    AbousUsComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule,
@@ -44,12 +41,11 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     FormsModule,
     CartModule,
     BrowserAnimationsModule,
-    IvyCarouselModule
-    
-  
+    IvyCarouselModule,
+    ButtonModule,
   ],
 
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

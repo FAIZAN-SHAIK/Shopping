@@ -13,15 +13,15 @@ import { ProductsService } from "src/app/products.service";
 export class WishlistComponent {
   wishListBtn = '♡'
 
-  wishlistOfUser: Products[];
+  // wishlistOfUser: Products[];
 
   constructor(
     private wishlistProductsService: ProductsService,
     private router: Router) {
 
-    this.wishlistOfUser = this.wishlistProductsService.AllProducts.filter((x) => {
-      return x.wishlist === true
-    })
+    // this.wishlistOfUser = this.wishlistProductsService.AllProducts.filter((x) => {
+    //   return x.wishlist === true
+    // })
 
   }
 
@@ -30,16 +30,16 @@ export class WishlistComponent {
 
   }
 
-  wishlistClicked(item: any) {
-    this.wishlistProductsService.AllProducts.find((x) => {
-      if (x.id === item.id) {
-        x.wishlist = !x.wishlist;
-      }
-    })
+  // wishlistClicked(item: any) {
+  //   this.wishlistProductsService.AllProducts.find((x) => {
+  //     if (x.id === item.id) {
+  //       x.wishlist = !x.wishlist;
+  //     }
+  //   })
 
-    let itemToBeRemoved = this.wishlistOfUser.indexOf(item)
-    this.wishlistOfUser.splice(itemToBeRemoved, 1)
-  }
+  //   let itemToBeRemoved = this.wishlistOfUser.indexOf(item)
+  //   this.wishlistOfUser.splice(itemToBeRemoved, 1)
+  // }
 
   onAddToWishlist() {
     this.router.navigate(['/products'])

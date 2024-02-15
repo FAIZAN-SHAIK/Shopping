@@ -1,14 +1,15 @@
 .top-div{
   background-color:rgb(203 213 225) ;
-  min-height: 94vh;
-  height: 95%;
+  /* min-height: 94vh; */
+ 
+  
 }
 .cartEmpty{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  /* height: 70vh; */
   font-size: 20px;
 }
 

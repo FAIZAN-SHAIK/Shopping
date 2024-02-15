@@ -11,6 +11,7 @@ import { ChangeAddress } from './buy-now/change address/changeAddress.component'
 import { CheckoutComponent } from './checkout/checkout.component';
 import { UserRoutingModule } from '../User/userRouting.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { HttpClientModule } from  '@angular/common/http';
 
 
 
@@ -35,7 +36,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     ReactiveFormsModule,
     UserRoutingModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
     
 
   ]
