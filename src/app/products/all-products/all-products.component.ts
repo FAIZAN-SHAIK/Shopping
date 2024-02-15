@@ -23,7 +23,7 @@ export class AllProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     private ss: SharedService) {
     this.allProducts = productsService.AllProducts
     // console.log(this.allProducts)
@@ -60,7 +60,7 @@ export class AllProductsComponent implements OnInit {
     }
   }
 
-  wishlistClicked(value: any) {
+  wishlistClicked(value: Products) {
 
     if (!this.ss.isUserLoggedIn) {
       this.router.navigate(['/login'])
