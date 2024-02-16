@@ -5,8 +5,9 @@ import { RouterModule } from "@angular/router";
 import { CartRoutingModule } from "./cart-routing.module";
 import { CommonModule } from "@angular/common";
 import { SaveLaterComponent } from "./saveLater/savelater.component";
-import {TableModule} from 'primeng/table';
-import {ButtonModule} from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DataViewModule } from 'primeng/dataview';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {ButtonModule} from 'primeng/button';
 
   ],
   imports: [RouterModule, SharedModule, CartRoutingModule,
-    CommonModule,TableModule,ButtonModule
+    CommonModule, TableModule, ButtonModule, DataViewModule
 
 
 

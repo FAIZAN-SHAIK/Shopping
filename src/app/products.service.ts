@@ -72,7 +72,7 @@ export class ProductsService {
 
 
 
-  
+
 
   cartProducts: Products[] = [];
   buyProducts: Products[] = [];
@@ -137,9 +137,9 @@ export class ProductsService {
       this.orders.push(product)
     })
     this.clearBuyProducts()
-  } 
+  }
 
-  filterProducts(criteria: string, allProduct : Products[]): Products[] {
+  filterProducts(criteria: string, allProduct: Products[]): Products[] {
 
     switch (criteria) {
       case 'priceHtoL':

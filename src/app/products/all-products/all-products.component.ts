@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as _  from 'lodash';
+import * as _ from 'lodash';
+import { map } from 'rxjs';
 import { HttpService } from 'src/app/http.service';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
@@ -14,8 +15,8 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class AllProductsComponent implements OnInit {
 
-  allProducts!: Products[];
-  mainProducts!: Products[];
+  allProducts: Array<Products> = [];
+  mainProducts: Array<Products> = [];
   showByUserCategory: string = '';
   productSearched: string = ''
   wishListBtn = '♡';
@@ -29,28 +30,19 @@ export class AllProductsComponent implements OnInit {
     private route: ActivatedRoute,
     private ss: SharedService,
     private httpService: HttpService
-    ) {
+  ) {
 
-      this.httpService.getProducts().subscribe((x : Products[])=>{
-        this.mainProducts = x
-        this.allProducts = _.cloneDeep(this.mainProducts)
-      })  
+    this.httpService.getProducts().subscribe((x: Products[]) => {
+      [...this.mainProducts] = x
+      this.allProducts = _.cloneDeep([...this.mainProducts])
+    })
 
-    this.route.queryParams.subscribe(params => {
-      this.showByUserCategory = params['category'];
 
-    });
-    if (this.showByUserCategory) {
-      this.allProducts = productsService.filterProducts(this.showByUserCategory,this.mainProducts)
-    }
-    else {
-      this.allProducts = productsService.filterProducts('all',this.mainProducts)
-    }
 
   }
 
   filterBy(criteria: string) {
-    this.allProducts = this.productsService.filterProducts(criteria,this.mainProducts)
+    this.allProducts = this.productsService.filterProducts(criteria, [...this.mainProducts])
   }
 
   onPageChanged(event: PageEvent) {
@@ -60,12 +52,14 @@ export class AllProductsComponent implements OnInit {
   }
 
   onTagClicked(tag: string) {
-    this.allProducts = this.productsService.filterProducts(tag,this.mainProducts)
+    this.allProducts = this.productsService.filterProducts(tag, [...this.mainProducts])
   }
 
 
-  productClicked(value: Products) {
-    this.router.navigate(['productDetails/' + value.id])
+  productClicked(product: Products) {
+    const serializedProduct = JSON.stringify(product);
+    this.router.navigate(['product-details/', { product: serializedProduct }]);
+    // this.router.navigate(['productDetails/' + value])
 
     const isProductInCartArray = this.productsService.cartProducts.some((product) => {
       return product.id === value.id;
@@ -96,10 +90,29 @@ export class AllProductsComponent implements OnInit {
 
   }
 
+  filterProductsByHomeCategory(): void {
+    if (this.showByUserCategory) {
+      this.allProducts = this.productsService.filterProducts(this.showByUserCategory, this.mainProducts);
+    } else {
+      this.allProducts = this.productsService.filterProducts('all', this.mainProducts);
+    }
+  }
+
 
 
 
   ngOnInit(): void {
+    this.httpService.getProducts().pipe(
+      map((x: Products[]) => {
+        this.mainProducts = x;
+        this.allProducts = _.cloneDeep(this.mainProducts);
+        return this.route.snapshot.queryParams['category'];
+      })
+    ).subscribe((category: string) => {
+      this.showByUserCategory = category;
+      this.filterProductsByHomeCategory();
+    });
   }
-
 }
+
+
