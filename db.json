@@ -672,5 +672,81 @@
       "imageUrl": "../../../assets/women/tshirts/t11.webp",
       "wishlist": false
     }
+  ],
+  "Users":[
+   
+    {
+    "id" : 1,
+      "firstname": "Faizan",
+      "lastname": "shaik",
+      "gender": "male",
+      "mobile": 6302778470,
+      "emailid": "faizanshaik@gmail.com",
+      "address": "3-120,Nutakki,522303,Mangalagiri,Andhra pradesh",
+      "username": "faizan",
+      "password": "faizu123",
+      "addtocart":[],
+      "wishlist":[],
+      "orders":[]
+    },
+    {
+        "id" : 2,
+      "firstname": "Amod",
+      "lastname": "Sah",
+      "gender": "male",
+      "mobile": 1234567890,
+      "emailid": "amodsah@gmail.com",
+      "address": "2/2--120,Rajapur,841438,Patna,Bihar",
+      "username": "amod",
+      "password": "amod123",
+      "addtocart":[],
+      "wishlist":[],
+      "orders":[]
+    },
+    {
+        "id" : 3,
+      "firstname": "Prateek",
+      "lastname": "kumar",
+      "gender": "male",
+      "mobile": 9798691239,
+      "emailid": "prateekkumar@gmail.com",
+      "address": "4/4/120,Gota,391456,Ahmedabad,Gujarat",
+      "username": "prateek",
+      "password": "pratek123",
+      "addtocart":[],
+      "wishlist":[],
+      "orders":[]
+    },
+    {
+        "id" : 4,
+      "firstname": "krutik",
+      "lastname": "vaishnav",
+      "gender": "male",
+      "mobile": 9875547773,
+      "emailid": "krutik@gmail.com",
+      "address": "23/435-1,vasantnagar,436215,Ranchi,Jahrkhand",
+      "username": "kruteek",
+      "password": "kruteek123",
+      "addtocart":[],
+      "wishlist":[],
+      "orders":[]
+    },
+    {
+        "id" : 5,
+      "firstname": "Akhtar",
+      "lastname": "shoaib",
+      "gender": "male",
+      "mobile": 9674675476,
+      "emailid": "akhtarshoaib@gmail.com",
+      "address": "2343:1-1,Vadej,318462,Ahmedabad,gujarat",
+      "username": "shoaib",
+      "password": "shoaib123",
+      "addtocart":[],
+      "wishlist":[],
+      "orders":[]
+    }
   ]
+  
+
+
 }

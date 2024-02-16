@@ -4,6 +4,7 @@ import { ProductsService } from 'src/app/products.service';
 import { Products } from 'src/app/products.class';
 import { AppService } from 'src/app/app.service';
 import { SharedService } from 'src/app/shared/auth.service';
+import { HttpService } from 'src/app/http.service';
 
 
 @Component({
@@ -12,8 +13,8 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  product!: Products;
-  prodDetails: Products[] = [];
+  productId!: number;
+  product!: Products ;
   similarProducts: Products[] = [];
   wishListBtn = '♡'
   selectedSize: string | null = null
@@ -34,13 +35,14 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private companyDetailsService: ProductsService,
+    private ps: ProductsService,
     private aS: AppService,
-    private ss: SharedService
+    private ss: SharedService,
+    private http : HttpService
 
   ) {
 
-    if (this.companyDetailsService.didItemAddedToCart) {
+    if (this.ps.didItemAddedToCart) {
       this.addtoCartNotClicked = false
     }
     else {
@@ -53,27 +55,26 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   showSimilarItems() {
-    this.similarProducts = this.companyDetailsService.AllProducts.filter(
-      (x) => {
-        return (
-          x.gender === this.prodDetails[0].gender &&
-          x.type === this.prodDetails[0].type
 
-        );
-      }
-    );
+    this.http.getProducts().subscribe((x)=>{
+      this.similarProducts = x.filter((prod)=> prod.gender === this.product?.gender && prod.type  === this.product.type)
+        
+    })
 
-    const itemToRemove = this.similarProducts.findIndex(item => item.id === this.product);
+   
+
+    const itemToRemove = this.similarProducts.findIndex(item => item.id === this.productId);
 
     if (itemToRemove !== -1) {
       this.similarProducts.splice(itemToRemove, 1);
     }
+
   }
 
   productClicked(item: Products) {
     this.router.navigate(['productDetails/' + item.id]);
 
-    const isProductInArray = this.companyDetailsService.cartProducts.some((product) => {
+    const isProductInArray = this.ps.cartProducts.some((product) => {
       return product.id === item.id;
     });
 
@@ -88,11 +89,18 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((data) => {
-      const serializedProduct = data.get('product');
-      if (serializedProduct) {
-        this.product = JSON.parse(serializedProduct);
+      this.productId = Number(data.get('id')) ;
+      
+
+      this.http.getProduct(this.productId).subscribe((x)=>[
+        this.product = x
+      ])
+
+      if(this.product){
+
+        this.price = this.product.price - (this.product.price * (this.discount / 100))
       }
-      this.price = this.product.price - (this.prodDetails[0].price * (this.discount / 100))
+      
 
     });
   }
@@ -103,8 +111,8 @@ export class ProductDetailsComponent implements OnInit {
       this.router.navigate(['/login'])
     }
     else {
-      this.companyDetailsService.AllProducts.find((x) => {
-        if (x.id === this.prodDetails[0].id) {
+      this.ps.AllProducts.find((x) => {
+        if (x.id === this.product.id) {
           x.wishlist = !x.wishlist;
 
         }
@@ -133,12 +141,12 @@ export class ProductDetailsComponent implements OnInit {
         this.addtoCartNotClicked = false;
         this.sizeSelected = false;
 
-        let addedProductToCart = this.companyDetailsService.AllProducts.find((x) => {
-          return x.id === this.product;
+        let addedProductToCart = this.ps.AllProducts.find((x) => {
+          return x.id === this.productId;
         });
         addedProductToCart!.selectedSize = this.selectedSize;
 
-        this.companyDetailsService.cartProducts.find((x) => {
+        this.ps.cartProducts.find((x) => {
           if (addedProductToCart?.id === x.id && addedProductToCart?.selectedSize === x.selectedSize) {
             if (x.quantity) {
               x.quantity++;   //quantity may be zero
@@ -152,7 +160,7 @@ export class ProductDetailsComponent implements OnInit {
           addedProductToCart!.quantity = 1
           let addItemToCart = { ...addedProductToCart }
 
-          this.companyDetailsService.addProductToCart(addItemToCart as Products);
+          this.ps.addProductToCart(addItemToCart as Products);
         }
 
       }
@@ -166,15 +174,15 @@ export class ProductDetailsComponent implements OnInit {
   buyNow() {
     if (this.selectedSize) {
 
-      let addProductToBuy = this.companyDetailsService.AllProducts.find((x) => {
-        return x.id === this.product;
+      let addProductToBuy = this.ps.AllProducts.find((x) => {
+        return x.id === this.productId;
       });
 
       let addItemToBuy = { ...addProductToBuy }
       addItemToBuy.selectedSize = this.selectedSize;
       addItemToBuy.quantity = 1;
-      this.companyDetailsService.clearBuyProducts();
-      this.companyDetailsService.buyProducts.push(addItemToBuy as Products);
+      this.ps.clearBuyProducts();
+      this.ps.buyProducts.push(addItemToBuy as Products);
       this.router.navigate(['buynow'])
     }
     else {

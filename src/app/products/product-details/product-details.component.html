@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+
+
 <div class="top-div">
   <button class="buyAddCartGotoBtn" (click)="goBack()">
     Go to All Products ....
@@ -7,11 +9,13 @@
 
   <app-notification *ngIf="showNotification"></app-notification>
 
+ 
+
   <div class="container">
-    aQ
     <div class="row">
       <div class="col-4">
         <div class="image-container">
+          
           <img
             style="
               border: 1px solid whitesmoke;
@@ -19,42 +23,46 @@
               border-radius: 20px;
             "
             class="card-img-top"
-            src="{{ prodDetails[0].imageUrl }}"
+            src="{{ product.imageUrl  }}"
             alt="Card image cap"
             height="450px"
           />
+        
           <div class="text-overlay">
             <button
               class="lovebtn"
               [ngClass]="{
-                lovebtnFalse: prodDetails[0].wishlist === false,
-                lovebtnTrue: prodDetails[0].wishlist === true
+                lovebtnFalse: product!.wishlist === false,
+                lovebtnTrue: product!.wishlist === true
               }"
               (click)="wishlistClicked()"
             >
               {{ wishListBtn }}
             </button>
           </div>
+        
         </div>
       </div>
+    
 
       <div class="col-6">
         <div class="card-body">
           <h4 style="font-weight: normal; opacity: 0.5" class="card-title">
-            {{ prodDetails[0].brand | titlecase }}
+            {{ product.brand | titlecase }}
           </h4>
-          <h3 class="card-title">{{ prodDetails[0].name | titlecase }}</h3>
+          <h3 class="card-title">{{ product.name | titlecase }}</h3>
           &nbsp;
 
           <small class="text-success">Special price</small>
           <h2>
-            {{ prodDetails[0].price | currency : "INR" }}
+            {{ product.price | currency : "INR" }}
           </h2>
-          <s>Rs.{{ prodDetails[0].price + 200 }}</s>
+          <s>Rs.{{ product.price + 200 }}</s>
           <p class="text-success">{{ discount }}% off</p>
           <a class="btn ratingBtn">{{ ratingStar }}🌟</a>
           <p>{{ ratings }} ratings and {{ reviews }} reviews</p>
           <p>size</p>
+        
           <div>
             <a
               class="btn sizesBtn"
@@ -118,31 +126,32 @@
 
         <div>
           <h6>
-            <pre>Name : {{ prodDetails[0].name }}</pre>
+            <pre>Name : {{ product.name }}</pre>
           </h6>
           <h6>
-            <pre>Type : {{ prodDetails[0].type }}</pre>
+            <pre>Type : {{ product.type }}</pre>
           </h6>
           <h6>
             <pre style="border: 1px solid red">fabric : cotton </pre>
           </h6>
           <h6>
-            <pre>Ideal For : {{ prodDetails[0].gender }}</pre>
+            <pre>Ideal For : {{ product.gender }}</pre>
           </h6>
           <h6>
-            <pre>color : {{ prodDetails[0].color }}</pre>
+            <pre>color : {{ product.color }}</pre>
           </h6>
           <h6>
             <pre>Pack of : 1</pre>
           </h6>
           <h6>
-            <pre>brand : {{ prodDetails[0].brand }}</pre>
+            <pre>brand : {{ product.brand }}</pre>
           </h6>
           <h6>
-            <pre>id : {{ prodDetails[0].id }}</pre>
+            <pre>id : {{ product.id }}</pre>
           </h6>
         </div>
       </div>
+    
 
       <div class="col-6">
         <h3>Address Details</h3>
@@ -167,8 +176,8 @@
 
   <div class="container similarProductsContainer">
     <div class="row">
-      <a href=""></a>
-      <div
+       <a href=""></a> 
+       <div
         class="col-md-3"
         style="margin-top: 15px; height: 350px"
         *ngFor="let item of similarProducts"
@@ -201,10 +210,7 @@
             <a class="btn btn-sm addCartBtn">Add to Cart</a>
           </div>
         </div>
-      </div>
-      <!-- </div>
+      </div> 
+   </div>
   </div>
-</div> -->
-    </div>
-  </div>
-</div>
+</div> 

@@ -1,72 +1,77 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+import { HttpService } from 'src/app/http.service';
 
 import { login } from 'src/app/login';
-
-
-
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
-export class SignUpComponent {
-  userNameSignUpPage: string = ""
-  PasswordSignUpPage: string = ""
-  reEnterPasswordSignUPPage: string = ""
+export class SignUpComponent implements OnInit {
+  userNameSignUpPage: string = '';
+  PasswordSignUpPage: string = '';
+  reEnterPasswordSignUPPage: string = '';
 
-  checkUserRepeated = false;
-  chechUsersToLogin: login[]
+  UserData: login[] | null = null;
+
+  checkUserRepeated: boolean = false;
 
   constructor(
     private signUpPageService: AppService,
-    private router: Router
-  ) {
-    this.chechUsersToLogin = signUpPageService.predefinedLoginDetails
-
+    private router: Router,
+    private http: HttpService
+  ) {}
+  ngOnInit(): void {
+    this.http.getUsers().subscribe((user) => {
+      this.UserData = user;
+      console.log(this.UserData);
+    });
   }
 
   newRegistration() {
-    this.signUpPageService.predefinedLoginDetails.find((item) => {
-      if (item.username === this.userNameSignUpPage) {
-        this.checkUserRepeated = true;
 
-      }
-    })
+    if(this.UserData){
+      this.UserData.find((x: login) => {
+        if (x.username === this.userNameSignUpPage) {
+          this.checkUserRepeated = true;
+          console.log(this.checkUserRepeated);
+        }
+      });
 
-
-    if (this.checkUserRepeated === false) {
-
-      if (this.userNameSignUpPage === '' || this.PasswordSignUpPage === '' || this.reEnterPasswordSignUPPage === '') {
-        alert("Details are mandatory")
-        this.userNameSignUpPage = ''
-        this.PasswordSignUpPage = ''
-        this.reEnterPasswordSignUPPage = ''
-      }
-      else if (this.PasswordSignUpPage === this.reEnterPasswordSignUPPage) {
-
-        this.signUpPageService.newSignupUserName = this.userNameSignUpPage
-        this.signUpPageService.newSignupUserPassword = this.PasswordSignUpPage
-        this.router.navigate(['/signupUserDetails'])
-      }
-      else {
-        alert("password mismatch")
-        this.userNameSignUpPage = ''
-        this.PasswordSignUpPage = ''
-        this.reEnterPasswordSignUPPage = ''
-
-      }
     }
-    else {
-      alert("you are already our user")
-      this.userNameSignUpPage = ''
-      this.PasswordSignUpPage = ''
-      this.reEnterPasswordSignUPPage = ''
+   
+
+    if (
+      this.userNameSignUpPage === '' ||
+      this.PasswordSignUpPage === '' ||
+      this.reEnterPasswordSignUPPage === ''
+    ) {
+      alert('Details are mandatory');
+      this.userNameSignUpPage = '';
+      this.PasswordSignUpPage = '';
+      this.reEnterPasswordSignUPPage = '';
+    } else if (this.checkUserRepeated) {
+      alert('you are already our user');
+      this.userNameSignUpPage = '';
+      this.PasswordSignUpPage = '';
+      this.reEnterPasswordSignUPPage = '';
+      this.checkUserRepeated = false;
+    } else if (
+      this.PasswordSignUpPage === this.reEnterPasswordSignUPPage &&
+      !this.checkUserRepeated
+    ) {
+      // this.signUpPageService.newSignupUserName = this.userNameSignUpPage;
+      // this.signUpPageService.newSignupUserPassword = this.PasswordSignUpPage;
+      this.router.navigate(['/signupUserDetails']);
+    } else {
+      alert('password mismatch');
+      this.userNameSignUpPage = '';
+      this.PasswordSignUpPage = '';
+      this.reEnterPasswordSignUPPage = '';
     }
   }
-
-
 }

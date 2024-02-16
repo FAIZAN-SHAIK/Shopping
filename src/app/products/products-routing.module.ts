@@ -9,7 +9,7 @@ import { CheckoutComponent } from "./checkout/checkout.component";
 const routes: Routes = [
 
   { path: 'products', component: AllProductsComponent },
-  { path: 'productDetails/:product', component: ProductDetailsComponent },
+  { path: 'productDetails/:id', component: ProductDetailsComponent },
   { path: 'buynow', component: BuyNowComponent, canActivate: [CanActivate] },
   { path: 'checkout/:price', component: CheckoutComponent }
 

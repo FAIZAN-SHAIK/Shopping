@@ -33,7 +33,7 @@ export class AllProductsComponent implements OnInit {
   ) {
 
     this.httpService.getProducts().subscribe((x: Products[]) => {
-      [...this.mainProducts] = x
+      this.mainProducts = x
       this.allProducts = _.cloneDeep([...this.mainProducts])
     })
 
@@ -57,12 +57,11 @@ export class AllProductsComponent implements OnInit {
 
 
   productClicked(product: Products) {
-    const serializedProduct = JSON.stringify(product);
-    this.router.navigate(['product-details/', { product: serializedProduct }]);
-    // this.router.navigate(['productDetails/' + value])
+   
+    this.router.navigate(['productDetails/' + product.id])
 
     const isProductInCartArray = this.productsService.cartProducts.some((product) => {
-      return product.id === value.id;
+      return product.id === product.id;
     });
 
     if (isProductInCartArray) {

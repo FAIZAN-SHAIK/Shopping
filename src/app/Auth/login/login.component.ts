@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppService } from "src/app/app.service";
+import { HttpService } from "src/app/http.service";
+import { login } from "src/app/login";
 import { SharedService } from "src/app/shared/auth.service";
 
 @Component({
@@ -11,8 +13,8 @@ import { SharedService } from "src/app/shared/auth.service";
 
 
 export class LoginComponent {
-  userNameLoginPage = "";
-  passwordLoginPage = "";
+  userNameLoginPage : string = "";
+  passwordLoginPage : string = "";
   userFound = false;
   spinnerOn : boolean = false;
 
@@ -20,7 +22,8 @@ export class LoginComponent {
     private loginDetailDataService: AppService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private http : HttpService) {
       
      }
 
@@ -31,28 +34,31 @@ export class LoginComponent {
     }
     else {
 
-      this.loginDetailDataService.predefinedLoginDetails.find((i) => {
-        if (i.username === this.userNameLoginPage && i.password === this.passwordLoginPage) {
+      this.http.getUsers().subscribe((user)=>{
+        
+        user.find((x : login)=>{
+          
+          if(x.username === this.userNameLoginPage && x.password === this.passwordLoginPage){
 
-          this.sharedService.isLogin();
-          this.sharedService.userLoggedInName = this.userNameLoginPage
-          this.userFound = true;
-          this.spinnerOn = true
-
-          setTimeout(()=>{
             
-            this.router.navigate(['']);
-          },1500)
-        }
-      })
+            this.sharedService.isLogin();
+            this.sharedService.userLoggedInName = this.userNameLoginPage;
+            this.userFound = true;
+            this.spinnerOn = true;
 
+            localStorage.setItem("loginUserName",x.firstname)
+            localStorage.setItem("loginUserId",JSON.stringify(x.id))
 
-      if (this.userNameLoginPage !== '' && this.passwordLoginPage !== '' && !this.userFound) {
-        alert("You Dont have account , Create One!!");
-        this.userNameLoginPage = "";
-        this.passwordLoginPage = "";
-      }
+            setTimeout(()=>{
+            
+              this.router.navigate(['']);
+            },1000)
+
+          }
+        })
+      })  
     }
+    
   }
 
   signUpButtonClicked() {

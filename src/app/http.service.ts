@@ -3,17 +3,29 @@ import { HttpClient } from  '@angular/common/http';
 import { Injectable } from  '@angular/core';
 import { Observable } from 'rxjs';
 import { Products } from './products.class';
+import { login } from './login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  url : string = 'http://localhost:3000/AllProducts'
+  url : string = 'http://localhost:3000/'
+  products : string = 'AllProducts/'
+  Users : string = 'Users/'
+  
 
   constructor( private http : HttpClient) { }
 
   getProducts() : Observable<Products[]> {
-    return this.http.get<Products[]>(this.url);
+    return this.http.get<Products[]>(this.url + `${this.products}`);
+  }
+
+  getProduct(productId? : number) : Observable<Products> {
+    return this.http.get<Products>(this.url+`${this.products}${productId}`);
+  }
+
+  getUsers(): Observable<login[]>{
+    return this.http.get<login[]>(this.url+`${this.Users}`)
   }
 }

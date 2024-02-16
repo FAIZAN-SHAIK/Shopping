@@ -25,7 +25,7 @@ export class SignUpUserdetailsComponent{
     }
 
     onSave(){
-        this.signupDetailsService.addNewUser(this.firstName,this.lastName,this.gender,this.Mobile,this.emailId,this.address)
+        // this.signupDetailsService.addNewUser(this.firstName,this.lastName,this.gender,this.Mobile,this.emailId,this.address)
         this.router.navigate(['/login'])
        
     }
