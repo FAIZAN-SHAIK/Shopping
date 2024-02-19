@@ -1,3 +1,4 @@
+// import { addTocart } from './../../login';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/products.service';
@@ -14,7 +15,7 @@ import { HttpService } from 'src/app/http.service';
 })
 export class ProductDetailsComponent implements OnInit {
   productId!: number;
-  product!: Products ;
+  product!: Products;
   similarProducts: Products[] = [];
   wishListBtn = '♡'
   selectedSize: string | null = null
@@ -38,7 +39,7 @@ export class ProductDetailsComponent implements OnInit {
     private ps: ProductsService,
     private aS: AppService,
     private ss: SharedService,
-    private http : HttpService
+    private http: HttpService
 
   ) {
 
@@ -56,12 +57,12 @@ export class ProductDetailsComponent implements OnInit {
 
   showSimilarItems() {
 
-    this.http.getProducts().subscribe((x)=>{
-      this.similarProducts = x.filter((prod)=> prod.gender === this.product?.gender && prod.type  === this.product.type)
-        
+    this.http.getProducts().subscribe((x) => {
+      this.similarProducts = x.filter((prod) => prod.gender === this.product?.gender && prod.type === this.product.type)
+
     })
 
-   
+
 
     const itemToRemove = this.similarProducts.findIndex(item => item.id === this.productId);
 
@@ -89,18 +90,18 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((data) => {
-      this.productId = Number(data.get('id')) ;
-      
+      this.productId = Number(data.get('id'));
 
-      this.http.getProduct(this.productId).subscribe((x)=>[
+
+      this.http.getProduct(this.productId).subscribe((x) => [
         this.product = x
       ])
 
-      if(this.product){
+      if (this.product) {
 
         this.price = this.product.price - (this.product.price * (this.discount / 100))
       }
-      
+
 
     });
   }
@@ -140,6 +141,39 @@ export class ProductDetailsComponent implements OnInit {
         this.showNotification = true;
         this.addtoCartNotClicked = false;
         this.sizeSelected = false;
+
+
+
+        const currentUserId = Number(localStorage.getItem("loginUserId"))
+
+        this.http.getUser(currentUserId).subscribe((user) => {
+          let currentUserDetails = user;
+
+          if (this.selectedSize) {
+
+            this.product.selectedSize = this.selectedSize;
+          }
+
+          const existingCartItem = currentUserDetails.addtocart.find((x) => {
+            this.product.id === x.id && this.product.selectedSize === x.selectedSize
+          });
+
+          if (existingCartItem) {
+            existingCartItem.quantity += this.product.quantity;
+          } else {
+            this.product.quantity = 1;
+            currentUserDetails.addtocart.push(this.product);
+          }
+
+          this.http.updateUser(currentUserId, currentUserDetails).subscribe((response) => {
+            console.log(response);
+          });
+
+
+
+        })
+
+
 
         let addedProductToCart = this.ps.AllProducts.find((x) => {
           return x.id === this.productId;

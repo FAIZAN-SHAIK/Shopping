@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 import * as _ from 'lodash';
+import { HttpService } from 'src/app/http.service';
 
 @Component({
   selector: 'app-cartpage',
@@ -14,8 +15,13 @@ export class CartPageComponent {
   productValue: number = 0;
   totalPrice: number = 0;
 
-  constructor(private ps: ProductsService, private router: Router) {
-    this.cartItems = this.ps.cartProducts;
+  constructor(private ps: ProductsService, private router: Router, private http: HttpService) {
+    // this.cartItems = this.ps.cartProducts;
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((x) => {
+      this.cartItems = x.addtocart
+    })
+
   }
 
   calculateTotalPrice() {
@@ -48,7 +54,12 @@ export class CartPageComponent {
   }
 
   deleteProduct(product: Products) {
-    this.ps.deleteProduct(product);
+    // this.ps.deleteProduct(product);
+    this.http.deleteProduct(Number(localStorage.getItem('loginUserId')), product.id).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+
+    })
   }
 
   placeOrder() {

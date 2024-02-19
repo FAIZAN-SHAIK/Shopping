@@ -1,5 +1,5 @@
 {
-   "AllProducts": [
+  "AllProducts": [
     {
       "quantity": 0,
       "id": 1,
@@ -673,10 +673,9 @@
       "wishlist": false
     }
   ],
-  "Users":[
-   
+  "Users": [
     {
-    "id" : 1,
+      "id": 1,
       "firstname": "Faizan",
       "lastname": "shaik",
       "gender": "male",
@@ -685,12 +684,52 @@
       "address": "3-120,Nutakki,522303,Mangalagiri,Andhra pradesh",
       "username": "faizan",
       "password": "faizu123",
-      "addtocart":[],
-      "wishlist":[],
-      "orders":[]
+      "addtocart": [
+        {
+          "quantity": 1,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "L"
+        },
+        {
+          "quantity": 1,
+          "id": 28,
+          "name": "Urban red tshirt",
+          "type": "tshirt",
+          "price": 899,
+          "gender": "male",
+          "color": "red",
+          "brand": "Urban",
+          "imageUrl": "../../../assets/men/tshirts/t3.webp",
+          "wishlist": false,
+          "selectedSize": "XL"
+        },
+        {
+          "quantity": 1,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "M"
+        }
+      ],
+      "wishlist": [],
+      "orders": []
     },
     {
-        "id" : 2,
+      "id": 2,
       "firstname": "Amod",
       "lastname": "Sah",
       "gender": "male",
@@ -699,12 +738,12 @@
       "address": "2/2--120,Rajapur,841438,Patna,Bihar",
       "username": "amod",
       "password": "amod123",
-      "addtocart":[],
-      "wishlist":[],
-      "orders":[]
+      "addtocart": [],
+      "wishlist": [],
+      "orders": []
     },
     {
-        "id" : 3,
+      "id": 3,
       "firstname": "Prateek",
       "lastname": "kumar",
       "gender": "male",
@@ -713,12 +752,12 @@
       "address": "4/4/120,Gota,391456,Ahmedabad,Gujarat",
       "username": "prateek",
       "password": "pratek123",
-      "addtocart":[],
-      "wishlist":[],
-      "orders":[]
+      "addtocart": [],
+      "wishlist": [],
+      "orders": []
     },
     {
-        "id" : 4,
+      "id": 4,
       "firstname": "krutik",
       "lastname": "vaishnav",
       "gender": "male",
@@ -727,12 +766,12 @@
       "address": "23/435-1,vasantnagar,436215,Ranchi,Jahrkhand",
       "username": "kruteek",
       "password": "kruteek123",
-      "addtocart":[],
-      "wishlist":[],
-      "orders":[]
+      "addtocart": [],
+      "wishlist": [],
+      "orders": []
     },
     {
-        "id" : 5,
+      "id": 5,
       "firstname": "Akhtar",
       "lastname": "shoaib",
       "gender": "male",
@@ -741,12 +780,9 @@
       "address": "2343:1-1,Vadej,318462,Ahmedabad,gujarat",
       "username": "shoaib",
       "password": "shoaib123",
-      "addtocart":[],
-      "wishlist":[],
-      "orders":[]
+      "addtocart": [],
+      "wishlist": [],
+      "orders": []
     }
   ]
-  
-
-
 }
