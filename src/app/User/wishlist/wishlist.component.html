@@ -1,5 +1,5 @@
 
-<!-- <div class="top-div">
+<div class="top-div">
   <div class="wishlistEmpty" *ngIf="wishlistOfUser.length === 0">
     <h1 class="text-dark">Your Wishlist Seems To Be Empty</h1>
     <button class="add-wishlistBtn" (click)="onAddToWishlist()">
@@ -43,7 +43,7 @@
             <button
               class="lovebtn"
               [ngClass]="{
-                lovebtnFalse: item.wishlist === false,
+                
                 lovebtnTrue: item.wishlist === true
               }"
               (click)="wishlistClicked(item)"
@@ -59,6 +59,6 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-<!-- <p *ngFor="let item of wishlistOfUser">{{ item.id }} and {{ item.name }}</p> -->
+<p *ngFor="let item of wishlistOfUser">{{ item.id }} and {{ item.name }}</p>

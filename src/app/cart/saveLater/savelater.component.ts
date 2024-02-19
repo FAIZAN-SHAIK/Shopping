@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Products } from "src/app/products.class";
 import { ProductsService } from "src/app/products.service";
 import * as _ from 'lodash';
+import { HttpService } from "src/app/http.service";
 
 @Component({
   selector: "app-savelater",
@@ -16,9 +17,13 @@ export class SaveLaterComponent {
   constructor
     (
       private ps: ProductsService,
-      private router: Router
+      private router: Router,
+      private http : HttpService
     ) {
-    this.saveLaterProducts = ps.savelater
+      this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+        this.saveLaterProducts = user.savelater
+      })
+    // this.saveLaterProducts = ps.savelater
   }
 
   productClicked(product: Products) {

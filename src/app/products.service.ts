@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Products } from './products.class';
 import * as _ from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,13 @@ export class ProductsService {
 
   ]
 
+  constructor(private http : HttpService){
+
+  }
+
+
+ 
+
 
 
 
@@ -119,7 +127,7 @@ export class ProductsService {
     this.cartLengthSubject.next(this.cartProducts.length);
   }
 
-  constructor() { }
+  
 
 
   clearBuyProducts() {

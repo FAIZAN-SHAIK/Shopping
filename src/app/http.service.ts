@@ -33,11 +33,19 @@ export class HttpService {
     return this.http.get<login>(this.url + `${this.Users}` + `${userId}`)
   }
 
-  updateUser(userId: number, updatedData: login): Observable<any> {
+  updateUser(userId: number, updatedData: any): Observable<any> {
     return this.http.put<any>(this.url + this.Users + userId, updatedData)
   }
 
-  deleteProduct(userId: number, productId: number): Observable<any> {
-    return this.http.delete<any>(this.url + this.Users + `${userId}/addtocart/${productId}`,)
+  getSaveLaterProducts():Observable<login[]>{
+    return this.http.get<login[]>(this.url+"savelater")
   }
+
+  addSaveLaterProducts(data : login):Observable<any>{
+    return this.http.put<any>(this.url+"savelater",data)
+  }
+
+  // deleteProduct(item: Products): Observable<any> {
+  //   return this.http.delete<any>(this.url + this.Users + `${userId}/addtocart/${pr)
+  // }
 }

@@ -14,10 +14,13 @@ export interface login {
   password: string ;
   addtocart : Products[],
   wishlist : Products[],
-  orders : Products[]
+  orders : Products[],
+  savelater: Products[]
 
 
 }
+
+
 
 // export interface addTocart{
 

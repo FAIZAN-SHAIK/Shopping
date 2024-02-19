@@ -32,34 +32,107 @@ export class CartPageComponent {
   }
 
   increaseQuantity(product: any) {
-    product.quantity++;
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+
+      user.addtocart.find((x)=>{
+        if(x.id === product.id){
+          x.quantity++;
+        }
+
+      })
+
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe(()=>{
+
+        this.cartItems = user.addtocart
+      }
+      )
+      
+    })
+
+    
     this.calculateTotalPrice();
   }
 
   decreaseQuantity(product: any) {
-    if (product.quantity > 1) {
-      product.quantity--;
-      this.calculateTotalPrice();
-    }
-    if (product.quantity === 0) {
-      const index = this.cartItems.indexOf(product);
-      if (index !== -1) {
-        this.cartItems.splice(index, 1);
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+
+      user.addtocart.find((x)=>{
+        if(x.id === product.id){
+          if (product.quantity > 1) {
+            x.quantity--;
+           
+          }
+
+          if (product.quantity === 0) {
+
+            user.addtocart = user.addtocart.filter((x)=>{
+              return x.id !== product.id;
+            })
+            
+          }
+         
+        }
+
+      })
+
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe(()=>{
+
+        this.cartItems = user.addtocart
       }
-    }
+      )
+      
+    })
+
+    this.calculateTotalPrice();
   }
 
   productClicked(product: any) {
     this.router.navigate(['/productDetails/' + product.id]);
   }
 
-  deleteProduct(product: Products) {
-    // this.ps.deleteProduct(product);
-    this.http.deleteProduct(Number(localStorage.getItem('loginUserId')), product.id).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
+  // deleteProduct(product: Products) {
+  //   this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+      
+  //     user.addtocart = user.addtocart.filter((item) => {return item.id !== product.id});
+  //     console.log(user.addtocart)
+  
+      
+  //     this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(() => {
+        
+  //       this.cartItems = user.addtocart;
+        
+  //     }, (error) => {
+  //       console.error("Error updating user data:", error);
+  //     });
+  //   }, (error) => {
+  //     console.error("Error fetching user data:", error);
+  //   });
+  // }
 
-    })
+
+  deleteProduct(item:Products) {
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+      const index = user.addtocart.indexOf(item)
+      
+
+      user.addtocart.splice(index,1);
+      
+      
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(
+        () => {
+          const index = this.cartItems.indexOf(item)
+                        this.cartItems.splice(index,1);
+                        
+        },
+        (error) => {
+          console.error("Error from wishlist.ts:", error);
+        }
+      );
+    });
+   
   }
 
   placeOrder() {
@@ -71,8 +144,18 @@ export class CartPageComponent {
   }
 
   saveForLater(product: Products) {
-    this.ps.addProductToSaveToCart(product);
-    this.ps.deleteProduct(product);
+  
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+     
+       user.savelater.push(product)
+       this.deleteProduct(product)
+
+       this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe(()=>{
+
+       })
+    })  
+
+    
 
   }
 }

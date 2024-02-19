@@ -79,11 +79,28 @@ export class AllProductsComponent implements OnInit {
       this.router.navigate(['/login'])
     }
     else {
-      this.allProducts.find((x) => {
-        if (x.id === value.id) {
-          x.wishlist = !x.wishlist;
+      this.httpService.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((x)=>{
+        const currentUserDetails = x;
+        const existingCartItem = currentUserDetails.wishlist.find((x)=>{
+          return x.id === value.id
+        })
+
+        if(existingCartItem){
+          value.wishlist = false
+          currentUserDetails.wishlist = currentUserDetails.wishlist.filter((item) => {
+            return item.id !== existingCartItem.id; 
+        });
         }
+        else{
+          value.wishlist = true
+          currentUserDetails.wishlist.push(value)
+        }
+
+        this.httpService.updateUser(Number(localStorage.getItem("loginUserId")),currentUserDetails).subscribe(
+          error => console.log("Error Updating Wishlist")
+        )
       })
+      
     }
 
 

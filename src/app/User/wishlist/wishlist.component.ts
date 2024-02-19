@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AppService } from "src/app/app.service";
+import { HttpService } from "src/app/http.service";
 import { Products } from "src/app/products.class";
 import { ProductsService } from "src/app/products.service";
 
@@ -13,36 +14,52 @@ import { ProductsService } from "src/app/products.service";
 export class WishlistComponent {
   wishListBtn = '♡'
 
-  // wishlistOfUser: Products[];
+  wishlistOfUser!: Products[];
 
   constructor(
     private wishlistProductsService: ProductsService,
-    private router: Router) {
+    private router: Router,
+    private http: HttpService) {
 
-    // this.wishlistOfUser = this.wishlistProductsService.AllProducts.filter((x) => {
-    //   return x.wishlist === true
-    // })
+      this.getWishListData();
+     
+ }
 
+ getWishListData(){
+  this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+    this.wishlistOfUser = user.wishlist
+
+  })
+
+ }
+
+  
+
+  wishlistClicked(item: Products) {
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+      user.wishlist = user.wishlist.filter(wishlistItem => wishlistItem.id !== item.id);
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(
+        () => {
+          
+          
+          this.wishlistOfUser = this.wishlistOfUser.filter(wishlistItem => wishlistItem.id !== item.id);
+        },
+        (error) => {
+          console.error("Error from wishlist.ts:", error);
+        }
+      );
+    });
+   
+  }
+
+  onAddToWishlist() {
+    this.router.navigate(['/products'])
   }
 
   productClicked(item: any) {
     this.router.navigate(['productDetails/' + item.id])
 
-  }
-
-  // wishlistClicked(item: any) {
-  //   this.wishlistProductsService.AllProducts.find((x) => {
-  //     if (x.id === item.id) {
-  //       x.wishlist = !x.wishlist;
-  //     }
-  //   })
-
-  //   let itemToBeRemoved = this.wishlistOfUser.indexOf(item)
-  //   this.wishlistOfUser.splice(itemToBeRemoved, 1)
-  // }
-
-  onAddToWishlist() {
-    this.router.navigate(['/products'])
   }
 
 }
