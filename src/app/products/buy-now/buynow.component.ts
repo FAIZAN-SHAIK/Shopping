@@ -42,7 +42,7 @@ export class BuyNowComponent implements OnInit {
   addressData() {
     this.as.predefinedLoginDetails.find((x) => {
       if (x.firstname.toLowerCase() === this.ss.userLoggedInName.toLowerCase()) {
-        this.userAddress = x.address.split(',')
+        // this.userAddress = x.address.split(',')
         this.mobileNumber = x.mobile
       }
     })

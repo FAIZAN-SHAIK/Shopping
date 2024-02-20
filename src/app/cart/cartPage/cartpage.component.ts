@@ -12,16 +12,23 @@ import { HttpService } from 'src/app/http.service';
 })
 export class CartPageComponent {
   cartItems: Products[] = [];
+  saveLaterProducts : Products[]= []
   productValue: number = 0;
   totalPrice: number = 0;
 
-  constructor(private ps: ProductsService, private router: Router, private http: HttpService) {
+  constructor(
+    private ps: ProductsService,
+    private router: Router,
+    private http: HttpService
+  ) {
     // this.cartItems = this.ps.cartProducts;
 
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((x) => {
-      this.cartItems = x.addtocart
-    })
-
+    this.http
+      .getUser(Number(localStorage.getItem('loginUserId')))
+      .subscribe((x) => {
+        this.cartItems = x.addtocart;
+        this.saveLaterProducts = x.savelater;
+      });
   }
 
   calculateTotalPrice() {
@@ -32,58 +39,50 @@ export class CartPageComponent {
   }
 
   increaseQuantity(product: any) {
+    this.http
+      .getUser(Number(localStorage.getItem('loginUserId')))
+      .subscribe((user) => {
+        user.addtocart.find((x) => {
+          if (x.id === product.id) {
+            x.quantity++;
+          }
+        });
 
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-
-      user.addtocart.find((x) => {
-        if (x.id === product.id) {
-          x.quantity++;
-        }
-
-      })
-
-      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(() => {
-
-        this.cartItems = user.addtocart
-      }
-      )
-
-    })
-
+        this.http
+          .updateUser(Number(localStorage.getItem('loginUserId')), user)
+          .subscribe(() => {
+            this.cartItems = user.addtocart;
+          });
+      });
 
     this.calculateTotalPrice();
+    
   }
 
   decreaseQuantity(product: any) {
+    this.http
+      .getUser(Number(localStorage.getItem('loginUserId')))
+      .subscribe((user) => {
+        user.addtocart.find((x) => {
+          if (x.id === product.id) {
+            if (product.quantity > 1) {
+              x.quantity--;
+            }
 
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-
-      user.addtocart.find((x) => {
-        if (x.id === product.id) {
-          if (product.quantity > 1) {
-            x.quantity--;
-
+            if (product.quantity === 0) {
+              user.addtocart = user.addtocart.filter((x) => {
+                return x.id !== product.id;
+              });
+            }
           }
+        });
 
-          if (product.quantity === 0) {
-
-            user.addtocart = user.addtocart.filter((x) => {
-              return x.id !== product.id;
-            })
-
-          }
-
-        }
-
-      })
-
-      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(() => {
-
-        this.cartItems = user.addtocart
-      }
-      )
-
-    })
+        this.http
+          .updateUser(Number(localStorage.getItem('loginUserId')), user)
+          .subscribe(() => {
+            this.cartItems = user.addtocart;
+          });
+      });
 
     this.calculateTotalPrice();
   }
@@ -92,75 +91,95 @@ export class CartPageComponent {
     this.router.navigate(['/productDetails/' + product.id]);
   }
 
-  // deleteProduct(product: Products) {
-  //   this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+  
 
-  //     user.addtocart = user.addtocart.filter((item) => {return item.id !== product.id});
-  //     console.log(user.addtocart)
+  deleteProductFromCart(item: Products) {
+    this.http
+      .getUser(Number(localStorage.getItem('loginUserId')))
+      .subscribe((user) => {
+        const index = user.addtocart.indexOf(item);
 
+        user.addtocart.splice(index, 1);
 
-  //     this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(() => {
-
-  //       this.cartItems = user.addtocart;
-
-  //     }, (error) => {
-  //       console.error("Error updating user data:", error);
-  //     });
-  //   }, (error) => {
-  //     console.error("Error fetching user data:", error);
-  //   });
-  // }
-
-
-  deleteProduct(item: Products) {
-
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-      const index = user.addtocart.indexOf(item)
-
-
-      user.addtocart.splice(index, 1);
-
-
-      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(
-        () => {
-          const index = this.cartItems.indexOf(item)
-          this.cartItems.splice(index, 1);
-
-        },
-        (error) => {
-          console.error("Error from wishlist.ts:", error);
-        }
-      );
-    });
-
+        this.http
+          .updateUser(Number(localStorage.getItem('loginUserId')), user)
+          .subscribe(
+            () => {
+              const index = this.cartItems.indexOf(item);
+              this.cartItems.splice(index, 1);
+            },
+            (error) => {
+              console.error('Error from wishlist.ts:', error);
+            }
+          );
+      });
   }
 
-  placeOrder() {
-    let productsFromCart = this.ps.cartProducts;
-    let pushToBuyProducts: Products[] = _.cloneDeep(productsFromCart);
-    this.ps.clearBuyProducts();
-    this.ps.buyProducts = pushToBuyProducts;
-    this.router.navigate(['buynow']);
+  deleteProductFromSaveLater(item: Products){
+    
+
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+     
+      const index = user.savelater.findIndex(product => product.id === item.id);
+
+      if(index !== -1){
+        user.savelater.splice(index,1);
+      }
+
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe((user)=>{
+        this.saveLaterProducts = user.savelater
+      })
+
+    })
+
   }
 
   saveForLater(product: Products) {
+    this.http
+      .getUser(Number(localStorage.getItem('loginUserId')))
+      .subscribe((user) => {
+        
+        let currentUser = user;
+        currentUser.savelater.push(product);
+    this.http
+          .updateUser(Number(localStorage.getItem('loginUserId')), currentUser)
+          .subscribe((user) => {
+            this.deleteProductFromCart(product);
+            this.saveLaterProducts = user.savelater;
+          });
+      });
+  }
 
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-      console.log(user)
-      let currentUser = user
-      currentUser.savelater = []
+  addToCartFromSavelater(product : Products){
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+      user.addtocart.push(product)
 
-      currentUser.savelater.push(product)
-      // console.log(user)
-      // this.deleteProduct(product)
-      // console.log(user)
-
-      this.http.updateUser(Number(localStorage.getItem("loginUserId")), currentUser).subscribe((user) => {
-        console.log(user)
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe((user)=>{
+        this.deleteProductFromSaveLater(product);
+        this.cartItems = user.addtocart
       })
+
     })
 
 
+  }
+  Proceed() {
+    let price = this.calculateTotalPrice()
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
+      this.router.navigate([`checkout/${price}`] )
+      user.orders = user.addtocart;
+      user.addtocart = []
 
+      this.http.updateUser(Number(localStorage.getItem("loginUserId")),user).subscribe((x)=>{
+        
+      })
+
+      
+
+    })
+  }
+
+  changeAddress(){
+    this.router.navigate(['changeAddress'])
   }
 }

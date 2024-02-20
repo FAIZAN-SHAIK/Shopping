@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Products } from "src/app/products.class";
 import { ProductsService } from "src/app/products.service";
 import * as _ from 'lodash';
 import { HttpService } from "src/app/http.service";
+import { eventListeners } from "@popperjs/core";
 
 @Component({
   selector: "app-savelater",
@@ -14,18 +15,21 @@ import { HttpService } from "src/app/http.service";
 export class SaveLaterComponent {
   saveLaterProducts: Products[] = []
 
+@Output() savelaterLength  = new EventEmitter<number>();
   constructor
     (
       private ps: ProductsService,
       private router: Router,
       private http: HttpService
     ) {
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-      this.saveLaterProducts = user.savelater
-    })
-    console.log(this.saveLaterProducts);
+    
     // this.saveLaterProducts = ps.savelater
+    this.saveLaterProducts = ps.ProductsSavedLater()
+    console.log( this.saveLaterProducts)
+
   }
+
+  
 
   productClicked(product: Products) {
     this.router.navigate(['/products'])

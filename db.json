@@ -677,54 +677,60 @@
     {
       "id": 1,
       "firstname": "Faizan",
-      "lastname": "shaik",
+      "lastname": "shaikasa",
       "gender": "male",
-      "mobile": 6302778470,
+      "mobile": "6302778470",
       "emailid": "faizanshaik@gmail.com",
-      "address": "3-120,Nutakki,522303,Mangalagiri,Andhra pradesh",
+      "address": {
+        "houseNumber": "3-120",
+        "area": "Near Main temple",
+        "city": "Vijayawada",
+        "pincode": "522303",
+        "state": "Andhra Pradesh"
+      },
       "username": "faizan",
       "password": "faizu123",
-      "addtocart": [
+      "addtocart": [],
+      "wishlist": [
+        {
+          "quantity": 0,
+          "id": 4,
+          "name": "USPA Black Jeans",
+          "type": "jeans",
+          "price": 1199,
+          "gender": "male",
+          "color": "black",
+          "brand": "uspa",
+          "imageUrl": "../../../assets/men/jeans/black_1_jeans.png",
+          "wishlist": true
+        }
+      ],
+      "orders": [],
+      "savelater": [],
+      "buynow": [
         {
           "quantity": 1,
-          "id": 3,
+          "id": 2,
           "name": "AllenSolly Black Jeans",
           "type": "jeans",
-          "price": 799,
+          "price": 999,
           "gender": "male",
           "color": "black",
           "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
           "wishlist": false,
-          "selectedSize": "XL"
+          "selectedSize": "M"
         },
         {
           "quantity": 1,
-          "id": 3,
+          "id": 2,
           "name": "AllenSolly Black Jeans",
           "type": "jeans",
-          "price": 799,
+          "price": 999,
           "gender": "male",
           "color": "black",
           "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
-          "wishlist": false,
-          "selectedSize": "L"
-        }
-      ],
-      "wishlist": [],
-      "orders": [],
-      "savelater": [
-        {
-          "quantity": 1,
-          "id": 3,
-          "name": "AllenSolly Black Jeans",
-          "type": "jeans",
-          "price": 799,
-          "gender": "male",
-          "color": "black",
-          "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
           "wishlist": false,
           "selectedSize": "L"
         }
@@ -737,7 +743,13 @@
       "gender": "male",
       "mobile": 1234567890,
       "emailid": "amodsah@gmail.com",
-      "address": "2/2--120,Rajapur,841438,Patna,Bihar",
+      "address": {
+        "houseNumber": "2/2--120",
+        "area": "Rajapur",
+        "city": "Patna",
+        "pincode": 841438,
+        "state": "Andhra Pradesh"
+      },
       "username": "amod",
       "password": "amod123",
       "addtocart": [],
@@ -752,7 +764,13 @@
       "gender": "male",
       "mobile": 9798691239,
       "emailid": "prateekkumar@gmail.com",
-      "address": "4/4/120,Gota,391456,Ahmedabad,Gujarat",
+      "address": {
+        "houseNumber": "4/4/120",
+        "area": "Beside Manek Chowk",
+        "city": "Ahmedabad",
+        "pincode": 391456,
+        "state": "Gujarat"
+      },
       "username": "prateek",
       "password": "pratek123",
       "addtocart": [],
@@ -767,7 +785,13 @@
       "gender": "male",
       "mobile": 9875547773,
       "emailid": "krutik@gmail.com",
-      "address": "23/435-1,vasantnagar,436215,Ranchi,Jahrkhand",
+      "address": {
+        "houseNumber": "23/435-1",
+        "area": "vasantnagar",
+        "city": "Ranchi",
+        "pincode": 436215,
+        "state": "Jahrkhand"
+      },
       "username": "kruteek",
       "password": "kruteek123",
       "addtocart": [],
@@ -782,7 +806,13 @@
       "gender": "male",
       "mobile": 9674675476,
       "emailid": "akhtarshoaib@gmail.com",
-      "address": "2343:1-1,Vadej,318462,Ahmedabad,gujarat",
+      "address": {
+        "houseNumber": "2343:1-1",
+        "area": "Vadej",
+        "city": "Ahmedabad",
+        "pincode": 318462,
+        "state": "Gujarat"
+      },
       "username": "shoaib",
       "password": "shoaib123",
       "addtocart": [],

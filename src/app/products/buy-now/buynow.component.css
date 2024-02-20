@@ -57,32 +57,7 @@
     cursor: pointer;
   }
 
-  .changeAddressBtn{
-    margin-top: 80px;
-    border: 1px solid black;
-    border-radius: 15px;
-
-  }
-  .changeAddressBtn:hover{
-    border: 1px solid whitesmoke;
-    color: white;
-    background-color: black;
-  }
-  .checkoutBtn{
-    margin-top: 80px;
-    background-color: #FF9F00;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 15px;
   
-    box-shadow: darkgray;
-    
-  }
-  .checkoutBtn:hover{
-    background-color: black;
-    color: white;
-    
-  }
 
   .shd-box {
     display: flex;

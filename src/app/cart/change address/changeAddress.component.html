@@ -1,0 +1,101 @@
+<div class="productDiv">
+  <div class="container">
+    <div class="row" style="margin-top: 30px">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-6">
+            <h3 style="text-decoration: underline">
+              Your Products Delivered At:
+            </h3>
+
+            <h5>H-No : {{ userAddress["houseNumber"] }}</h5>
+            <h5>Mobile Number : {{ userMobileName }}</h5>
+
+            <h5>Locality : {{ userAddress['area'] }}</h5>
+            <h5>Pincode : {{ userAddress['pincode'] }}</h5>
+            <h5>City : {{ userAddress['city'] }}</h5>
+            <h5>State : {{ userAddress['state'] }}</h5>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-3">
+                <button class="changeAddressBtn" (click)="changeAddress()">
+                  Change Address
+                </button>
+              </div>
+              <div class="col-3">
+                <div class="col-6">
+                  <button class="checkoutBtn" (click)="checkout()">
+                    checkout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4" *ngIf="changeAddressClicked">
+        <div class="top-div">
+          <form [formGroup]="addressChangeForm">
+            <div class="form-group">
+              <label for="houseName">H-No :</label>
+              <input
+                type="text"
+                name="houseNumber"
+                formControlName="houseNumber"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="MobileNumber">Mobile number :</label>
+              <input
+                type="text"
+                name="mobileNumber"
+                formControlName="mobileNumber"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="locality">Locality :</label>
+              <input
+                type="text"
+                name="locality"
+                formControlName="locality"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="pincode">Pincode :</label>
+              <input
+                type="text"
+                name="pincode"
+                formControlName="pincode"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="city">City :</label>
+              <input
+                type="text"
+                name="city"
+                formControlName="city"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="state">State :</label>
+              <input
+                type="text"
+                name="state"
+                formControlName="state"
+                class="form-control"
+              />
+            </div>
+          </form>
+          <button class="btn btn-success" (click)="onSave()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

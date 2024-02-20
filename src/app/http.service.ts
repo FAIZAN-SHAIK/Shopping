@@ -37,6 +37,10 @@ export class HttpService {
     return this.http.put<any>(this.url + this.Users + userId, updatedData)
   }
 
+  patchUser(userId: number, updatedData: any): Observable<any> {
+    return this.http.patch<any>(this.url + this.Users + userId, updatedData)
+  }
+
   getSaveLaterProducts():Observable<login[]>{
     return this.http.get<login[]>(this.url+"savelater")
   }

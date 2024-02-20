@@ -7,8 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './filter-products.pipe';
 import { BuyNowComponent } from './buy-now/buynow.component';
-import { ChangeAddress } from './buy-now/change address/changeAddress.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+
 import { UserRoutingModule } from '../User/userRouting.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from  '@angular/common/http';
@@ -22,8 +21,7 @@ import { HttpClientModule } from  '@angular/common/http';
     ProductDetailsComponent,
     FilterProductsPipe,
     BuyNowComponent,
-    ChangeAddress,
-    CheckoutComponent,
+    
 
 
 

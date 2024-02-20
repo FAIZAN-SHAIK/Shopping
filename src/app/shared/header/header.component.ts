@@ -12,6 +12,8 @@ import { ProductsService } from "src/app/products.service";
 export class HeaderComponent implements OnInit {
   cartSize: number = 0;
 
+  userLoggeIn : number = Number(localStorage.getItem("loginUserId"))
+
   constructor(
     public headerService: SharedService,
     public ps: ProductsService,

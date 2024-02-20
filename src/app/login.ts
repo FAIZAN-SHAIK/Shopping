@@ -9,14 +9,24 @@ export interface login {
   gender: string;
   mobile: number;
   emailid: string;
-  address: string;
+  address: address;
   username: string;
   password: string;
   addtocart: Products[],
   wishlist: Products[],
   orders: Products[],
-  savelater: Products[]
+  savelater: Products[],
+  buynow : Products[]
 
+
+}
+
+export interface address{
+  houseNumber: string,
+  area: string,
+  city : string,
+  pincode : number,
+  state : string 
 
 }
 

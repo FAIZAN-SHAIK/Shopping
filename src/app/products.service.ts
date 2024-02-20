@@ -3,12 +3,14 @@ import { Products } from './products.class';
 import * as _ from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from './http.service';
+import { LoginComponent } from './Auth/login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
+  saveLater: any;
   didItemAddedToCart!: boolean;
 
   AllProducts: Products[] = [
@@ -73,6 +75,18 @@ export class ProductsService {
 
   constructor(private http : HttpService){
 
+  }
+
+  ProductsSavedLater() : any{
+    
+    this.saveLater = this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+     
+      
+      return user.savelater
+    })
+    console.log(this.savelater);
+    
+    
   }
 
 
