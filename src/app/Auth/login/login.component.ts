@@ -13,19 +13,19 @@ import { SharedService } from "src/app/shared/auth.service";
 
 
 export class LoginComponent {
-  userNameLoginPage : string = "";
-  passwordLoginPage : string = "";
+  userNameLoginPage: string = "";
+  passwordLoginPage: string = "";
   userFound = false;
-  spinnerOn : boolean = false;
+  spinnerOn: boolean = false;
 
   constructor(
     private loginDetailDataService: AppService,
     private router: Router,
     private activeRoute: ActivatedRoute,
     private sharedService: SharedService,
-    private http : HttpService) {
-      
-     }
+    private http: HttpService) {
+
+  }
 
 
   loginButtonClicked() {
@@ -34,31 +34,31 @@ export class LoginComponent {
     }
     else {
 
-      this.http.getUsers().subscribe((user)=>{
-        
-        user.find((x : login)=>{
-          
-          if(x.username === this.userNameLoginPage && x.password === this.passwordLoginPage){
+      this.http.getUsers().subscribe((user) => {
 
-            
+        user.find((x: login) => {
+
+          if (x.username === this.userNameLoginPage && x.password === this.passwordLoginPage) {
+
+
             this.sharedService.isLogin();
             this.sharedService.userLoggedInName = this.userNameLoginPage;
             this.userFound = true;
             this.spinnerOn = true;
 
-            localStorage.setItem("loginUserName",x.firstname)
-            localStorage.setItem("loginUserId",JSON.stringify(x.id))
+            localStorage.setItem("loginUserName", x.firstname)
+            localStorage.setItem("loginUserId", JSON.stringify(x.id))
 
-            setTimeout(()=>{
-            
+            setTimeout(() => {
+
               this.router.navigate(['']);
-            },1000)
+            }, 1000)
 
           }
         })
-      })  
+      })
     }
-    
+
   }
 
   signUpButtonClicked() {

@@ -684,10 +684,51 @@
       "address": "3-120,Nutakki,522303,Mangalagiri,Andhra pradesh",
       "username": "faizan",
       "password": "faizu123",
-      "addtocart": [],
+      "addtocart": [
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "XL"
+        },
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "L"
+        }
+      ],
       "wishlist": [],
       "orders": [],
-      "savelater": []
+      "savelater": [
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "L"
+        }
+      ]
     },
     {
       "id": 2,

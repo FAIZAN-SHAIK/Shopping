@@ -18,11 +18,12 @@ export class SaveLaterComponent {
     (
       private ps: ProductsService,
       private router: Router,
-      private http : HttpService
+      private http: HttpService
     ) {
-      this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
-        this.saveLaterProducts = user.savelater
-      })
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+      this.saveLaterProducts = user.savelater
+    })
+    console.log(this.saveLaterProducts);
     // this.saveLaterProducts = ps.savelater
   }
 
