@@ -690,23 +690,78 @@
       },
       "username": "faizan",
       "password": "faizu123",
-      "addtocart": [],
+      "addtocart": [
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "M"
+        },
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "L"
+        }
+      ],
       "wishlist": [
         {
           "quantity": 0,
-          "id": 4,
-          "name": "USPA Black Jeans",
-          "type": "jeans",
-          "price": 1199,
+          "id": 10,
+          "name": "USPA orange tshirt",
+          "type": "tshirt",
+          "price": 1299,
           "gender": "male",
-          "color": "black",
-          "brand": "uspa",
-          "imageUrl": "../../../assets/men/jeans/black_1_jeans.png",
+          "color": "orange",
+          "brand": "USPA",
+          "imageUrl": "../../../assets/men/tshirts/t5.webp",
           "wishlist": true
         }
       ],
-      "orders": [],
-      "savelater": [],
+      "orders": [
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "M"
+        }
+      ],
+      "savelater": [
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "M"
+        }
+      ],
       "buynow": [
         {
           "quantity": 1,

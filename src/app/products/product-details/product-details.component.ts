@@ -127,7 +127,7 @@ export class ProductDetailsComponent implements OnInit {
               currentUserDetails
             )
             .subscribe(
-              (response) => {},
+              (response) => { },
               (error) => console.log(error)
             );
         });
@@ -140,7 +140,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCartClicked() {
-    if (!this.ss.isUserLoggedIn) {
+    if (localStorage.getItem("loginUserId") === undefined) {
       this.router.navigate(['/login']);
     } else {
       if (this.selectedSize === null) {
@@ -176,7 +176,9 @@ export class ProductDetailsComponent implements OnInit {
 
           this.http
             .updateUser(currentUserId, currentUserDetails)
-            .subscribe((response) => {});
+            .subscribe((response) => {
+              this.ps.updateCartLength();
+            });
         });
       }
 
@@ -187,20 +189,20 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   buyNow() {
-    if (this.selectedSize) {
-      let addProductToBuy = this.ps.AllProducts.find((x) => {
-        return x.id === this.productId;
-      });
+    // if (this.selectedSize) {
+    //   let addProductToBuy = this.ps.AllProducts.find((x) => {
+    //     return x.id === this.productId;
+    //   });
 
-      let addItemToBuy = { ...addProductToBuy };
-      addItemToBuy.selectedSize = this.selectedSize;
-      addItemToBuy.quantity = 1;
-      this.ps.clearBuyProducts();
-      this.ps.buyProducts.push(addItemToBuy as Products);
-      this.router.navigate(['buynow']);
-    } else {
-      this.sizeSelected = true;
-    }
+    //   let addItemToBuy = { ...addProductToBuy };
+    //   addItemToBuy.selectedSize = this.selectedSize;
+    //   addItemToBuy.quantity = 1;
+    //   this.ps.clearBuyProducts();
+    //   this.ps.buyProducts.push(addItemToBuy as Products);
+    //   this.router.navigate(['buynow']);
+    // } else {
+    //   this.sizeSelected = true;
+    // }
   }
 
   gotoCartClicked() {

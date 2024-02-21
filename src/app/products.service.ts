@@ -73,24 +73,24 @@ export class ProductsService {
 
   ]
 
-  constructor(private http : HttpService){
+  constructor(private http: HttpService) {
 
   }
 
-  ProductsSavedLater() : any{
-    
+  ProductsSavedLater(): any {
+
     this.saveLater = this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-     
-      
+
+
       return user.savelater
     })
     console.log(this.savelater);
-    
-    
+
+
   }
 
 
- 
+
 
 
 
@@ -104,62 +104,53 @@ export class ProductsService {
   private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   cartLength$: Observable<number> = this.cartLengthSubject.asObservable();
 
-  //AddToCart
+  // //AddToCart
 
-  // Function to add a product to the cart
-  addProductToCart(product: Products) {
-    this.cartProducts.push(product);
+  // // Function to add a product to the cart
+  // addProductToCart(product: Products) {
+  //   this.cartProducts.push(product);
 
-    this.updateCartLength()
-  }
-  // Function to delete a product from the cart
-  deleteProduct(product: Products) {
-    const index = this.cartProducts.indexOf(product);
-    if (index !== -1) {
-      this.cartProducts.splice(index, 1);
-      this.updateCartLength();
-    }
-  }
+  //   this.updateCartLength()
+  // }
+  // // Function to delete a product from the cart
+  // deleteProduct(product: Products) {
+  //   const index = this.cartProducts.indexOf(product);
+  //   if (index !== -1) {
+  //     this.cartProducts.splice(index, 1);
+  //     this.updateCartLength();
+  //   }
+  // }
 
-  //saveLater
+  // //saveLater
 
-  // Function to add a product to the saveLater
-  addProductToSaveToCart(product: Products) {
-    this.savelater.push(product);
-  }
-  // Function to delete a product from the save later
-  deleteProductFromSaveLater(product: Products) {
-    const index = this.savelater.indexOf(product);
-    if (index !== -1) {
-      this.savelater.splice(index, 1);
-      this.updateCartLength();
-    }
-  }
+  // // Function to add a product to the saveLater
+  // addProductToSaveToCart(product: Products) {
+  //   this.savelater.push(product);
+  // }
+  // // Function to delete a product from the save later
+  // deleteProductFromSaveLater(product: Products) {
+  //   const index = this.savelater.indexOf(product);
+  //   if (index !== -1) {
+  //     this.savelater.splice(index, 1);
+  //     this.updateCartLength();
+  //   }
+  // }
 
   // Private method to update the cart length and notify subscribers
-  private updateCartLength() {
-    this.cartLengthSubject.next(this.cartProducts.length);
-  }
+  updateCartLength() {
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
 
-  
-
-
-  clearBuyProducts() {
-    this.buyProducts = [];
-  }
-  clearCartProducts() {
-    this.cartProducts = [];
-    this.updateCartLength();
-  }
-  moveToOrders(randomOrderId: number) {
-
-    this.buyProducts.forEach((x) => {
-      let product = _.cloneDeep(x)
-      product.OrderId = randomOrderId
-      this.orders.push(product)
+      this.cartLengthSubject.next(user.addtocart.length);
     })
-    this.clearBuyProducts()
+
   }
+
+
+
+
+
+
+
 
   filterProducts(criteria: string, allProduct: Products[]): Products[] {
 
