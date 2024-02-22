@@ -10,7 +10,7 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'Fashion_kido';
   constructor(public ps : AppService){
-    localStorage.setItem("data",JSON.stringify(ps.predefinedLoginDetails))
+    // localStorage.setItem("data",JSON.stringify(ps.predefinedLoginDetails))
   }
   
 }

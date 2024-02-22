@@ -19,12 +19,13 @@ export class HeaderComponent implements OnInit {
     public ps: ProductsService,
     public router: Router,
     private route: ActivatedRoute) {
+      this.ps.cartLength$.subscribe((length) => {
+        this.cartSize = length;
+      })
 
   }
   ngOnInit(): void {
-    this.ps.cartLength$.subscribe((length) => {
-      this.cartSize = length;
-    })
+    
   }
   onLoggedOut() {
     this.headerService.isLogout()

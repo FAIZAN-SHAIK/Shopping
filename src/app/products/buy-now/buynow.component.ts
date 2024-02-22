@@ -12,7 +12,7 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./buynow.component.css'],
 })
 export class BuyNowComponent implements OnInit {
-  buyProducts: Products[];
+  // buyProducts: Products[];
   totalPrice: number = 0;
   userAddress: string[] = [];
   mobileNumber: number = 0;
@@ -29,7 +29,7 @@ export class BuyNowComponent implements OnInit {
     private as: AppService,
     private router: Router
   ) {
-    this.buyProducts = ps.buyProducts;
+    // this.buyProducts = ps.buyProducts;
 
 
   }
@@ -41,10 +41,10 @@ export class BuyNowComponent implements OnInit {
 
   addressData() {
     this.as.predefinedLoginDetails.find((x) => {
-      if (x.firstname.toLowerCase() === this.ss.userLoggedInName.toLowerCase()) {
-        // this.userAddress = x.address.split(',')
-        this.mobileNumber = x.mobile
-      }
+      // if (x.firstname.toLowerCase() === this.ss.userLoggedInName.toLowerCase()) {
+      //   // this.userAddress = x.address.split(',')
+      //   this.mobileNumber = x.mobile
+      // }
     })
   }
 
@@ -52,10 +52,10 @@ export class BuyNowComponent implements OnInit {
 
 
   calculateTotalPrice() {
-    this.totalPrice = this.buyProducts.reduce(
-      (total, product) => total + product.price * product.quantity,
-      0
-    );
+    // this.totalPrice = this.buyProducts.reduce(
+    //   (total, product) => total + product.price * product.quantity,
+    //   0
+    // );
     return this.totalPrice;
   }
 
@@ -69,10 +69,10 @@ export class BuyNowComponent implements OnInit {
       this.calculateTotalPrice();
     }
     if (product.quantity === 0) {
-      const index = this.buyProducts.indexOf(product);
-      if (index !== -1) {
-        this.buyProducts.splice(index, 1);
-      }
+      // const index = this.buyProducts.indexOf(product);
+      // if (index !== -1) {
+      //   this.buyProducts.splice(index, 1);
+      // }
     }
   }
 
@@ -81,10 +81,10 @@ export class BuyNowComponent implements OnInit {
   }
 
   deleteProduct(product: any) {
-    const index = this.buyProducts.indexOf(product);
-    if (index !== -1) {
-      this.buyProducts.splice(index, 1);
-    }
+    // const index = this.buyProducts.indexOf(product);
+    // if (index !== -1) {
+    //   this.buyProducts.splice(index, 1);
+    // }
   }
 
   proceed() {

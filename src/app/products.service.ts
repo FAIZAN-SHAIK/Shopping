@@ -12,8 +12,34 @@ export class ProductsService {
 
   saveLater: any;
   didItemAddedToCart!: boolean;
+  
 
-  AllProducts: Products[] = [
+ 
+  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  cartLength$: Observable<number> = this.cartLengthSubject.asObservable();
+
+  constructor(private http: HttpService) {
+    
+     this.updateCartLength()
+
+    
+  }
+
+
+
+
+  //  method to update the cart length and notify subscribers
+  updateCartLength() {
+    const userId = Number(localStorage.getItem("loginUserId"));
+    if (userId) {
+      this.http.getUser(userId).subscribe((user) => {
+        const cartLength = user.addtocart.length;
+        this.cartLengthSubject.next(cartLength);
+      });
+    }
+
+  }
+   AllProducts: Products[] = [
     // new Products(1, "louis blue tshirt", 'tshirt', 1859, 'male', 'blue', 'louis', '../../../assets/men/tshirts/t2.webp', false),
     // new Products(2, "AllenSolly Black Jeans", 'jeans', 999, 'male', 'black', 'AllenSolly', '../../../assets/men/jeans/black 3 jeans.webp', false),
     // new Products(3, "AllenSolly Black Jeans", 'jeans', 799, 'male', 'black', 'AllenSolly', '../../../assets/men/jeans/black 4 jeans.jpg', false),
@@ -72,78 +98,6 @@ export class ProductsService {
     // new Products(56, "Urban white tshirt", 'tshirt', 159, 'female', 'white', 'Urban', '../../../assets/women/tshirts/t11.webp', false),
 
   ]
-
-  constructor(private http: HttpService) {
-
-  }
-
-  ProductsSavedLater(): any {
-
-    this.saveLater = this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-
-
-      return user.savelater
-    })
-    console.log(this.savelater);
-
-
-  }
-
-
-
-
-
-
-
-
-  cartProducts: Products[] = [];
-  buyProducts: Products[] = [];
-  orders: Products[] = [];
-  savelater: Products[] = [];
-
-  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  cartLength$: Observable<number> = this.cartLengthSubject.asObservable();
-
-  // //AddToCart
-
-  // // Function to add a product to the cart
-  // addProductToCart(product: Products) {
-  //   this.cartProducts.push(product);
-
-  //   this.updateCartLength()
-  // }
-  // // Function to delete a product from the cart
-  // deleteProduct(product: Products) {
-  //   const index = this.cartProducts.indexOf(product);
-  //   if (index !== -1) {
-  //     this.cartProducts.splice(index, 1);
-  //     this.updateCartLength();
-  //   }
-  // }
-
-  // //saveLater
-
-  // // Function to add a product to the saveLater
-  // addProductToSaveToCart(product: Products) {
-  //   this.savelater.push(product);
-  // }
-  // // Function to delete a product from the save later
-  // deleteProductFromSaveLater(product: Products) {
-  //   const index = this.savelater.indexOf(product);
-  //   if (index !== -1) {
-  //     this.savelater.splice(index, 1);
-  //     this.updateCartLength();
-  //   }
-  // }
-
-  // Private method to update the cart length and notify subscribers
-  updateCartLength() {
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-
-      this.cartLengthSubject.next(user.addtocart.length);
-    })
-
-  }
 
 
 

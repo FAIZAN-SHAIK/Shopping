@@ -29,7 +29,7 @@
         <a class="nav-link" routerLink="/contactme">Contact Me</a>
       </li>
     </ul>
-    <ul class="navbar-nav ms-auto" *ngIf="userLoggeIn">
+    <ul class="navbar-nav ms-auto" *ngIf="userLoggeIn !== 0">
       <li class="nav-item">
         <a class="nav-link cart" (click)="cartClicked()"
           ><i class="bi bi-cart3 cartBtn position-relative">
@@ -65,7 +65,7 @@
       </ul>
     </div> -->
 
-    <ul class="navbar-nav ms-auto" *ngIf="!userLoggeIn">
+    <ul class="navbar-nav ms-auto" *ngIf="userLoggeIn === 0">
       <li class="nav-item">
         <a class="nav-link cart" [routerLink]="['/signup']">SignUp</a>
       </li>

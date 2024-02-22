@@ -17,14 +17,15 @@ export class OrderComponent implements OnInit{
         private http : HttpService
     ){
         
+        
+        
+    }
+    ngOnInit(): void {
+        // this.totalPrice = this.calculateTotal();
         this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user)=>{
             this.userorders = user.orders
 
         })
-        
-    }
-    ngOnInit(): void {
-        this.totalPrice = this.calculateTotal();
     }
 
     productClicked(product: Products){
@@ -49,7 +50,7 @@ export class OrderComponent implements OnInit{
 
     }
     calculateTotal() {
-        return this.ps.buyProducts.reduce((total, product) => total + product.price, 0);
+        // return this.ps.buyProducts.reduce((total, product) => total + product.price, 0);
       }
 
 }

@@ -11,7 +11,7 @@ export interface Products {
   wishlist: boolean;
   selectedSize:string;
   quantity : number;
-  OrderId: number;
+  OrderId: string;
 
   
 

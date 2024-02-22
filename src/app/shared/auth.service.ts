@@ -6,12 +6,9 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   isUserLoggedIn :boolean = false;
-  userLoggedInName : string = ''
+  
 
-
-  changeAddressClicked = false;
-
-  isLogin(){
+isLogin(){
     this.isUserLoggedIn = true
   }
   

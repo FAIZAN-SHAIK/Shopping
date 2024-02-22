@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/shared/auth.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  loginUserName : string = String(localStorage.getItem("loginUserName"))
 
   constructor(
     public userService: SharedService,
@@ -34,9 +35,11 @@ export class UserComponent implements OnInit {
   settingsClicked(){
     this.router.navigate(['settings'],{relativeTo:this.route})
   }
+
+
   logoutClicked(){
     this.ss.isLogout()
-    this.ss.userLoggedInName = ''
+    localStorage.clear()
     this.router.navigate(['/login'])
 
   }

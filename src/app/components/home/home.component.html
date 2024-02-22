@@ -16,7 +16,7 @@
         </div>
         <div class="bottom-text">
           <h3>Your destination for trendy fashion!</h3>
-          <div class="inner-div2 mt-4" *ngIf="!homeService.isUserLoggedIn">
+          <div class="inner-div2 mt-4" *ngIf="loginUserName === 'null'">
             <button class="btn btn-dark btn-lg" (click)="onLoginClicked()">
               Login
             </button>
@@ -24,8 +24,8 @@
               SignUp
             </button>
           </div>
-          <div class="inner-div2" *ngIf="homeService.isUserLoggedIn">
-            <h1>Hello, {{ homeService.userLoggedInName | titlecase }} 👋</h1>
+          <div class="inner-div2" *ngIf="loginUserName !== 'null'">
+            <h1>Hello, {{ loginUserName  | titlecase }} 👋</h1>
 
             <div class="shop-btn">
               <a (click)="onCategoryImgClick('men')" class="shopping-btn"

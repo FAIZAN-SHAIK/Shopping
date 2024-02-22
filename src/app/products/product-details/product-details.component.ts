@@ -71,15 +71,15 @@ export class ProductDetailsComponent implements OnInit {
   productClicked(item: Products) {
     this.router.navigate(['productDetails/' + item.id]);
 
-    const isProductInArray = this.ps.cartProducts.some((product) => {
-      return product.id === item.id;
-    });
+    // const isProductInArray = this.ps.cartProducts.some((product) => {
+    //   return product.id === item.id;
+    // });
 
-    if (isProductInArray) {
-      this.addtoCartNotClicked = false;
-    } else {
-      this.addtoCartNotClicked = true;
-    }
+    // if (isProductInArray) {
+    //   this.addtoCartNotClicked = false;
+    // } else {
+    //   this.addtoCartNotClicked = true;
+    // }
   }
 
   ngOnInit(): void {
@@ -88,7 +88,7 @@ export class ProductDetailsComponent implements OnInit {
 
       this.http
         .getProduct(this.productId)
-        .subscribe((x) => [(this.product = x)]);
+        .subscribe((x) => this.product = x);
 
       if (this.product) {
         this.price =
@@ -98,7 +98,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   wishlistClicked() {
-    if (!this.ss.isUserLoggedIn) {
+    if (Number(localStorage.getItem("loginUserId")) === 0) {
       this.router.navigate(['/login']);
     } else {
       this.http
@@ -140,7 +140,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCartClicked() {
-    if (localStorage.getItem("loginUserId") === undefined) {
+    if (Number(localStorage.getItem("loginUserId")) === 0) {
+      
       this.router.navigate(['/login']);
     } else {
       if (this.selectedSize === null) {

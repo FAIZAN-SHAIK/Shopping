@@ -690,7 +690,46 @@
       },
       "username": "faizan",
       "password": "faizu123",
-      "addtocart": [
+      "addtocart": [],
+      "wishlist": [
+        {
+          "quantity": 0,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 4,
+          "name": "USPA Black Jeans",
+          "type": "jeans",
+          "price": 1199,
+          "gender": "male",
+          "color": "black",
+          "brand": "uspa",
+          "imageUrl": "../../../assets/men/jeans/black_1_jeans.png",
+          "wishlist": true
+        }
+      ],
+      "orders": [
         {
           "quantity": 1,
           "id": 2,
@@ -702,7 +741,36 @@
           "brand": "AllenSolly",
           "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
           "wishlist": false,
-          "selectedSize": "M"
+          "selectedSize": "L",
+          "OrderId": "#386460"
+        },
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "M",
+          "OrderId": "#386460"
+        },
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "M",
+          "OrderId": "#386460"
         },
         {
           "quantity": 1,
@@ -715,53 +783,11 @@
           "brand": "AllenSolly",
           "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
           "wishlist": false,
-          "selectedSize": "L"
+          "selectedSize": "M",
+          "OrderId": "#386460"
         }
       ],
-      "wishlist": [
-        {
-          "quantity": 0,
-          "id": 10,
-          "name": "USPA orange tshirt",
-          "type": "tshirt",
-          "price": 1299,
-          "gender": "male",
-          "color": "orange",
-          "brand": "USPA",
-          "imageUrl": "../../../assets/men/tshirts/t5.webp",
-          "wishlist": true
-        }
-      ],
-      "orders": [
-        {
-          "quantity": 1,
-          "id": 3,
-          "name": "AllenSolly Black Jeans",
-          "type": "jeans",
-          "price": 799,
-          "gender": "male",
-          "color": "black",
-          "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
-          "wishlist": false,
-          "selectedSize": "M"
-        }
-      ],
-      "savelater": [
-        {
-          "quantity": 1,
-          "id": 2,
-          "name": "AllenSolly Black Jeans",
-          "type": "jeans",
-          "price": 999,
-          "gender": "male",
-          "color": "black",
-          "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
-          "wishlist": false,
-          "selectedSize": "M"
-        }
-      ],
+      "savelater": [],
       "buynow": [
         {
           "quantity": 1,
@@ -801,16 +827,278 @@
       "address": {
         "houseNumber": "2/2--120",
         "area": "Rajapur",
-        "city": "Patna",
+        "city": "ongole",
         "pincode": 841438,
         "state": "Andhra Pradesh"
       },
       "username": "amod",
       "password": "amod123",
-      "addtocart": [],
-      "wishlist": [],
-      "orders": [],
-      "savelater": []
+      "addtocart": [
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "S"
+        }
+      ],
+      "wishlist": [
+        {
+          "quantity": 0,
+          "id": 4,
+          "name": "USPA Black Jeans",
+          "type": "jeans",
+          "price": 1199,
+          "gender": "male",
+          "color": "black",
+          "brand": "uspa",
+          "imageUrl": "../../../assets/men/jeans/black_1_jeans.png",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 8,
+          "name": "AllenSolly grey Jeans",
+          "type": "jeans",
+          "price": 1859,
+          "gender": "male",
+          "color": "white",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/white 3 jeans.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 6,
+          "name": "Urban  Blue Jeans",
+          "type": "jeans",
+          "price": 499,
+          "gender": "male",
+          "color": "blue",
+          "brand": "Urban",
+          "imageUrl": "../../../assets/men/jeans/blue jeans.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 5,
+          "name": "louis ligh Blue Jeans",
+          "type": "jeans",
+          "price": 899,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louisPhillipe",
+          "imageUrl": "../../../assets/men/jeans/blue 3 jeans.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 9,
+          "name": "Urban white Jeans",
+          "type": "jeans",
+          "price": 899,
+          "gender": "male",
+          "color": "white",
+          "brand": "Urban",
+          "imageUrl": "../../../assets/men/jeans/white 2 image.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 10,
+          "name": "USPA orange tshirt",
+          "type": "tshirt",
+          "price": 1299,
+          "gender": "male",
+          "color": "orange",
+          "brand": "USPA",
+          "imageUrl": "../../../assets/men/tshirts/t5.webp",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 7,
+          "name": "AllenSolly grey Jeans",
+          "type": "jeans",
+          "price": 1899,
+          "gender": "male",
+          "color": "grey",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/grey jeans.jpg",
+          "wishlist": true
+        },
+        {
+          "quantity": 0,
+          "id": 20,
+          "name": "AllenSolly red Shirt",
+          "type": "shirt",
+          "price": 899,
+          "gender": "male",
+          "color": "red",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/shirts/causal half sleeve.webp",
+          "wishlist": true
+        }
+      ],
+      "orders": [
+        {
+          "quantity": 1,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "S",
+          "OrderId": "#891906"
+        },
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "L",
+          "OrderId": "#341611"
+        },
+        {
+          "quantity": 1,
+          "id": 7,
+          "name": "AllenSolly grey Jeans",
+          "type": "jeans",
+          "price": 1899,
+          "gender": "male",
+          "color": "grey",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/grey jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "M",
+          "OrderId": "#441385"
+        },
+        {
+          "quantity": 1,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "S",
+          "OrderId": "#236701"
+        },
+        {
+          "quantity": 1,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "M",
+          "OrderId": "#236701"
+        },
+        {
+          "quantity": 5,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "L",
+          "OrderId": "#236701"
+        },
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "L",
+          "OrderId": "#338031"
+        }
+      ],
+      "savelater": [
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "M"
+        },
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "L"
+        },
+        {
+          "quantity": 1,
+          "id": 2,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 999,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 3 jeans.webp",
+          "wishlist": false,
+          "selectedSize": "XL"
+        }
+      ]
     },
     {
       "id": 3,

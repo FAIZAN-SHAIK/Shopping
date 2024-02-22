@@ -4,6 +4,7 @@ import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 import * as _ from 'lodash';
 import { HttpService } from 'src/app/http.service';
+import { login } from 'src/app/login';
 
 @Component({
   selector: 'app-cartpage',
@@ -168,20 +169,9 @@ export class CartPageComponent {
   }
   Proceed() {
     let price = this.calculateTotalPrice()
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
-      this.router.navigate([`checkout/${price}`])
-      user.orders = user.addtocart;
-      user.addtocart = []
+    this.router.navigate([`checkout/${price}`])
 
-      this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe((x) => {
-
-        this.ps.updateCartLength();
-
-      })
-
-
-
-    })
+    
   }
 
   changeAddress() {

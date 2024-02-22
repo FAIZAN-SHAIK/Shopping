@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AppService } from "src/app/app.service";
 import { HttpService } from "src/app/http.service";
 import { login } from "src/app/login";
+import { ProductsService } from "src/app/products.service";
 import { SharedService } from "src/app/shared/auth.service";
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginComponent {
   constructor(
     private loginDetailDataService: AppService,
     private router: Router,
+    private ps : ProductsService,
     private activeRoute: ActivatedRoute,
     private sharedService: SharedService,
     private http: HttpService) {
@@ -42,12 +44,13 @@ export class LoginComponent {
 
 
             this.sharedService.isLogin();
-            this.sharedService.userLoggedInName = this.userNameLoginPage;
+            // this.sharedService.userLoggedInName = this.userNameLoginPage;
             this.userFound = true;
             this.spinnerOn = true;
 
             localStorage.setItem("loginUserName", x.firstname)
             localStorage.setItem("loginUserId", JSON.stringify(x.id))
+            this.ps.updateCartLength();
 
             setTimeout(() => {
 

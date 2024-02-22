@@ -11,10 +11,15 @@ import { SharedService } from 'src/app/shared/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  loginUserName : string = String(localStorage.getItem("loginUserName"))
+ 
+
   constructor(
     private router: Router,
     public homeService: SharedService,
-  ) { }
+  ) {
+    console.log(this.loginUserName)
+   }
 
   onLoginClicked() {
     this.router.navigate(['/login'])
