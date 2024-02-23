@@ -11,6 +11,12 @@ import { DataViewModule } from 'primeng/dataview';
 import { ChangeAddress } from "./change address/changeAddress.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 
 @NgModule({
@@ -21,7 +27,9 @@ import { ReactiveFormsModule } from "@angular/forms";
   ],
   imports: [RouterModule, SharedModule, CartRoutingModule,
     CommonModule, TableModule, ButtonModule, DataViewModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,MatButtonModule,
+    MatStepperModule,MatFormFieldModule,
+    MatInputModule
 
 
 

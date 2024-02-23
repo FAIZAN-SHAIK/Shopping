@@ -1,22 +1,31 @@
-.navbar-brand:hover{
+/* .navbar-brand:hover{
   color: aqua;
   
-}
+} */
 
 .top-header{
   padding: 10px 20px;
+  background-color: #38385F;
 }
 
 .navbar-brand{
   
-  font-size: 30px;
+  font-size: 40px;
   margin-left: 10px;
+  color: white  ;
+}
+
+.navbar-nav{
+  font-size: 30px;
+  padding-left: 450px;
 }
 
 
 
 .nav-link{
   cursor: pointer;
+  font-size: 30px;
+  margin-left: 30px;
 }
 
 .card{

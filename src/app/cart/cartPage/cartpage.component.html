@@ -1,182 +1,193 @@
-<app-header></app-header>
-<div class="top-div" *ngIf="cartItems.length === 0">
-  <div class="cartEmpty">
-    <h3>No , Cart Items Found ...</h3>
-    <button routerLink="/products">+ Goto Shop</button>
+<!-- <app-header></app-header> -->
+<div class="top-div">
+  <div class="" *ngIf="cartItems.length === 0">
+    <div class="cartEmpty">
+      <h3>No , Cart Items Found ...</h3>
+      <button routerLink="/products">+ Goto Shop</button>
+    </div>
   </div>
-
-</div>
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-7" *ngIf="cartItems.length !== 0">
-      <p-table [value]="cartItems" [tableStyle]="{ 'min-width': '60rem' }">
-        <ng-template pTemplate="caption">
-          <div class="flex align-items-center justify-content-between">
-            Products
-            <p-button icon="pi pi-refresh"></p-button>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Reviews</th>
-            <th>Status</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-          <tr>
-            <td>{{ product.name }}</td>
-            <td>
-              <img
-                [src]="product.imageUrl"
-                [alt]="product.name"
-                width="100"
-                class="shadow-4"
-              />
-            </td>
-            <td>{{ product.price | currency : "INR" }}</td>
-            <td>{{ product.selectedSize }}</td>
-
-            <td>
-              <h5>
-                <button class="buttton" (click)="increaseQuantity(product)">
-                  +
-                </button>
-                {{ product.quantity }}
-                <button class="buttton" (click)="decreaseQuantity(product)">
-                  -
-                </button>
-              </h5>
-            </td>
-            <td>
-              <button class="buttton" (click)="saveForLater(product)">
-                Save For Later
-              </button>
-              <br />
-              <button class="buttton" (click)="deleteProductFromCart(product)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="summary">
-          <div class="wrapper-box">
+  
+  
+  <div class="box">
+    <div class="insideBox">
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            
+                <div *ngIf="cartItems.length !== 0">
+                  <p-table [value]="cartItems" [tableStyle]="{ 'min-width': '60rem' }">
+                    <ng-template pTemplate="caption">
+                      <div class="flex align-items-center justify-content-between">
+                        <h5>Cart Items(TotalItems)</h5>
+                      </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Reviews</th>
+                        <th>Action</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                      <tr>
+                        <td>
+                          <img
+                            [src]="product.imageUrl"
+                            [alt]="product.name"
+                            width="100"
+                            class="shadow-4"
+                          />
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price | currency : "INR" }}</td>
+                        <td>{{ product.selectedSize }}</td>
+            
+                        <td>
+                          <h5>
+                            <button class="buttton" (click)="increaseQuantity(product)">
+                              +
+                            </button>
+                            {{ product.quantity }}
+                            <button class="buttton" (click)="decreaseQuantity(product)">
+                              -
+                            </button>
+                          </h5>
+                        </td>
+                        <td>
+                          <button class="buttton" (click)="saveForLater(product)">
+                            Save For Later
+                          </button>
+                          <br />
+                          <button class="buttton" (click)="deleteProductFromCart(product)">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                      <div class="wrapper-box">
+                        <div>
+                          <h5>Total :</h5>
+                          <h5>{{ calculateTotalPrice() | currency : "INR" }}</h5>
+                        </div>
+                        <div>
+                          <button class="placeOrderBtn" (click)="changeAddress()">
+                            Change Address
+                          </button>
+                          <button class="placeOrderBtn" (click)="Proceed()">Proceed</button>
+                          
+              <button mat-button matStepperNext>proceed</button>
+            
+                        </div>
+                      </div>
+                    </ng-template>
+                  </p-table>
+                </div>
+              
+            
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
             <div>
-              <h5>Total :</h5>
-              <h5>{{ calculateTotalPrice() | currency : "INR" }}</h5>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
             </div>
-            <div>
-              <button class="placeOrderBtn" (click)="changeAddress()">
-                Change Address
-              </button>
-              <button class="placeOrderBtn" (click)="Proceed()">Proceed</button>
-            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
           </div>
-        </ng-template>
-      </p-table>
+        </mat-step>
+      </mat-stepper>
+      <hr>
+  
+      
+          <div class="savelaterTop"  *ngIf="saveLaterProducts.length !== 0">
+            <p-table [value]="saveLaterProducts" [tableStyle]="{ 'min-width': '60rem' }">
+              <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between">
+                  <h5>SavedForLater(TotalItems)</h5>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                
+                  <th>Action</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product>
+                <tr>
+                  <td>
+                    <img
+                      [src]="product.imageUrl"
+                      [alt]="product.name"
+                      width="100"
+                      class="shadow-4"
+                    />
+                  </td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price | currency : "INR" }}</td>
+                  <td>{{ product.selectedSize }}</td>
+      
+                  
+                  <td>
+                    <button class="buttton" (click)="addToCartFromSavelater(product)">
+                      Add To Cart
+                    </button>
+                    <br />
+                    <button class="buttton" (click)="deleteProductFromSaveLater(product)">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+                <div class="wrapper-box">
+                  <div>
+                    <h5>Total :</h5>
+                    <h5>{{ calculateTotalPrice() | currency : "INR" }}</h5>
+                  </div>
+                  <div>
+                    <button class="placeOrderBtn" (click)="changeAddress()">
+                      Change Address
+                    </button>
+                    <button class="placeOrderBtn" (click)="Proceed()">Proceed</button>
+                    
+                     <button mat-button matStepperNext>proceed</button>
+      
+                  </div>
+                </div>
+              </ng-template>
+            </p-table>
+          </div>
+       
+    </div>
+  
+  
+    <div>
+        sdfgsdf
     </div>
   </div>
+   
+  
+  
+  
+
 </div>
-
-<div class="top-div" *ngIf="saveLaterProducts.length !== 0">
-  <div class="container" >
-    <h3>Products Saved For Later .....</h3>
-    <div class="productDiv" *ngFor="let product of saveLaterProducts">
-      <div class="container-fluid">
-        <div class="row" style="margin-top: 30px">
-          <div class="col-3">
-            <a (click)="productClicked(product)"
-              ><img
-                src="{{ product.imageUrl }}"
-                height="100px"
-                width="100px"
-                alt=""
-            /></a>
-
-            <h5>{{ product.name }}</h5>
-          </div>
-          <div class="col-2">
-            <h6>Size: {{ product.selectedSize }}</h6>
-          </div>
-          <div class="col-2">
-            <h5></h5>
-          </div>
-          <div class="col-2">
-            <h5>{{ product.price * product.quantity | currency : "INR" }}</h5>
-          </div>
-
-          <div class="col-3">
-            <button
-              class="buttton"
-              (click)="deleteProductFromSaveLater(product)"
-            >
-              Delete
-            </button>
-            <button
-              class="placeOrderBtn"
-              (click)="addToCartFromSavelater(product)"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- <p-dataView #dv [value]="saveLaterProducts">
-  <ng-template pTemplate="list" let-saveLaterProducts>
-    <div class="grid grid-nogutter">
-      <div
-        class="col-12"
-        *ngFor="let item of saveLaterProducts; let first = first"
-      >
-        <div
-          class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4"
-          [ngClass]="{ 'border-top-1 surface-border': !first }"
-        >
-          <img
-            class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
-            [src]="item.imageUrl"
-            [alt]="item.name"
-          />
-          <div
-            class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4"
-          >
-            <div
-              class="flex flex-column align-items-center sm:align-items-start gap-3"
-            >
-              <div class="text-2xl font-bold text-900">{{ item.name }}</div>
-
-              <div class="flex align-items-center gap-3">
-                <span class="flex align-items-center gap-2">
-                  <i class="pi pi-tag"></i>
-                  <span class="font-semibold">{{ item.selectedSize }}</span>
-                </span>
-              </div>
-            </div>
-            <div
-              class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2"
-            >
-              <span class="text-2xl font-semibold">{{
-                item.price * item.quantity | currency : "INR"
-              }}</span>
-              <button
-                pButton
-                icon="pi pi-shopping-cart"
-                class="md:align-self-end mb-2 p-button-rounded"
-                (click)="addToCartFromSavelater(item)"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-</p-dataView> -->

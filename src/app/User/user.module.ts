@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from "@angular/forms";
   ],
   imports: [
     UserRoutingModule,
-    SharedModule,
+    // SharedModule,
     RouterModule,
     CommonModule,
     ReactiveFormsModule

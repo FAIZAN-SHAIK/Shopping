@@ -70,16 +70,6 @@ export class ProductDetailsComponent implements OnInit {
 
   productClicked(item: Products) {
     this.router.navigate(['productDetails/' + item.id]);
-
-    // const isProductInArray = this.ps.cartProducts.some((product) => {
-    //   return product.id === item.id;
-    // });
-
-    // if (isProductInArray) {
-    //   this.addtoCartNotClicked = false;
-    // } else {
-    //   this.addtoCartNotClicked = true;
-    // }
   }
 
   ngOnInit(): void {
@@ -211,7 +201,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   scrollToTop() {
-    // Scroll to the top of the page
     window.scrollTo({ top: 0 });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AppService } from "src/app/app.service";
 import { HttpService } from "src/app/http.service";
+import { login } from "src/app/login";
 import { Products } from "src/app/products.class";
 import { ProductsService } from "src/app/products.service";
 
@@ -37,7 +38,7 @@ export class WishlistComponent {
 
   wishlistClicked(item: Products) {
 
-    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user) => {
+    this.http.getUser(Number(localStorage.getItem("loginUserId"))).subscribe((user : login) => {
       user.wishlist = user.wishlist.filter(wishlistItem => wishlistItem.id !== item.id);
       this.http.updateUser(Number(localStorage.getItem("loginUserId")), user).subscribe(
         () => {

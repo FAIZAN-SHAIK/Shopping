@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { HeaderComponent } from "./header/header.component";
+
 import { ProductsRoutngModule } from "../products/products-routing.module";
 import { AppRoutingModule } from "../app-routing.module";
 
@@ -9,14 +9,16 @@ import { CartRoutingModule } from "../cart/cart-routing.module";
 import { NotificationComponent } from "./notification/notification.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SpinnerComponent } from "./spinner/spinner.component";
+import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent,
     NotificationComponent,
     FooterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    
 
 
   ],
@@ -26,6 +28,9 @@ import { SpinnerComponent } from "./spinner/spinner.component";
     CommonModule,
     UserRoutingModule,
     CartRoutingModule,
+    ButtonModule,
+    DialogModule,
+   
 
 
 
@@ -33,10 +38,12 @@ import { SpinnerComponent } from "./spinner/spinner.component";
   ],
   providers: [],
   exports: [
-    HeaderComponent,
+    
     NotificationComponent,
     FooterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+   
+
 
   ]
 })

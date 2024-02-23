@@ -1,26 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/products.class';
 import { ProductsService } from 'src/app/products.service';
 import * as _ from 'lodash';
 import { HttpService } from 'src/app/http.service';
 import { login } from 'src/app/login';
+import {MenuItem} from 'primeng/api';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cartpage',
   templateUrl: './cartpage.component.html',
   styleUrls: ['./cartpage.component.css'],
 })
-export class CartPageComponent {
+export class CartPageComponent implements OnInit {
   cartItems: Products[] = [];
   saveLaterProducts: Products[] = []
   productValue: number = 0;
   totalPrice: number = 0;
 
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
+
+
   constructor(
     private ps: ProductsService,
     private router: Router,
-    private http: HttpService
+    private http: HttpService,
+    private _formBuilder: FormBuilder
   ) {
     // this.cartItems = this.ps.cartProducts;
 
@@ -30,6 +42,9 @@ export class CartPageComponent {
         this.cartItems = x.addtocart;
         this.saveLaterProducts = x.savelater;
       });
+  }
+  ngOnInit(): void {
+   
   }
 
   calculateTotalPrice() {

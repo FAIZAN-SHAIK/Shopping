@@ -19,7 +19,10 @@ import { AbousUsComponent } from './components/aboutUs/aboutus.component';
 import { ContactMeComponent } from './components/contactme/contactme.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
-import { ButtonModule } from 'primeng/button';
+
+import { HeaderComponent } from './header/header.component';
+import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { ButtonModule } from 'primeng/button';
     SignUpUserdetailsComponent,
     ContactMeComponent,
     AbousUsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,10 @@ import { ButtonModule } from 'primeng/button';
     BrowserAnimationsModule,
     IvyCarouselModule,
     ButtonModule,
+    ButtonModule,
+    DialogModule,
   ],
+  
 
   providers: [],
   bootstrap: [AppComponent],

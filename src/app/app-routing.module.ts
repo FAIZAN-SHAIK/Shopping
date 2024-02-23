@@ -8,10 +8,11 @@ import { UserComponent } from "./User/user/user.component";
 import { SignUpUserdetailsComponent } from "./Auth/signupUserDetails/signupUserDetails.component";
 import { AbousUsComponent } from "./components/aboutUs/aboutus.component";
 import { ContactMeComponent } from "./components/contactme/contactme.component";
+import { HeaderComponent } from "./header/header.component";
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signupUserDetails', component: SignUpUserdetailsComponent },

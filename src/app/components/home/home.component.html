@@ -3,7 +3,7 @@
   <div class="container-fluid" style="height: 100vh">
     <div class="row">
       <div
-        class="col-md-7"
+        class="col-md-6"
         style="margin: 10rem 0rem 10rem 0; text-align: center"
       >
         <div class="top-heading">
@@ -15,14 +15,14 @@
           </h1>
         </div>
         <div class="bottom-text">
-          <h3>Your destination for trendy fashion!</h3>
+          <p>Setting Style Standards!</p>
           <div class="inner-div2 mt-4" *ngIf="loginUserName === 'null'">
-            <button class="btn btn-dark btn-lg" (click)="onLoginClicked()">
-              Login
-            </button>
-            <button class="btn btn-dark btn-lg mx-3" routerLink="/signup">
-              SignUp
-            </button>
+            
+            <button pButton type="button" class="p-button-raised p-button-warning  p-button-rounded"(click)="onLoginClicked()">Login</button>
+            
+              
+              <button pButton type="button" class="p-button-raised p-button-warning  p-button-rounded" routerLink="/signup">SignUp</button>
+            
           </div>
           <div class="inner-div2" *ngIf="loginUserName !== 'null'">
             <h1>Hello, {{ loginUserName  | titlecase }} 👋</h1>
@@ -76,7 +76,7 @@
         </div>
       </div>
 
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div class="imgHome">
           <img src="../../../assets/homePage.png" alt="" />
         </div>

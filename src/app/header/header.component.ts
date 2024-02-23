@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SharedService } from "../auth.service";
+import { SharedService } from "../shared/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductsService } from "src/app/products.service";
 
@@ -11,6 +11,7 @@ import { ProductsService } from "src/app/products.service";
 })
 export class HeaderComponent implements OnInit {
   cartSize: number = 0;
+  display: boolean = false;
 
   userLoggeIn : number = Number(localStorage.getItem("loginUserId"))
 
@@ -40,6 +41,10 @@ export class HeaderComponent implements OnInit {
 
   cartClicked() {
     this.router.navigate(['/cartpage'])
+  }
+
+  showDialog(){
+    this.display = true;
   }
 
 }

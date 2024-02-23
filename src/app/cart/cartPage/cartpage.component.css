@@ -1,17 +1,12 @@
-.top-div{
+/* .top-div{
   background-color:rgb(203 213 225) ;
-  min-height:70vh ;
+ 
 
   
 }
-.cartEmpty{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  font-size: 20px;
-}
+
+
+
 
 .productDiv {
   border: 3px solid whitesmoke;
@@ -55,4 +50,33 @@ a{
   justify-content: space-between;
   align-items: center;
   margin: 0 10rem;
+} */
+
+.top-div{
+  min-height:70vh ;
+ 
+
+  
+}
+.cartEmpty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 20px;
+}
+
+.box {
+  display: flex;
+  margin-top: 4rem;
+  gap: 6em;
+}
+
+.insideBox{
+  margin-left: 8rem;
+}
+
+.savelaterTop{
+  margin-top: 5rem;
 }

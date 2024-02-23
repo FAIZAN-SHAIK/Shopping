@@ -25,7 +25,6 @@ import { HttpClientModule } from  '@angular/common/http';
 
 
 
-
   ],
   imports: [
     CommonModule,
@@ -35,7 +34,8 @@ import { HttpClientModule } from  '@angular/common/http';
     ReactiveFormsModule,
     UserRoutingModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    
     
 
   ]
