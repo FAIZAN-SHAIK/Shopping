@@ -703,32 +703,6 @@
           "imageUrl": "../../../assets/men/tshirts/t2.webp",
           "wishlist": false,
           "selectedSize": "S"
-        },
-        {
-          "quantity": 2,
-          "id": 1,
-          "name": "louis blue tshirt",
-          "type": "tshirt",
-          "price": 1859,
-          "gender": "male",
-          "color": "blue",
-          "brand": "louis",
-          "imageUrl": "../../../assets/men/tshirts/t2.webp",
-          "wishlist": false,
-          "selectedSize": "M"
-        },
-        {
-          "quantity": 1,
-          "id": 3,
-          "name": "AllenSolly Black Jeans",
-          "type": "jeans",
-          "price": 799,
-          "gender": "male",
-          "color": "black",
-          "brand": "AllenSolly",
-          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
-          "wishlist": false,
-          "selectedSize": "L"
         }
       ],
       "wishlist": [
@@ -813,7 +787,34 @@
           "OrderId": "#731889"
         }
       ],
-      "savelater": [],
+      "savelater": [
+        {
+          "quantity": 2,
+          "id": 1,
+          "name": "louis blue tshirt",
+          "type": "tshirt",
+          "price": 1859,
+          "gender": "male",
+          "color": "blue",
+          "brand": "louis",
+          "imageUrl": "../../../assets/men/tshirts/t2.webp",
+          "wishlist": false,
+          "selectedSize": "S"
+        },
+        {
+          "quantity": 1,
+          "id": 3,
+          "name": "AllenSolly Black Jeans",
+          "type": "jeans",
+          "price": 799,
+          "gender": "male",
+          "color": "black",
+          "brand": "AllenSolly",
+          "imageUrl": "../../../assets/men/jeans/black 4 jeans.jpg",
+          "wishlist": false,
+          "selectedSize": "L"
+        }
+      ],
       "buynow": [
         {
           "quantity": 1,
